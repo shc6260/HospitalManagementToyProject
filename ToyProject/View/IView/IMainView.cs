@@ -11,10 +11,14 @@ namespace ToyProject.View
     {
         event EventHandler<long> PatientSelected;
         event EventHandler<long> ReceptionRequested;
+        event EventHandler<string> SearchTextChanged;
 
         void SetPatientList(IList<Patient> patients);
+
         void ShowPatientDetail(Patient patient);
+
         void ShowReceptionMessage(Patient patient);
+
         void ClearSearch();
     }
 }

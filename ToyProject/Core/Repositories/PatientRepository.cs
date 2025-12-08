@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using ToyProject.Core.Infrastructure;
 using ToyProject.Model;
 
@@ -9,19 +10,26 @@ namespace ToyProject.Core.Repositories
 {
     public class PatientRepository
     {
-        public List<PatientDto> FindPatients()
+        public Task<IEnumerable<PatientDto>> FindPatientsForGnb(string searchText)
         {
-            using (var conn = DbConnectionFactory.CreateConnection())
+            return Task.Run(async () =>
             {
-                conn.Open();
+                using (var conn = DbConnectionFactory.CreateConnection())
+                {
+                    conn.Open();
 
-                var patients = conn.Query<PatientDto>(
-                    "findPatient",
-                    commandType: CommandType.StoredProcedure
-                );
+                    var patients = await conn.QueryAsync<PatientDto>(
+                        "findPatientForGnb",
+                        param: new
+                        {
+                            searchText = searchText
+                        },
+                        commandType: CommandType.StoredProcedure
+                    );
 
-                return patients.AsList();
-            }
+                    return patients;
+                }
+            });
         }
 
         public void SavePatients(PatientDto patientDto)
