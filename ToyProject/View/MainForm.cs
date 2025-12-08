@@ -14,19 +14,103 @@ namespace ToyProject
 {
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm, IMainView
     {
-        private BindingList<Patient> _patients;
-
         public MainForm()
         {
             InitializeComponent();
             Load += MainForm_Load;
         }
 
+        private BindingList<Patient> _patients;
+
+        #region Properties
+
+        private MainContentControl _mainContent;
+
+        private MainContentControl MainContent
+        {
+            get
+            {
+                if (_mainContent == null)
+                {
+                    _mainContent = new MainContentControl();
+                    _mainContent.Dock = DockStyle.Fill;
+                }
+
+                return _mainContent;
+            }
+        }
+
+        private TestContentControl _testContent;
+
+        private TestContentControl TestContent
+        {
+            get
+            {
+                if (_testContent == null)
+                {
+                    _testContent = new TestContentControl();
+                    _testContent.Dock = DockStyle.Fill;
+                }
+
+                return _testContent;
+            }
+        }
+
+        private TesterContentControl _testerContent;
+
+        private TestContentControl TesterContent
+        {
+            get
+            {
+                if (_testerContent == null)
+                {
+                    _testerContent = new TesterContentControl();
+                    _testerContent.Dock = DockStyle.Fill;
+                }
+
+                return _testContent;
+            }
+        }
+
+        private TestItemContentControl _testItemContent;
+
+        private TestItemContentControl TestItemContent
+        {
+            get
+            {
+                if (_testItemContent == null)
+                {
+                    _testItemContent = new TestItemContentControl();
+                    _testItemContent.Dock = DockStyle.Fill;
+                }
+
+                return _testItemContent;
+            }
+        }
+
+        private EquipmentContentControl _equipmentContent;
+
+        private EquipmentContentControl EquipmentContent
+        {
+            get
+            {
+                if (_equipmentContent == null)
+                {
+                    _equipmentContent = new EquipmentContentControl();
+                    _equipmentContent.Dock = DockStyle.Fill;
+                }
+
+                return _equipmentContent;
+            }
+        } 
+
+        #endregion
 
         #region Init Control
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            mainPanel.Controls.Add(MainContent);
             InitPatientSearchEdit();
         }
 
@@ -56,6 +140,44 @@ namespace ToyProject
         #endregion
 
         #region Helper
+
+        private void SelectedMainMenu(object sender, DevExpress.XtraBars.Navigation.SelectedElementChangedEventArgs e)
+        {
+            if (e.Element == null)
+                return;
+
+            mainPanel.Controls.Clear();
+
+            switch (e.Element.Name)
+            {
+                case nameof(mainTab):
+                    mainPanel.Controls.Add(MainContent);
+                    break;
+
+                case nameof(testTab):
+                    mainPanel.Controls.Add(TestContent);
+
+                    break;
+
+                case nameof(testerTab):
+                    mainPanel.Controls.Add(TesterContent);
+
+                    break;
+
+                case nameof(testItemTab):
+                    mainPanel.Controls.Add(TestItemContent);
+
+                    break;
+
+                case nameof(equipmentTab):
+                    mainPanel.Controls.Add(EquipmentContent);
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         private void gnbSearchEdit_EditValueChanged(object sender, EventArgs e)
         {

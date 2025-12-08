@@ -75,8 +75,20 @@
     <Compile Include="Model\PatientDto.cs" />
     <Compile Include="Presenter\PatientDetailDialogPresenter.cs" />
     <Compile Include="Presenter\PatientEditPresenter.cs" />
+    <Compile Include="View\EquipmentContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\EquipmentContentControl.Designer.cs">
+      <DependentUpon>EquipmentContentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IView\IPatientDetailDialogView.cs" />
     <Compile Include="View\IView\IPatientEditControl.cs" />
+    <Compile Include="View\MainContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MainContentControl.Designer.cs">
+      <DependentUpon>MainContentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,24 @@
     <Compile Include="View\PatientEditControl.Designer.cs">
       <DependentUpon>PatientEditControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TestContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TestContentControl.Designer.cs">
+      <DependentUpon>TestContentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TesterContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TesterContentControl.Designer.cs">
+      <DependentUpon>TesterContentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestItemContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TestItemContentControl.Designer.cs">
+      <DependentUpon>TestItemContentControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +149,9 @@
     <EmbeddedResource Include="View\PatientEditControl.resx">
       <DependentUpon>PatientEditControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TesterContentControl.resx">
+      <DependentUpon>TesterContentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\MainForm.datasource" />
@@ -132,7 +165,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\Service\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

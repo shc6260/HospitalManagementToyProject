@@ -47,14 +47,14 @@ namespace ToyProject
             this.addPatientButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
-            this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.MainTabItem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ㄱ = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.mainMenuControl = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.mainTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.testTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.testerTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.equipmentTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.testItemTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -78,7 +78,7 @@ namespace ToyProject
             ((System.ComponentModel.ISupportInitialize)(this.gnbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -256,32 +256,34 @@ namespace ToyProject
             this.mainPanel.Size = new System.Drawing.Size(697, 559);
             this.mainPanel.TabIndex = 0;
             // 
-            // accordionControl1
+            // mainMenuControl
             // 
-            this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.MainTabItem,
-            this.ㄱ,
+            this.mainMenuControl.AllowItemSelection = true;
+            this.mainMenuControl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mainMenuControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.mainTab,
+            this.testTab,
             this.accordionControlSeparator1,
             this.accordionControlElement3});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
-            this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(250, 635);
-            this.accordionControl1.TabIndex = 1;
-            this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            this.mainMenuControl.Location = new System.Drawing.Point(0, 31);
+            this.mainMenuControl.Name = "mainMenuControl";
+            this.mainMenuControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
+            this.mainMenuControl.Size = new System.Drawing.Size(250, 635);
+            this.mainMenuControl.TabIndex = 1;
+            this.mainMenuControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            this.mainMenuControl.SelectedElementChanged += new DevExpress.XtraBars.Navigation.SelectedElementChangedEventHandler(this.SelectedMainMenu);
             // 
-            // MainTabItem
+            // mainTab
             // 
-            this.MainTabItem.Name = "MainTabItem";
-            this.MainTabItem.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.MainTabItem.Text = "메인";
+            this.mainTab.Name = "mainTab";
+            this.mainTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.mainTab.Text = "메인";
             // 
-            // ㄱ
+            // testTab
             // 
-            this.ㄱ.Name = "ㄱ";
-            this.ㄱ.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ㄱ.Text = "검사";
+            this.testTab.Name = "testTab";
+            this.testTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.testTab.Text = "검사";
             // 
             // accordionControlSeparator1
             // 
@@ -290,30 +292,30 @@ namespace ToyProject
             // accordionControlElement3
             // 
             this.accordionControlElement3.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement4,
-            this.accordionControlElement5,
-            this.accordionControlElement6});
+            this.testerTab,
+            this.equipmentTab,
+            this.testItemTab});
             this.accordionControlElement3.Expanded = true;
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "병원관리";
             // 
-            // accordionControlElement4
+            // testerTab
             // 
-            this.accordionControlElement4.Name = "accordionControlElement4";
-            this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement4.Text = "검사자관리";
+            this.testerTab.Name = "testerTab";
+            this.testerTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.testerTab.Text = "검사자관리";
             // 
-            // accordionControlElement5
+            // equipmentTab
             // 
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement5.Text = "장비관리";
+            this.equipmentTab.Name = "equipmentTab";
+            this.equipmentTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.equipmentTab.Text = "장비관리";
             // 
-            // accordionControlElement6
+            // testItemTab
             // 
-            this.accordionControlElement6.Name = "accordionControlElement6";
-            this.accordionControlElement6.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement6.Text = "검사항목관리";
+            this.testItemTab.Name = "testItemTab";
+            this.testItemTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.testItemTab.Text = "검사항목관리";
             // 
             // fluentDesignFormControl1
             // 
@@ -349,11 +351,11 @@ namespace ToyProject
             this.ClientSize = new System.Drawing.Size(947, 666);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
-            this.Controls.Add(this.accordionControl1);
+            this.Controls.Add(this.mainMenuControl);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "MainForm";
-            this.NavigationControl = this.accordionControl1;
+            this.NavigationControl = this.mainMenuControl;
             this.Text = "Form1";
             this.fluentDesignFormContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -374,7 +376,7 @@ namespace ToyProject
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -384,14 +386,14 @@ namespace ToyProject
         #endregion
 
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
-        private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
+        private DevExpress.XtraBars.Navigation.AccordionControl mainMenuControl;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement MainTabItem;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ㄱ;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement mainTab;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement testTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement testerTab;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement equipmentTab;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement testItemTab;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
