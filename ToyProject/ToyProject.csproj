@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -51,14 +52,21 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,22 +79,53 @@
   <ItemGroup>
     <Compile Include="Core\Helper\DelayInvoker.cs" />
     <Compile Include="Core\Infrastructure\DbConnectionFactory.cs" />
+    <Compile Include="Core\Repositories\EquipmentRepository.cs" />
     <Compile Include="Core\Repositories\PatientRepository.cs" />
-    <Compile Include="Model\PatientDto.cs" />
+    <Compile Include="Core\Repositories\TesterRepository.cs" />
+    <Compile Include="Core\Repositories\TestItemRepository.cs" />
+    <Compile Include="Core\Service\EquipmentService.cs" />
+    <Compile Include="Core\Service\MessageService.cs" />
+    <Compile Include="Core\Service\TesterService.cs" />
+    <Compile Include="Core\Service\TestItemService.cs" />
+    <Compile Include="Model\Dto\EquipmentRequestDto.cs" />
+    <Compile Include="Model\Dto\EquipmentResponseDto.cs" />
+    <Compile Include="Model\Dto\PatientRequestDto.cs" />
+    <Compile Include="Model\Dto\PatientResponseDto.cs" />
+    <Compile Include="Model\Dto\TestItemRequestDto.cs" />
+    <Compile Include="Model\Dto\TestItemResponseDto.cs" />
+    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\Tester.cs" />
+    <Compile Include="Model\Dto\TesterRequestDto.cs" />
+    <Compile Include="Model\Dto\TesterResponseDto.cs" />
+    <Compile Include="Model\TestItem.cs" />
+    <Compile Include="Presenter\MainContent\EquipmentContentPresenter.cs" />
+    <Compile Include="Presenter\MainContent\TestItemContentPresenter.cs" />
     <Compile Include="Presenter\PatientDetailDialogPresenter.cs" />
     <Compile Include="Presenter\PatientEditPresenter.cs" />
-    <Compile Include="View\EquipmentContentControl.cs">
+    <Compile Include="Presenter\PresenterBase.cs" />
+    <Compile Include="Presenter\MainContent\TesterContentPresenter.cs" />
+    <Compile Include="View\IView\MainContent\ITestItemContentControlView.cs" />
+    <Compile Include="View\MainContent\EquipmentContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\EquipmentContentControl.Designer.cs">
+    <Compile Include="View\MainContent\EquipmentContentControl.Designer.cs">
       <DependentUpon>EquipmentContentControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\EquipmentManagementDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\EquipmentManagementDialogForm.Designer.cs">
+      <DependentUpon>EquipmentManagementDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\IView\MainContent\IEquipmentContentControlView.cs" />
+    <Compile Include="View\IView\ILoadableViewBase.cs" />
     <Compile Include="View\IView\IPatientDetailDialogView.cs" />
     <Compile Include="View\IView\IPatientEditControl.cs" />
-    <Compile Include="View\MainContentControl.cs">
+    <Compile Include="View\IView\MainContent\ITesterContentControlView.cs" />
+    <Compile Include="View\MainContent\MainContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\MainContentControl.Designer.cs">
+    <Compile Include="View\MainContent\MainContentControl.Designer.cs">
       <DependentUpon>MainContentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainForm.cs">
@@ -100,36 +139,51 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IView\IMainView.cs" />
-    <Compile Include="View\PatientDetailDialogForm.cs">
+    <Compile Include="View\Dialog\PatientDetailDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PatientDetailDialogForm.Designer.cs">
+    <Compile Include="View\Dialog\PatientDetailDialogForm.Designer.cs">
       <DependentUpon>PatientDetailDialogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientEditControl.cs">
+    <Compile Include="View\Dialog\PatientEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\PatientEditControl.Designer.cs">
+    <Compile Include="View\Dialog\PatientEditControl.Designer.cs">
       <DependentUpon>PatientEditControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TestContentControl.cs">
+    <Compile Include="View\MainContent\TestContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\TestContentControl.Designer.cs">
+    <Compile Include="View\MainContent\TestContentControl.Designer.cs">
       <DependentUpon>TestContentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TesterContentControl.cs">
+    <Compile Include="View\MainContent\TesterContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\TesterContentControl.Designer.cs">
+    <Compile Include="View\MainContent\TesterContentControl.Designer.cs">
       <DependentUpon>TesterContentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TestItemContentControl.cs">
+    <Compile Include="View\Dialog\TesterManagementDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\TesterManagementDialogForm.Designer.cs">
+      <DependentUpon>TesterManagementDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainContent\TestItemContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\TestItemContentControl.Designer.cs">
+    <Compile Include="View\MainContent\TestItemContentControl.Designer.cs">
       <DependentUpon>TestItemContentControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\MainContent\EquipmentContentControl.resx">
+      <DependentUpon>EquipmentContentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\EquipmentManagementDialogForm.resx">
+      <DependentUpon>EquipmentManagementDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainContent\TestItemContentControl.resx">
+      <DependentUpon>TestItemContentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,14 +197,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\PatientDetailDialogForm.resx">
+    <EmbeddedResource Include="View\Dialog\PatientDetailDialogForm.resx">
       <DependentUpon>PatientDetailDialogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PatientEditControl.resx">
+    <EmbeddedResource Include="View\Dialog\PatientEditControl.resx">
       <DependentUpon>PatientEditControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\TesterContentControl.resx">
+    <EmbeddedResource Include="View\MainContent\TesterContentControl.resx">
       <DependentUpon>TesterContentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\TesterManagementDialogForm.resx">
+      <DependentUpon>TesterManagementDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -165,9 +222,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

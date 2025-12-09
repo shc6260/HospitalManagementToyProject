@@ -10,7 +10,7 @@ namespace ToyProject.Core.Repositories
 {
     public class PatientRepository
     {
-        public Task<IEnumerable<PatientDto>> FindPatientsForGnb(string searchText)
+        public Task<IEnumerable<PatientResponseDto>> FindPatientsForGnbAsync(string searchText)
         {
             return Task.Run(async () =>
             {
@@ -18,7 +18,7 @@ namespace ToyProject.Core.Repositories
                 {
                     conn.Open();
 
-                    var patients = await conn.QueryAsync<PatientDto>(
+                    var patients = await conn.QueryAsync<PatientResponseDto>(
                         "findPatientForGnb",
                         param: new
                         {
@@ -32,45 +32,26 @@ namespace ToyProject.Core.Repositories
             });
         }
 
-        public void SavePatients(PatientDto patientDto)
+        public void SavePatientsAsync(PatientRequestDto dto)
         {
             using (var conn = DbConnectionFactory.CreateConnection())
             {
                 conn.Open();
 
                 conn.Execute("addPatient",
-                new
-                {
-                    name = patientDto.Name,
-                    chartnumber = "1929203",
-                    phonenumber = patientDto.PhoneNumber,
-                    social_security_number = patientDto.Social_Security_Number,
-                    address = patientDto.Address,
-                    memo = patientDto.Memo,
-                    qualification_info = patientDto.Qualification_Info
-                },
+                dto,
                 commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void UpdatePatients(PatientDto patientDto)
+        public void UpdatePatientsAsync(PatientRequestDto dto)
         {
             using (var conn = DbConnectionFactory.CreateConnection())
             {
                 conn.Open();
 
                 conn.Execute("modifyPatient",
-                new
-                {
-                    id = patientDto.Id,
-                    name = patientDto.Name,
-                    chartnumber = "1929203",
-                    phonenumber = patientDto.PhoneNumber,
-                    social_security_number = patientDto.Social_Security_Number,
-                    address = patientDto.Address,
-                    memo = patientDto.Memo,
-                    qualification_info = patientDto.Qualification_Info
-                },
+                dto,
                 commandType: CommandType.StoredProcedure);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ToyProject.Core.Service;
 using ToyProject.Presenter;
 
 namespace ToyProject
@@ -16,7 +17,7 @@ namespace ToyProject
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainForm = new MainForm();
-            new MainPresenter(mainForm); // Presenter 연결
+            new MainPresenter(mainForm, new MessageService(mainForm)); // Presenter 연결
             Application.Run(mainForm);
         }
     }

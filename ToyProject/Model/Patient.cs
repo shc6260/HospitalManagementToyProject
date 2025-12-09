@@ -48,7 +48,7 @@ namespace ToyProject.Model
 
         #region Helpers
 
-        public static Patient From(PatientDto patientDto)
+        public static Patient From(PatientResponseDto patientDto)
         {
             return new Patient
           (
@@ -96,11 +96,11 @@ namespace ToyProject.Model
             );
         }
 
-        public PatientDto ToDto()
+        public PatientRequestDto ToRequestDto()
         {
-            return new PatientDto()
+            return new PatientRequestDto()
             {
-                Id = Id ?? -1,
+                Id = Id,
                 Name = Name,
                 Address = Address,
                 ChartNumber = ChartNumber,

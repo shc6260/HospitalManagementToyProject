@@ -13,7 +13,7 @@ namespace ToyProject.View
         event EventHandler<long> ReceptionRequested;
         event EventHandler<string> SearchTextChanged;
 
-        void SetPatientList(IList<Patient> patients);
+        void SetPatientList(IEnumerable<Patient> patients);
 
         void ShowPatientDetail(Patient patient);
 

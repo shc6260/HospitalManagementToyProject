@@ -1,116 +1,63 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.FluentDesignSystem;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
+using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.Presenter;
+using ToyProject.Presenter.MainContent;
 using ToyProject.View;
 
 namespace ToyProject
 {
-    public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm, IMainView
+    public partial class MainForm : FluentDesignForm, IMainView
     {
         public MainForm()
         {
             InitializeComponent();
             Load += MainForm_Load;
+            _messageService = new MessageService(this);
         }
 
         private BindingList<Patient> _patients;
+
+        private MessageService _messageService;
 
         #region Properties
 
         private MainContentControl _mainContent;
 
-        private MainContentControl MainContent
-        {
-            get
-            {
-                if (_mainContent == null)
-                {
-                    _mainContent = new MainContentControl();
-                    _mainContent.Dock = DockStyle.Fill;
-                }
-
-                return _mainContent;
-            }
-        }
-
         private TestContentControl _testContent;
 
-        private TestContentControl TestContent
-        {
-            get
-            {
-                if (_testContent == null)
-                {
-                    _testContent = new TestContentControl();
-                    _testContent.Dock = DockStyle.Fill;
-                }
-
-                return _testContent;
-            }
-        }
 
         private TesterContentControl _testerContent;
 
-        private TestContentControl TesterContent
-        {
-            get
-            {
-                if (_testerContent == null)
-                {
-                    _testerContent = new TesterContentControl();
-                    _testerContent.Dock = DockStyle.Fill;
-                }
+        private TesterContentPresenter _testerContentPresenter;
 
-                return _testContent;
-            }
-        }
 
         private TestItemContentControl _testItemContent;
 
-        private TestItemContentControl TestItemContent
-        {
-            get
-            {
-                if (_testItemContent == null)
-                {
-                    _testItemContent = new TestItemContentControl();
-                    _testItemContent.Dock = DockStyle.Fill;
-                }
+        private TestItemContentPresenter _testItemContentPresenter;
 
-                return _testItemContent;
-            }
-        }
 
         private EquipmentContentControl _equipmentContent;
 
-        private EquipmentContentControl EquipmentContent
-        {
-            get
-            {
-                if (_equipmentContent == null)
-                {
-                    _equipmentContent = new EquipmentContentControl();
-                    _equipmentContent.Dock = DockStyle.Fill;
-                }
-
-                return _equipmentContent;
-            }
-        } 
+        private EquipmentContentPresenter _equipmentContentPresenter;
 
         #endregion
+
 
         #region Init Control
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            mainPanel.Controls.Add(MainContent);
+            SetMainPanel(nameof(mainTab));
             InitPatientSearchEdit();
         }
 
@@ -146,37 +93,84 @@ namespace ToyProject
             if (e.Element == null)
                 return;
 
-            mainPanel.Controls.Clear();
+            SetMainPanel(e.Element.Name);
+        }
 
-            switch (e.Element.Name)
+        private async void SetMainPanel(string name)
+        {
+            mainPanel.Controls.Clear();
+            PresenterBase currentPresenter = null;
+
+            switch (name)
             {
                 case nameof(mainTab):
-                    mainPanel.Controls.Add(MainContent);
+                    if (_mainContent == null)
+                    {
+                        _mainContent = new MainContentControl();
+                        _mainContent.Dock = DockStyle.Fill;
+                    }
+
+                    mainPanel.Controls.Add(_mainContent);
                     break;
 
                 case nameof(testTab):
-                    mainPanel.Controls.Add(TestContent);
+                    if (_testContent == null)
+                    {
+                        _testContent = new TestContentControl();
+                        _testContent.Dock = DockStyle.Fill;
+                    }
+
+                    mainPanel.Controls.Add(_testContent);
 
                     break;
 
                 case nameof(testerTab):
-                    mainPanel.Controls.Add(TesterContent);
+                    if (_testerContent == null)
+                    {
+                        _testerContent = new TesterContentControl();
+                        _testerContent.Dock = DockStyle.Fill;
+                        _testerContentPresenter = new TesterContentPresenter(_testerContent, _messageService);
+                    }
+
+                    currentPresenter = _testerContentPresenter;
+                    mainPanel.Controls.Add(_testerContent);
 
                     break;
 
                 case nameof(testItemTab):
-                    mainPanel.Controls.Add(TestItemContent);
+                    if (_testItemContent == null)
+                    {
+                        _testItemContent = new TestItemContentControl();
+                        _testItemContent.Dock = DockStyle.Fill;
+                        _testItemContentPresenter = new TestItemContentPresenter(_testItemContent, _messageService);
+                    }
+
+                    currentPresenter = _testItemContentPresenter;
+                    mainPanel.Controls.Add(_testItemContent);
 
                     break;
 
                 case nameof(equipmentTab):
-                    mainPanel.Controls.Add(EquipmentContent);
+                    if (_equipmentContent == null)
+                    {
+                        _equipmentContent = new EquipmentContentControl();
+                        _equipmentContent.Dock = DockStyle.Fill;
+                        _equipmentContentPresenter = new EquipmentContentPresenter(_equipmentContent, _messageService);
+                    }
+
+                    currentPresenter = _equipmentContentPresenter;
+                    mainPanel.Controls.Add(_equipmentContent);
 
                     break;
 
                 default:
                     break;
             }
+
+            if (currentPresenter == null)
+                return;
+
+            await currentPresenter.Refresh();
         }
 
         private void gnbSearchEdit_EditValueChanged(object sender, EventArgs e)
@@ -227,10 +221,9 @@ namespace ToyProject
 
         #region IMainView
 
-        // IMainView 구현
-        public void SetPatientList(IList<Patient> patients)
+        public void SetPatientList(IEnumerable<Patient> patients)
         {
-            _patients = new BindingList<Patient>(patients);
+            _patients = new BindingList<Patient>(patients.ToArray());
             gnbSearchGrid.DataSource = _patients;
         }
 
@@ -256,9 +249,6 @@ namespace ToyProject
             gnbSearchEdit.ClosePopup();
         }
 
-        #endregion
-
-        #region Events
 
         public event EventHandler<long> PatientSelected;
 

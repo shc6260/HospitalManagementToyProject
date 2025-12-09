@@ -32,14 +32,13 @@ namespace ToyProject.Presenter
         private void View_SavePatient(object sender, EventArgs e)
         {
             var patient = _patientEditPresenter.GetPatient();
-
-
+            
             if (_patientId == null)
             {
-                _patientRepository.SavePatients(patient.ToDto());
+                _patientRepository.SavePatientsAsync(patient.ToRequestDto());
             }
 
-            _patientRepository.UpdatePatients(patient.WithId(_patientId.Value).ToDto());
+            _patientRepository.UpdatePatientsAsync(patient.WithId(_patientId.Value).ToRequestDto());
         }
     }
 }

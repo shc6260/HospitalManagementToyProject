@@ -1,6 +1,6 @@
 ﻿namespace ToyProject.Model
 {
-    public class PatientDto
+    public class PatientResponseDto
     {
         public long Id { get; set; }
 
