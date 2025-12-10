@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ToyProject.Model.Dto
+﻿namespace ToyProject.Model.Dto
 {
     public class TestItemRequestDto
     {

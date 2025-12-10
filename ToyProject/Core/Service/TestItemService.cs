@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
@@ -27,7 +25,7 @@ namespace ToyProject.Core.Service
             });
         }
 
-        public Task UpdateTestItemAsync(TestItem data)
+        public Task SaveTestItemAsync(TestItem data)
         {
             if (data == null)
                 return Task.CompletedTask;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-
-namespace ToyProject.Model
+﻿namespace ToyProject.Model
 {
     public class Patient
     {
@@ -105,7 +102,20 @@ namespace ToyProject.Model
                 Address = Address,
                 ChartNumber = ChartNumber,
                 Memo = Memo,
-                Gender = Gender,
+                PhoneNumber = PhoneNumber,
+                Social_Security_Number = SocialSecurityNumber,
+                Qualification_Info = QualificationInfo
+            };
+        }
+
+        public PatientAddRequestDto ToAddRequestDto()
+        {
+            return new PatientAddRequestDto()
+            {
+                Name = Name,
+                Address = Address,
+                ChartNumber = ChartNumber,
+                Memo = Memo,
                 PhoneNumber = PhoneNumber,
                 Social_Security_Number = SocialSecurityNumber,
                 Qualification_Info = QualificationInfo

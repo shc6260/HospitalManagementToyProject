@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToyProject.Core.Repositories;
+using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View.IView;
 
@@ -11,15 +8,9 @@ namespace ToyProject.Presenter
 {
     public class PatientDetailDialogPresenter
     {
-        private readonly IPatientDetailDialogView _view;
-        private readonly PatientEditPresenter _patientEditPresenter;
-        private readonly long? _patientId;
-        private readonly PatientRepository _patientRepository;
-
-
         public PatientDetailDialogPresenter(IPatientDetailDialogView view, Patient patient)
         {
-            _patientRepository = new PatientRepository();
+            _patientService = new PatientService(new PatientRepository());
 
             _view = view;
 
@@ -29,16 +20,14 @@ namespace ToyProject.Presenter
             _patientId = patient?.Id;
         }
 
-        private void View_SavePatient(object sender, EventArgs e)
-        {
-            var patient = _patientEditPresenter.GetPatient();
-            
-            if (_patientId == null)
-            {
-                _patientRepository.SavePatientsAsync(patient.ToRequestDto());
-            }
+        private readonly IPatientDetailDialogView _view;
+        private readonly PatientEditPresenter _patientEditPresenter;
+        private readonly long? _patientId;
+        private readonly PatientService _patientService;
 
-            _patientRepository.UpdatePatientsAsync(patient.WithId(_patientId.Value).ToRequestDto());
+        private async void View_SavePatient(object sender, EventArgs e)
+        {
+            await _patientEditPresenter.SavePatient();
         }
     }
 }

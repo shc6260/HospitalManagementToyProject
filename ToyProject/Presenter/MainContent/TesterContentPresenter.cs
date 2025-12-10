@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ToyProject.Core.Repositories;
 using ToyProject.Core.Service;
@@ -64,7 +63,7 @@ namespace ToyProject.Presenter
 
         private async void OnUpdateTesterRequested(object sender, Tester e)
         {
-            await _testerService.UpdateTesterAsync(e);
+            await _testerService.SaveTesterAsync(e);
             await Refresh();
         }
 

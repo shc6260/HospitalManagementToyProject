@@ -237,6 +237,7 @@ namespace ToyProject
             this.addPatientButton.Size = new System.Drawing.Size(101, 23);
             this.addPatientButton.TabIndex = 1;
             this.addPatientButton.Text = "환자등록";
+            this.addPatientButton.Click += new System.EventHandler(this.AddPatientButtonClick);
             // 
             // simpleButton1
             // 

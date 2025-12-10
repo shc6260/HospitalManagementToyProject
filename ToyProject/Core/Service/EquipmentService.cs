@@ -9,12 +9,13 @@ namespace ToyProject.Core.Service
 {
     public class EquipmentService
     {
-        private EquipmentRepository _equipmentRepository;
-
-        public EquipmentService(EquipmentRepository EquipmentRepository)
+        public EquipmentService(EquipmentRepository equipmentRepository)
         {
-            _equipmentRepository = EquipmentRepository;
+            _equipmentRepository = equipmentRepository;
         }
+
+
+        private EquipmentRepository _equipmentRepository;
 
         public Task<IEnumerable<Equipment>> GetAllEquipmentAsync()
         {
@@ -25,7 +26,7 @@ namespace ToyProject.Core.Service
             });
         }
 
-        public Task UpdateEquipmentAsync(Equipment data)
+        public Task SaveEquipmentAsync(Equipment data)
         {
             if (data == null)
                 return Task.CompletedTask;

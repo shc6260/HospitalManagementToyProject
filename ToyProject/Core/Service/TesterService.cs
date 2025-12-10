@@ -24,7 +24,7 @@ namespace ToyProject.Core.Service
             });
         }
 
-        public Task UpdateTesterAsync(Tester data)
+        public Task SaveTesterAsync(Tester data)
         {
             if (data == null)
                 return Task.CompletedTask;

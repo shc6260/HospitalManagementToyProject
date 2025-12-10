@@ -63,7 +63,7 @@ namespace ToyProject.Presenter
 
         private async void OnUpdateEquipRequested(object sender, Equipment e)
         {
-            await _equipmentService.UpdateEquipmentAsync(e);
+            await _equipmentService.SaveEquipmentAsync(e);
             await Refresh();
         }
 

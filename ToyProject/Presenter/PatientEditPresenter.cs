@@ -1,21 +1,30 @@
-﻿using ToyProject.Model;
+﻿using System.Threading.Tasks;
+using ToyProject.Core.Repositories;
+using ToyProject.Core.Service;
+using ToyProject.Model;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
 {
     public class PatientEditPresenter
     {
-        private readonly IPatientEditControl _view;
-
-        public PatientEditPresenter(IPatientEditControl view, Patient patient)
+        public PatientEditPresenter(IPatientEditControl view, Patient patient = null)
         {
+            _patientService = new PatientService(new PatientRepository());
+
             _view = view;
             _view.SetPatient(patient);
+            _loadedPatientId = patient?.Id;
         }
 
-        public Patient GetPatient()
+        private readonly IPatientEditControl _view;
+        private readonly PatientService _patientService;
+        private long? _loadedPatientId;
+
+        public async Task<long> SavePatient()
         {
-            return _view.GetPatient();
+            var patient = _loadedPatientId == null ? _view.GetPatient() : _view.GetPatient().WithId(_loadedPatientId.Value);
+            return await _patientService.SavePatientAcync(patient);
         }
     }
 }

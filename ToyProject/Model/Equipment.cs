@@ -1,5 +1,4 @@
-﻿using System;
-using ToyProject.Model.Dto;
+﻿using ToyProject.Model.Dto;
 
 namespace ToyProject.Model
 {

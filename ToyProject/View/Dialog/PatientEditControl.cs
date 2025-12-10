@@ -17,9 +17,9 @@ namespace ToyProject.View
                 null,
                 null,
                 NameTxt.Text,
-                PhoneNumberTxt.Text,
                 SocialSecurityNumberTxt.Text,
                 GenderTxt.Text,
+                PhoneNumberTxt.Text,
                 AddressTxt.Text,
                 PatientMemoTxt.Text,
                 QualificationTxt.Text

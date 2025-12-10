@@ -200,6 +200,9 @@ namespace ToyProject
                 return;
             }
 
+            gnbSearchEdit.ClosePopup();
+            gnbSearchEdit.Text = null;
+
             OnPatientSelected(patient);
         }
 
@@ -215,6 +218,11 @@ namespace ToyProject
                     e.Handled = true;
                 }
             }
+        }
+
+        private void AddPatientButtonClick(object sender, EventArgs e)
+        {
+            DialogExtension.ShowNewPatientDialog();
         }
 
         #endregion
@@ -274,6 +282,9 @@ namespace ToyProject
 
         private void OnSearchTextChanged()
         {
+            if (string.IsNullOrWhiteSpace(gnbSearchEdit.Text))
+                return;
+
             SearchTextChanged?.Invoke(this, gnbSearchEdit.Text);
         }
 

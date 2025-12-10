@@ -13,7 +13,7 @@ namespace ToyProject.Presenter
     {
         public MainPresenter(IMainView view, MessageService messageService) : base(messageService)
         {
-            _patientRepository = new PatientRepository();
+            _patientService = new PatientService(new PatientRepository());
 
             _view = view;
 
@@ -24,7 +24,7 @@ namespace ToyProject.Presenter
 
         private readonly IMainView _view;
         private IEnumerable<Patient> _patients;
-        private readonly PatientRepository _patientRepository;
+        private readonly PatientService _patientService;
         private string _searchText;
 
 
@@ -74,10 +74,9 @@ namespace ToyProject.Presenter
             }
         }
 
-        private async Task<List<Patient>> GetPatients()
+        private async Task<IEnumerable<Patient>> GetPatients()
         {
-            var patients = (await _patientRepository.FindPatientsForGnbAsync(_searchText)).Select(Patient.From).ToList();
-            return patients;
+            return await _patientService.FindPatientsForGnbAsync(_searchText);
         }
     }
 }

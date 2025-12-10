@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Helper\DelayInvoker.cs" />
+    <Compile Include="Core\Helper\DialogHelper.cs" />
     <Compile Include="Core\Infrastructure\DbConnectionFactory.cs" />
     <Compile Include="Core\Repositories\EquipmentRepository.cs" />
     <Compile Include="Core\Repositories\PatientRepository.cs" />
@@ -85,8 +86,10 @@
     <Compile Include="Core\Repositories\TestItemRepository.cs" />
     <Compile Include="Core\Service\EquipmentService.cs" />
     <Compile Include="Core\Service\MessageService.cs" />
+    <Compile Include="Core\Service\PatientService.cs" />
     <Compile Include="Core\Service\TesterService.cs" />
     <Compile Include="Core\Service\TestItemService.cs" />
+    <Compile Include="DialogExtension.cs" />
     <Compile Include="Model\Dto\EquipmentRequestDto.cs" />
     <Compile Include="Model\Dto\EquipmentResponseDto.cs" />
     <Compile Include="Model\Dto\PatientRequestDto.cs" />
@@ -98,12 +101,20 @@
     <Compile Include="Model\Dto\TesterRequestDto.cs" />
     <Compile Include="Model\Dto\TesterResponseDto.cs" />
     <Compile Include="Model\TestItem.cs" />
+    <Compile Include="Presenter\NewPatientDialogPresenter.cs" />
     <Compile Include="Presenter\MainContent\EquipmentContentPresenter.cs" />
     <Compile Include="Presenter\MainContent\TestItemContentPresenter.cs" />
     <Compile Include="Presenter\PatientDetailDialogPresenter.cs" />
     <Compile Include="Presenter\PatientEditPresenter.cs" />
     <Compile Include="Presenter\PresenterBase.cs" />
     <Compile Include="Presenter\MainContent\TesterContentPresenter.cs" />
+    <Compile Include="View\Dialog\NewPatientDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\NewPatientDialogForm.Designer.cs">
+      <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\IView\INewPatientDialogView.cs" />
     <Compile Include="View\IView\MainContent\ITestItemContentControlView.cs" />
     <Compile Include="View\MainContent\EquipmentContentControl.cs">
       <SubType>UserControl</SubType>
@@ -175,6 +186,9 @@
     <Compile Include="View\MainContent\TestItemContentControl.Designer.cs">
       <DependentUpon>TestItemContentControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Dialog\NewPatientDialogForm.resx">
+      <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainContent\EquipmentContentControl.resx">
       <DependentUpon>EquipmentContentControl.cs</DependentUpon>
     </EmbeddedResource>

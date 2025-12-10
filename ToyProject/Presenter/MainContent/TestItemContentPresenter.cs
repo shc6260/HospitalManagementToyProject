@@ -65,7 +65,7 @@ namespace ToyProject.Presenter.MainContent
 
         private async void OnUpdateEquipRequested(object sender, TestItem e)
         {
-            await _testItemService.UpdateTestItemAsync(e);
+            await _testItemService.SaveTestItemAsync(e);
             await Refresh();
         }
 
