@@ -19,17 +19,11 @@ namespace ToyProject.Presenter
             _view.UpdateEquipRequested += OnUpdateEquipRequested;
             _view.ToggleActiveRequested += OnToggleActiveRequested;
             _view.DeleteEquipRequested += OnDeleteEquipRequested;
-            _view.Loaded += OnLoaded;
         }
 
         private readonly IEquipmentContentControlView _view;
         private IEnumerable<Equipment> _equipments;
         private readonly EquipmentService _equipmentService;
-
-        private async void OnLoaded(object sender, EventArgs e)
-        {
-            await Refresh();
-        }
 
         public override async Task Refresh()
         {

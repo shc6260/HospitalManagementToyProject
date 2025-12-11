@@ -2,13 +2,13 @@
 {
     public class Tester
     {
-        public Tester(long? id, string licenseNumber, string name, string officeInfo, bool enabled)
+        public Tester(long? id, string licenseNumber, string name, string officeInfo, bool isEnabled)
         {
             Id = id;
             LicenseNumber = licenseNumber;
             Name = name;
             OfficeInfo = officeInfo;
-            Enabled = enabled;
+            IsEnabled = isEnabled;
         }
 
         public long? Id { get; }
@@ -19,7 +19,7 @@
 
         public string OfficeInfo { get; }
 
-        public bool Enabled { get; }
+        public bool IsEnabled { get; }
 
 
         public static Tester From(TesterResponseDto dto)
@@ -30,7 +30,7 @@
                 licenseNumber: dto.License_Number,
                 name: dto.Name,
                 officeInfo: dto.Office_Info,
-                enabled: dto.Enabled
+                isEnabled: dto.Enabled
             );
         }
 
@@ -41,7 +41,7 @@
                 Id = Id,
                 License_Number = LicenseNumber,
                 Name = Name,
-                Enabled = Enabled,
+                Enabled = IsEnabled,
                 Office_Info = OfficeInfo
             };
         }

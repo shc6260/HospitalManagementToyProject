@@ -32,7 +32,6 @@ namespace ToyProject.Core.Service
             if (data.Id == null)
                 return _patientRepository.AddPatientsAsync(data.ToAddRequestDto());
 
-            ;
             return _patientRepository.ModifyPatientsAsync(data.ToRequestDto());
         }
     }

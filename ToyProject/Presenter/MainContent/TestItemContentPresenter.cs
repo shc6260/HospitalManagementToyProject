@@ -19,7 +19,6 @@ namespace ToyProject.Presenter.MainContent
             _view.UpdateTestItemRequested += OnUpdateEquipRequested;
             _view.ToggleActiveRequested += OnToggleActiveRequested;
             _view.DeleteTestItemRequested += OnDeleteEquipRequested;
-            _view.Loaded += OnLoaded;
         }
 
 

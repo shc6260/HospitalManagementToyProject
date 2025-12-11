@@ -1,15 +1,18 @@
 ﻿using Dapper;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Model.Dto;
 
 namespace ToyProject.Core.Repositories
 {
-    public class EquipmentRepository
+    public class ReceptionRepository
     {
-        public Task<IEnumerable<EquipmentResponseDto>> FindAll()
+        public Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindRecepionWithPatientInfo(DateTime from, DateTime to)
         {
             return Task.Run(async () =>
             {
@@ -17,16 +20,22 @@ namespace ToyProject.Core.Repositories
                 {
                     conn.Open();
 
-                    var patients = await conn.QueryAsync<EquipmentResponseDto>(
-                        "select * from Equipment"
+                    var receptions = await conn.QueryAsync<ReceptionWithPatientSimpleResponseDto>(
+                        "findReceptionWithPatientSimple",
+                        new
+                        {
+                            reception_start_dt = from,
+                            reception_end_dt = to
+                        },
+                        commandType: CommandType.StoredProcedure
                     );
 
-                    return patients;
+                    return receptions;
                 }
             });
         }
 
-        public Task AddEquipment(EquipmentAddRequestDto dto)
+        public Task AddReception(ReceptionAddRequestDto dto)
         {
             return Task.Run(async () =>
             {
@@ -35,7 +44,7 @@ namespace ToyProject.Core.Repositories
                     conn.Open();
 
                     var patients = await conn.ExecuteAsync(
-                        "addEquipment",
+                        "addReception",
                         dto,
                         commandType: CommandType.StoredProcedure
                     );
@@ -45,7 +54,7 @@ namespace ToyProject.Core.Repositories
             });
         }
 
-        public Task ModifyEquipment(EquipmentRequestDto dto)
+        public Task ModifyReception(ReceptionModifyRequestDto dto)
         {
             return Task.Run(async () =>
             {
@@ -54,7 +63,7 @@ namespace ToyProject.Core.Repositories
                     conn.Open();
 
                     var patients = await conn.ExecuteAsync(
-                        "modifyEquipment",
+                        "modifyReception",
                         dto,
                         commandType: CommandType.StoredProcedure
                     );
@@ -64,7 +73,7 @@ namespace ToyProject.Core.Repositories
             });
         }
 
-        public Task DeleteEquipment(long id)
+        public Task DeleteReception(long id)
         {
             return Task.Run(async () =>
             {
@@ -73,7 +82,7 @@ namespace ToyProject.Core.Repositories
                     conn.Open();
 
                     var patients = await conn.ExecuteAsync(
-                        "deleteEquipment",
+                        "deleteReception",
                         new
                         {
                             id = id

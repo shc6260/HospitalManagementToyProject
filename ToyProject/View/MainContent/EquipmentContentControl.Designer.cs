@@ -39,23 +39,23 @@ namespace ToyProject.View
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.addEquipButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.equipRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.activateContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.editContextMenu = new System.Windows.Forms.ToolStripTextBox();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.equipSearchContol.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.equipRowContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // equipSearchContol
@@ -150,16 +150,6 @@ namespace ToyProject.View
             this.Root.Size = new System.Drawing.Size(1036, 624);
             this.Root.TextVisible = false;
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.equipGridControl;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
-            this.layoutControlItem1.Size = new System.Drawing.Size(1036, 600);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.equipSearchContol;
@@ -218,6 +208,16 @@ namespace ToyProject.View
             this.editContextMenu.Text = "수정";
             this.editContextMenu.Click += new System.EventHandler(this.EditContextMenuClick);
             // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.equipGridControl;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1036, 600);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
             // EquipmentContentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -231,11 +231,11 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.equipRowContextMenu.ResumeLayout(false);
             this.equipRowContextMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,8 +254,8 @@ namespace ToyProject.View
         private System.Windows.Forms.ToolStripTextBox editContextMenu;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

@@ -4,12 +4,12 @@ namespace ToyProject.Model
 {
     public class Equipment
     {
-        public Equipment(long? id, string equipmentCode, string name, bool enabled)
+        public Equipment(long? id, string equipmentCode, string name, bool isEnabled)
         {
             Id = id;
             EquipmentCode = equipmentCode;
             Name = name;
-            Enabled = enabled;
+            IsEnabled = isEnabled;
         }
 
         public long? Id { get; }
@@ -18,7 +18,7 @@ namespace ToyProject.Model
 
         public string Name { get; }
 
-        public bool Enabled { get; }
+        public bool IsEnabled { get; }
 
 
         public static Equipment From(EquipmentResponseDto dto)
@@ -28,7 +28,7 @@ namespace ToyProject.Model
                 id: dto.Id,
                 equipmentCode: dto.EquipmentCode,
                 name: dto.Name,
-                enabled: dto.Enabled
+                isEnabled: dto.Enabled
             );
         }
 
@@ -39,7 +39,7 @@ namespace ToyProject.Model
                 Id = Id.Value,
                 EquipmentCode = EquipmentCode,
                 Name = Name,
-                Enabled = Enabled
+                Enabled = IsEnabled
             };
         }
         public EquipmentAddRequestDto ToAddRequestDto()

@@ -4,14 +4,14 @@ namespace ToyProject.Model
 {
     public class TestItem
     {
-        public TestItem(long? id, string testItemCode, string name, int referenceMinValue, int referenceMaxValue, bool enabled)
+        public TestItem(long? id, string testItemCode, string name, int referenceMinValue, int referenceMaxValue, bool isEnabled)
         {
             Id = id;
             TestItemCode = testItemCode;
             Name = name;
             ReferenceMinValue = referenceMinValue;
             ReferenceMaxValue = referenceMaxValue;
-            Enabled = enabled;
+            IsEnabled = isEnabled;
         }
 
         public long? Id { get; }
@@ -24,7 +24,7 @@ namespace ToyProject.Model
 
         public int ReferenceMaxValue { get; }
 
-        public bool Enabled { get; }
+        public bool IsEnabled { get; }
 
         public string DisplayReferenceValue => $"{ReferenceMinValue} ~ {ReferenceMaxValue}";
 
@@ -51,7 +51,7 @@ namespace ToyProject.Model
                 name: dto.Name,
                 referenceMinValue: dto.Reference_Min_Value,
                 referenceMaxValue: dto.Reference_Max_Value,
-                enabled: dto.Enabled
+                isEnabled: dto.Enabled
             );
         }
 
@@ -64,7 +64,7 @@ namespace ToyProject.Model
                 TestItemCode = TestItemCode,
                 Reference_Min_Value = ReferenceMinValue,
                 Reference_Max_Value = ReferenceMaxValue,
-                Enabled = Enabled
+                Enabled = IsEnabled
             };
         }
 

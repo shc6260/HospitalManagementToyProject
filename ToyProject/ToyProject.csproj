@@ -77,9 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Events\ReceptionChangedEventArgs.cs" />
+    <Compile Include="Core\Helper\DateRangeHelper.cs" />
     <Compile Include="Core\Helper\DelayInvoker.cs" />
     <Compile Include="Core\Helper\DialogHelper.cs" />
-    <Compile Include="Core\Infrastructure\DbConnectionFactory.cs" />
+    <Compile Include="Core\Factotry\DbConnectionFactory.cs" />
+    <Compile Include="Core\Helper\EventBus.cs" />
     <Compile Include="Core\Repositories\EquipmentRepository.cs" />
     <Compile Include="Core\Repositories\PatientRepository.cs" />
     <Compile Include="Core\Repositories\ReceptionRepository.cs" />
@@ -102,10 +105,12 @@
     <Compile Include="Model\Dto\TestItemResponseDto.cs" />
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Reception.cs" />
+    <Compile Include="Model\ReceptionWithPatientSimpleResponse.cs" />
     <Compile Include="Model\Tester.cs" />
     <Compile Include="Model\Dto\TesterRequestDto.cs" />
     <Compile Include="Model\Dto\TesterResponseDto.cs" />
     <Compile Include="Model\TestItem.cs" />
+    <Compile Include="Presenter\MainContent\MainContentPresenter.cs" />
     <Compile Include="Presenter\NewPatientDialogPresenter.cs" />
     <Compile Include="Presenter\MainContent\EquipmentContentPresenter.cs" />
     <Compile Include="Presenter\MainContent\TestItemContentPresenter.cs" />
@@ -113,13 +118,30 @@
     <Compile Include="Presenter\PatientEditPresenter.cs" />
     <Compile Include="Presenter\PresenterBase.cs" />
     <Compile Include="Presenter\MainContent\TesterContentPresenter.cs" />
+    <Compile Include="Presenter\ReceptionControlPresenter.cs" />
+    <Compile Include="Presenter\ReceptionDialogPresenter.cs" />
     <Compile Include="View\Dialog\NewPatientDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialog\NewPatientDialogForm.Designer.cs">
       <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\ReceptionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ReceptionControl.Designer.cs">
+      <DependentUpon>ReceptionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ReceptionDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ReceptionDialogForm.Designer.cs">
+      <DependentUpon>ReceptionDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IView\INewPatientDialogView.cs" />
+    <Compile Include="View\IView\IReceptionControlView.cs" />
+    <Compile Include="View\IView\IReceptionDialogView.cs" />
+    <Compile Include="View\IView\MainContent\IMainContentControlView.cs" />
     <Compile Include="View\IView\MainContent\ITestItemContentControlView.cs" />
     <Compile Include="View\MainContent\EquipmentContentControl.cs">
       <SubType>UserControl</SubType>
@@ -134,7 +156,6 @@
       <DependentUpon>EquipmentManagementDialogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IView\MainContent\IEquipmentContentControlView.cs" />
-    <Compile Include="View\IView\ILoadableViewBase.cs" />
     <Compile Include="View\IView\IPatientDetailDialogView.cs" />
     <Compile Include="View\IView\IPatientEditControl.cs" />
     <Compile Include="View\IView\MainContent\ITesterContentControlView.cs" />
@@ -193,6 +214,12 @@
     </Compile>
     <EmbeddedResource Include="View\Dialog\NewPatientDialogForm.resx">
       <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ReceptionControl.resx">
+      <DependentUpon>ReceptionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ReceptionDialogForm.resx">
+      <DependentUpon>ReceptionDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainContent\EquipmentContentControl.resx">
       <DependentUpon>EquipmentContentControl.cs</DependentUpon>

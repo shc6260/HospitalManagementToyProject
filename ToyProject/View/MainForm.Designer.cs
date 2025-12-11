@@ -393,6 +393,7 @@ namespace ToyProject
             this.Controls.Add(this.mainMenuControl);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.MinimumSize = new System.Drawing.Size(949, 667);
             this.Name = "MainForm";
             this.NavigationControl = this.mainMenuControl;
             this.Text = "U2Toy";

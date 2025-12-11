@@ -19,7 +19,6 @@ namespace ToyProject.Presenter
             _view.UpdateTesterRequested += OnUpdateTesterRequested;
             _view.ToggleActiveRequested += OnToggleActiveRequested;
             _view.TesterDeleteRequested += OnTesterDeleteRequested;
-            _view.Loaded += OnLoaded;
         }
 
         private readonly ITesterContentControlView _view;

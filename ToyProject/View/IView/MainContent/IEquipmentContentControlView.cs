@@ -4,7 +4,7 @@ using ToyProject.Model;
 
 namespace ToyProject.View.IView
 {
-    public interface IEquipmentContentControlView : ILoadableViewBase
+    public interface IEquipmentContentControlView
     {
         void SetEquipmentsList(IEnumerable<Equipment> items);
 

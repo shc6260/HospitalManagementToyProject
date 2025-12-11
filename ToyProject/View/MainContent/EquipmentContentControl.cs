@@ -25,7 +25,6 @@ namespace ToyProject.View
             base.OnLoad(e);
 
             InitEquipGridControl();
-            OnLoaded();
         }
 
         private void InitEquipGridControl()
@@ -139,14 +138,6 @@ namespace ToyProject.View
         private void OnToggleActiveRequested(Equipment item)
         {
             ToggleActiveRequested?.Invoke(this, item);
-        }
-
-
-        public event EventHandler Loaded;
-
-        private void OnLoaded()
-        {
-            Loaded?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

@@ -111,6 +111,7 @@ namespace ToyProject.View
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
+            this.splitContainerControl1.IsSplitterFixed = true;
             this.splitContainerControl1.Location = new System.Drawing.Point(3, 3);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
@@ -124,7 +125,7 @@ namespace ToyProject.View
             this.splitContainerControl1.Panel2.Controls.Add(this.testItemGridControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(695, 675);
-            this.splitContainerControl1.SplitterPosition = 21;
+            this.splitContainerControl1.SplitterPosition = 25;
             this.splitContainerControl1.TabIndex = 1;
             // 
             // testItemSearchContol
@@ -146,7 +147,7 @@ namespace ToyProject.View
             this.testItemGridControl.Location = new System.Drawing.Point(0, 0);
             this.testItemGridControl.MainView = this.testItemGridView;
             this.testItemGridControl.Name = "testItemGridControl";
-            this.testItemGridControl.Size = new System.Drawing.Size(695, 644);
+            this.testItemGridControl.Size = new System.Drawing.Size(695, 640);
             this.testItemGridControl.TabIndex = 0;
             this.testItemGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.testItemGridView});
@@ -392,7 +393,6 @@ namespace ToyProject.View
             // 
             // deleteContextMenu
             // 
-            this.deleteContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.deleteContextMenu.Name = "deleteContextMenu";
             this.deleteContextMenu.ReadOnly = true;
             this.deleteContextMenu.Size = new System.Drawing.Size(100, 23);
@@ -401,7 +401,6 @@ namespace ToyProject.View
             // 
             // activateContextMenu
             // 
-            this.activateContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.activateContextMenu.Name = "activateContextMenu";
             this.activateContextMenu.ReadOnly = true;
             this.activateContextMenu.Size = new System.Drawing.Size(100, 23);

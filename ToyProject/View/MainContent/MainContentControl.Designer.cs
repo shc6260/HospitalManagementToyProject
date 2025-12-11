@@ -32,8 +32,11 @@ namespace ToyProject.View
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.receptionGridControl = new DevExpress.XtraGrid.GridControl();
             this.receptionＧridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.nameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chartNumberColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.receptionDtColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.toDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.fromDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.receptionSearchButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -42,14 +45,16 @@ namespace ToyProject.View
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.todayButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.receptionGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receptionＧridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -57,14 +62,16 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.receptionGridControl);
-            this.layoutControl1.Controls.Add(this.dateEdit2);
-            this.layoutControl1.Controls.Add(this.dateEdit1);
+            this.layoutControl1.Controls.Add(this.toDateEdit);
+            this.layoutControl1.Controls.Add(this.fromDateEdit);
             this.layoutControl1.Controls.Add(this.receptionSearchButton);
+            this.layoutControl1.Controls.Add(this.todayButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -76,54 +83,80 @@ namespace ToyProject.View
             // 
             // receptionGridControl
             // 
-            this.receptionGridControl.Location = new System.Drawing.Point(12, 38);
+            this.receptionGridControl.Location = new System.Drawing.Point(12, 36);
             this.receptionGridControl.MainView = this.receptionＧridView;
             this.receptionGridControl.Name = "receptionGridControl";
-            this.receptionGridControl.Size = new System.Drawing.Size(1176, 642);
+            this.receptionGridControl.Size = new System.Drawing.Size(1176, 644);
             this.receptionGridControl.TabIndex = 6;
             this.receptionGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.receptionＧridView});
             // 
             // receptionＧridView
             // 
+            this.receptionＧridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.nameColumn,
+            this.chartNumberColumn,
+            this.receptionDtColumn});
             this.receptionＧridView.GridControl = this.receptionGridControl;
             this.receptionＧridView.Name = "receptionＧridView";
             this.receptionＧridView.OptionsView.ShowGroupPanel = false;
             // 
-            // dateEdit2
+            // nameColumn
             // 
-            this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(377, 12);
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Size = new System.Drawing.Size(140, 20);
-            this.dateEdit2.StyleController = this.layoutControl1;
-            this.dateEdit2.TabIndex = 5;
+            this.nameColumn.Caption = "이름";
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.Visible = true;
+            this.nameColumn.VisibleIndex = 0;
             // 
-            // dateEdit1
+            // chartNumberColumn
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(177, 12);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.chartNumberColumn.Caption = "차트번호";
+            this.chartNumberColumn.Name = "chartNumberColumn";
+            this.chartNumberColumn.Visible = true;
+            this.chartNumberColumn.VisibleIndex = 1;
+            // 
+            // receptionDtColumn
+            // 
+            this.receptionDtColumn.Caption = "접수시간";
+            this.receptionDtColumn.Name = "receptionDtColumn";
+            this.receptionDtColumn.Visible = true;
+            this.receptionDtColumn.VisibleIndex = 2;
+            // 
+            // toDateEdit
+            // 
+            this.toDateEdit.EditValue = null;
+            this.toDateEdit.Location = new System.Drawing.Point(333, 12);
+            this.toDateEdit.Name = "toDateEdit";
+            this.toDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.toDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(140, 20);
-            this.dateEdit1.StyleController = this.layoutControl1;
-            this.dateEdit1.TabIndex = 4;
+            this.toDateEdit.Size = new System.Drawing.Size(132, 20);
+            this.toDateEdit.StyleController = this.layoutControl1;
+            this.toDateEdit.TabIndex = 5;
+            // 
+            // fromDateEdit
+            // 
+            this.fromDateEdit.EditValue = null;
+            this.fromDateEdit.Location = new System.Drawing.Point(125, 12);
+            this.fromDateEdit.Name = "fromDateEdit";
+            this.fromDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fromDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fromDateEdit.Size = new System.Drawing.Size(140, 20);
+            this.fromDateEdit.StyleController = this.layoutControl1;
+            this.fromDateEdit.TabIndex = 4;
             // 
             // receptionSearchButton
             // 
-            this.receptionSearchButton.Location = new System.Drawing.Point(521, 12);
+            this.receptionSearchButton.Location = new System.Drawing.Point(469, 12);
             this.receptionSearchButton.Name = "receptionSearchButton";
-            this.receptionSearchButton.Size = new System.Drawing.Size(98, 22);
+            this.receptionSearchButton.Size = new System.Drawing.Size(96, 20);
             this.receptionSearchButton.StyleController = this.layoutControl1;
             this.receptionSearchButton.TabIndex = 7;
             this.receptionSearchButton.Text = "조회";
+            this.receptionSearchButton.Click += new System.EventHandler(this.receptionSearchButton_Click);
             // 
             // Root
             // 
@@ -135,31 +168,33 @@ namespace ToyProject.View
             this.emptySpaceItem2,
             this.simpleLabelItem1,
             this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1200, 692);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.dateEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(109, 0);
+            this.layoutControlItem1.Control = this.fromDateEdit;
+            this.layoutControlItem1.Location = new System.Drawing.Point(57, 0);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(200, 24);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(200, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(200, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(200, 24);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "From";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(44, 14);
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.dateEdit2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(309, 0);
+            this.layoutControlItem2.Control = this.toDateEdit;
+            this.layoutControlItem2.Location = new System.Drawing.Point(257, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(200, 24);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(200, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(200, 26);
+            this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 2, 2, 2);
+            this.layoutControlItem2.Size = new System.Drawing.Size(200, 24);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "To";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(44, 14);
@@ -167,37 +202,66 @@ namespace ToyProject.View
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(611, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(657, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(569, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(523, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // simpleLabelItem1
             // 
             this.simpleLabelItem1.AllowHotTrack = false;
+            this.simpleLabelItem1.AutoSizeMode = DevExpress.XtraLayout.SimpleLabelAutoSizeMode.None;
             this.simpleLabelItem1.Location = new System.Drawing.Point(0, 0);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
-            this.simpleLabelItem1.Size = new System.Drawing.Size(109, 26);
+            this.simpleLabelItem1.Size = new System.Drawing.Size(57, 24);
             this.simpleLabelItem1.Text = "날짜 선택";
             this.simpleLabelItem1.TextSize = new System.Drawing.Size(44, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.receptionGridControl;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 646);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 648);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.receptionSearchButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(509, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(457, 0);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(100, 24);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(100, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(102, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(100, 24);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
+            // 
+            // todayButton
+            // 
+            this.todayButton.Location = new System.Drawing.Point(569, 12);
+            this.todayButton.Name = "todayButton";
+            this.todayButton.Size = new System.Drawing.Size(96, 20);
+            this.todayButton.StyleController = this.layoutControl1;
+            this.todayButton.TabIndex = 7;
+            this.todayButton.Text = "오늘";
+            this.todayButton.Click += new System.EventHandler(this.todayButton_Click);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.todayButton;
+            this.layoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem5.CustomizationFormText = "layoutControlItem4";
+            this.layoutControlItem5.Location = new System.Drawing.Point(557, 0);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 24);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 24);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(100, 24);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem5.Text = "layoutControlItem4";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // MainContentControl
             // 
@@ -210,10 +274,10 @@ namespace ToyProject.View
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.receptionGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receptionＧridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -221,6 +285,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,8 +294,8 @@ namespace ToyProject.View
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraEditors.DateEdit dateEdit2;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit toDateEdit;
+        private DevExpress.XtraEditors.DateEdit fromDateEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.GridControl receptionGridControl;
@@ -240,5 +305,10 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.SimpleButton receptionSearchButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraGrid.Columns.GridColumn nameColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn chartNumberColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn receptionDtColumn;
+        private DevExpress.XtraEditors.SimpleButton todayButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

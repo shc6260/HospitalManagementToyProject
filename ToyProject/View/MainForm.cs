@@ -33,8 +33,10 @@ namespace ToyProject
 
         private MainContentControl _mainContent;
 
-        private TestContentControl _testContent;
+        private MainContentPresenter _mainPresenter;
 
+
+        private TestContentControl _testContent;
 
         private TesterContentControl _testerContent;
 
@@ -49,6 +51,8 @@ namespace ToyProject
         private EquipmentContentControl _equipmentContent;
 
         private EquipmentContentPresenter _equipmentContentPresenter;
+
+        private PresenterBase _currentPresenter = null;
 
         #endregion
 
@@ -99,7 +103,6 @@ namespace ToyProject
         private async void SetMainPanel(string name)
         {
             mainPanel.Controls.Clear();
-            PresenterBase currentPresenter = null;
 
             switch (name)
             {
@@ -108,8 +111,10 @@ namespace ToyProject
                     {
                         _mainContent = new MainContentControl();
                         _mainContent.Dock = DockStyle.Fill;
+                        _mainPresenter = new MainContentPresenter(_mainContent, _messageService);
                     }
 
+                    _currentPresenter = _mainPresenter;
                     mainPanel.Controls.Add(_mainContent);
                     break;
 
@@ -132,7 +137,7 @@ namespace ToyProject
                         _testerContentPresenter = new TesterContentPresenter(_testerContent, _messageService);
                     }
 
-                    currentPresenter = _testerContentPresenter;
+                    _currentPresenter = _testerContentPresenter;
                     mainPanel.Controls.Add(_testerContent);
 
                     break;
@@ -145,7 +150,7 @@ namespace ToyProject
                         _testItemContentPresenter = new TestItemContentPresenter(_testItemContent, _messageService);
                     }
 
-                    currentPresenter = _testItemContentPresenter;
+                    _currentPresenter = _testItemContentPresenter;
                     mainPanel.Controls.Add(_testItemContent);
 
                     break;
@@ -158,7 +163,7 @@ namespace ToyProject
                         _equipmentContentPresenter = new EquipmentContentPresenter(_equipmentContent, _messageService);
                     }
 
-                    currentPresenter = _equipmentContentPresenter;
+                    _currentPresenter = _equipmentContentPresenter;
                     mainPanel.Controls.Add(_equipmentContent);
 
                     break;
@@ -167,10 +172,10 @@ namespace ToyProject
                     break;
             }
 
-            if (currentPresenter == null)
+            if (_currentPresenter == null)
                 return;
 
-            await currentPresenter.Refresh();
+            await _currentPresenter.Refresh();
         }
 
         private void gnbSearchEdit_EditValueChanged(object sender, EventArgs e)
@@ -244,11 +249,7 @@ namespace ToyProject
 
         public void ShowReceptionMessage(Patient patient)
         {
-            XtraMessageBox.Show(this,
-                $"[접수 완료]\n차트번호: {patient.ChartNumber}\n이름: {patient.Name}",
-                "접수",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            DialogExtension.ShowReceptionDialog(this, patient);
         }
 
         public void ClearSearch()

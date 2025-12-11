@@ -29,7 +29,6 @@ namespace ToyProject.View
             base.OnLoad(e);
 
             InitTesterGridControl();
-            OnLoaded();
         }
 
         private void InitTesterGridControl()
@@ -155,14 +154,6 @@ namespace ToyProject.View
         private void OnToggleActiveRequested(TestItem item)
         {
             ToggleActiveRequested?.Invoke(this, item);
-        }
-
-
-        public event EventHandler Loaded;
-
-        private void OnLoaded()
-        {
-            Loaded?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetTestItemList(IEnumerable<TestItem> items)

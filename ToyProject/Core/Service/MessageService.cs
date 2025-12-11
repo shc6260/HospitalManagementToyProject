@@ -29,4 +29,12 @@ namespace ToyProject.Core.Service
         }
     }
 
+    public static class MessageServiceExtension
+    {
+        public static MessageService CreateMessageService(this IWin32Window window)
+        {
+            return new MessageService(window);
+        }
+    }
+
 }

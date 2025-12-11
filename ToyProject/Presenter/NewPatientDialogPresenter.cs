@@ -14,7 +14,7 @@ namespace ToyProject.Presenter
             _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl);
         }
 
-        private INewPatientDialogView _view;
+        private readonly INewPatientDialogView _view;
 
         private readonly PatientEditPresenter _patientEditPresenter;
 

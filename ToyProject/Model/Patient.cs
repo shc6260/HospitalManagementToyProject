@@ -100,7 +100,6 @@
                 Id = Id,
                 Name = Name,
                 Address = Address,
-                ChartNumber = ChartNumber,
                 Memo = Memo,
                 PhoneNumber = PhoneNumber,
                 Social_Security_Number = SocialSecurityNumber,
@@ -114,7 +113,6 @@
             {
                 Name = Name,
                 Address = Address,
-                ChartNumber = ChartNumber,
                 Memo = Memo,
                 PhoneNumber = PhoneNumber,
                 Social_Security_Number = SocialSecurityNumber,

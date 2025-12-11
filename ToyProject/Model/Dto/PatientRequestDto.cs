@@ -4,8 +4,6 @@
     {
         public long? Id { get; set; }
 
-        public string ChartNumber { get; set; }
-
         public string Name { get; set; }
 
         public string Social_Security_Number { get; set; }
@@ -21,8 +19,6 @@
 
     public class PatientAddRequestDto
     {
-        public string ChartNumber { get; set; }
-
         public string Name { get; set; }
 
         public string Social_Security_Number { get; set; }

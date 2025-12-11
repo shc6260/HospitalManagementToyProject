@@ -4,7 +4,7 @@ using ToyProject.Model;
 
 namespace ToyProject.View.IView.MainContent
 {
-    public interface ITestItemContentControlView : ILoadableViewBase
+    public interface ITestItemContentControlView
     {
         void SetTestItemList(IEnumerable<TestItem> items);
 

@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace ToyProject.Core.Infrastructure
+namespace ToyProject.Core.Factotry
 {
     public class DbConnectionFactory
     {
