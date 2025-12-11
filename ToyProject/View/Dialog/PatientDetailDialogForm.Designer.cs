@@ -31,8 +31,8 @@ namespace ToyProject.View
         {
             this.label2 = new System.Windows.Forms.Label();
             this.FooterStackPanel = new DevExpress.Utils.Layout.StackPanel();
-            this.CloseBtn = new DevExpress.XtraEditors.SimpleButton();
             this.SaveBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.CloseBtn = new DevExpress.XtraEditors.SimpleButton();
             this.FooterPanel = new DevExpress.Utils.Layout.TablePanel();
             this.tablePanel2 = new DevExpress.Utils.Layout.TablePanel();
             this.patientEditControl = new ToyProject.View.PatientEditControl();
@@ -62,29 +62,31 @@ namespace ToyProject.View
             this.FooterStackPanel.Controls.Add(this.CloseBtn);
             this.FooterStackPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.FooterStackPanel.LayoutDirection = DevExpress.Utils.Layout.StackPanelLayoutDirection.RightToLeft;
-            this.FooterStackPanel.Location = new System.Drawing.Point(1061, 587);
+            this.FooterStackPanel.Location = new System.Drawing.Point(1082, 587);
             this.FooterStackPanel.Name = "FooterStackPanel";
             this.FooterPanel.SetRow(this.FooterStackPanel, 2);
-            this.FooterStackPanel.Size = new System.Drawing.Size(156, 54);
+            this.FooterStackPanel.Size = new System.Drawing.Size(135, 54);
             this.FooterStackPanel.TabIndex = 2;
-            // 
-            // CloseBtn
-            // 
-            this.CloseBtn.Location = new System.Drawing.Point(3, 14);
-            this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(70, 26);
-            this.CloseBtn.TabIndex = 0;
-            this.CloseBtn.Text = "닫기";
-            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(79, 14);
+            this.SaveBtn.Location = new System.Drawing.Point(69, 16);
+            this.SaveBtn.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(74, 26);
+            this.SaveBtn.Size = new System.Drawing.Size(63, 22);
             this.SaveBtn.TabIndex = 1;
             this.SaveBtn.Text = "저장";
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // CloseBtn
+            // 
+            this.CloseBtn.Location = new System.Drawing.Point(3, 16);
+            this.CloseBtn.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(63, 22);
+            this.CloseBtn.TabIndex = 0;
+            this.CloseBtn.Text = "닫기";
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // FooterPanel
             // 

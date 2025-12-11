@@ -35,7 +35,7 @@ namespace ToyProject.View
                 licenseNumberTextEdit.Text,
                 nameTextEdit.Text,
                 officeInfoTextEdit.Text,
-                _selectTester?.Enabled ?? true
+                _selectTester?.IsEnabled ?? true
             );
 
             Close();

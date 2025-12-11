@@ -33,7 +33,7 @@ namespace ToyProject.View
                _selectedEquip?.Id,
               codeTextEdit.Text,
               nameTextEdit.Text,
-              _selectedEquip?.Enabled ?? true
+              _selectedEquip?.IsEnabled ?? true
             );
 
             Close();

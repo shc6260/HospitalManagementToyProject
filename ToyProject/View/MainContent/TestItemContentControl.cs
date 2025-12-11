@@ -39,7 +39,7 @@ namespace ToyProject.View
             codeColumn.FieldName = nameof(TestItem.TestItemCode);
             nameColumn.FieldName = nameof(TestItem.Name);
             referenceValueColumn.FieldName = nameof(TestItem.DisplayReferenceValue);
-            enabledColumn.FieldName = nameof(TestItem.Enabled);
+            enabledColumn.FieldName = nameof(TestItem.IsEnabled);
         }
 
         #endregion
@@ -109,7 +109,7 @@ namespace ToyProject.View
                 nameTextEdit.Text,
                 referenceMinTextEdit.Text,
                 referenceMaxTextEdit.Text,
-                _selectedTestItem?.Enabled ?? true
+                _selectedTestItem?.IsEnabled ?? true
             );
 
             OnUpdateTestItemRequested(saveItem);

@@ -35,7 +35,7 @@ namespace ToyProject.View
             nameColumn.FieldName = nameof(Tester.Name);
             licenseNumberColumn.FieldName = nameof(Tester.LicenseNumber);
             officeInfoColumn.FieldName = nameof(Tester.OfficeInfo);
-            enabledColumn.FieldName = nameof(Tester.Enabled);
+            enabledColumn.FieldName = nameof(Tester.IsEnabled);
         }
 
         #endregion

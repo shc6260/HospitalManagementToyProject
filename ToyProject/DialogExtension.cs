@@ -12,7 +12,7 @@ namespace ToyProject
 {
     public static class DialogExtension
     {
-        public static void ShowNewPatientDialog()
+        public static void ShowNewPatientDialog(IWin32Window parent)
         {
             if (DialogHelper.IsFormOpen<NewPatientDialogForm>())
             {
@@ -24,7 +24,7 @@ namespace ToyProject
 
             var form = new NewPatientDialogForm();
             new NewPatientDialogPresenter(form);
-            form.Show();
+            form.Show(parent);
         }
     }
 

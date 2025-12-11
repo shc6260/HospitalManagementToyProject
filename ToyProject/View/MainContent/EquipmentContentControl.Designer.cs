@@ -30,97 +30,53 @@ namespace ToyProject.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.equipSearchContol = new DevExpress.XtraEditors.SearchControl();
             this.equipGridControl = new DevExpress.XtraGrid.GridControl();
             this.equipGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.codeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.nameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.enabledColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.addEquipButton = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.equipRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.activateContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.editContextMenu = new System.Windows.Forms.ToolStripTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
-            this.splitContainerControl1.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
-            this.splitContainerControl1.Panel2.SuspendLayout();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
-            this.splitContainerControl2.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
-            this.splitContainerControl2.Panel2.SuspendLayout();
-            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipSearchContol.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.equipRowContextMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainerControl1
-            // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            // 
-            // splitContainerControl1.Panel1
-            // 
-            this.splitContainerControl1.Panel1.Controls.Add(this.splitContainerControl2);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            // 
-            // splitContainerControl1.Panel2
-            // 
-            this.splitContainerControl1.Panel2.Controls.Add(this.equipGridControl);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1036, 624);
-            this.splitContainerControl1.SplitterPosition = 21;
-            this.splitContainerControl1.TabIndex = 1;
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            // 
-            // splitContainerControl2.Panel1
-            // 
-            this.splitContainerControl2.Panel1.Controls.Add(this.equipSearchContol);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            // 
-            // splitContainerControl2.Panel2
-            // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.addEquipButton);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1036, 21);
-            this.splitContainerControl2.SplitterPosition = 149;
-            this.splitContainerControl2.TabIndex = 0;
             // 
             // equipSearchContol
             // 
             this.equipSearchContol.Client = this.equipGridControl;
-            this.equipSearchContol.Dock = System.Windows.Forms.DockStyle.Top;
-            this.equipSearchContol.Location = new System.Drawing.Point(0, 0);
+            this.equipSearchContol.Location = new System.Drawing.Point(2, 2);
             this.equipSearchContol.Name = "equipSearchContol";
             this.equipSearchContol.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.equipSearchContol.Properties.Client = this.equipGridControl;
-            this.equipSearchContol.Size = new System.Drawing.Size(877, 20);
+            this.equipSearchContol.Size = new System.Drawing.Size(932, 20);
+            this.equipSearchContol.StyleController = this.layoutControl1;
             this.equipSearchContol.TabIndex = 0;
             // 
             // equipGridControl
             // 
-            this.equipGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.equipGridControl.Location = new System.Drawing.Point(0, 0);
+            this.equipGridControl.Location = new System.Drawing.Point(0, 26);
             this.equipGridControl.MainView = this.equipGridView;
             this.equipGridControl.Name = "equipGridControl";
-            this.equipGridControl.Size = new System.Drawing.Size(1036, 593);
+            this.equipGridControl.Size = new System.Drawing.Size(1036, 598);
             this.equipGridControl.TabIndex = 0;
             this.equipGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.equipGridView});
@@ -157,15 +113,74 @@ namespace ToyProject.View
             this.enabledColumn.Visible = true;
             this.enabledColumn.VisibleIndex = 2;
             // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.addEquipButton);
+            this.layoutControl1.Controls.Add(this.equipSearchContol);
+            this.layoutControl1.Controls.Add(this.equipGridControl);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1106, 270, 650, 425);
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(1036, 624);
+            this.layoutControl1.TabIndex = 2;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
             // addEquipButton
             // 
-            this.addEquipButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addEquipButton.Location = new System.Drawing.Point(0, 0);
+            this.addEquipButton.Location = new System.Drawing.Point(936, 0);
             this.addEquipButton.Name = "addEquipButton";
-            this.addEquipButton.Size = new System.Drawing.Size(149, 21);
+            this.addEquipButton.Size = new System.Drawing.Size(100, 22);
+            this.addEquipButton.StyleController = this.layoutControl1;
             this.addEquipButton.TabIndex = 0;
             this.addEquipButton.Text = "장비 등록";
             this.addEquipButton.Click += new System.EventHandler(this.addEquipButton_Click);
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3});
+            this.Root.Name = "Root";
+            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.Root.Size = new System.Drawing.Size(1036, 624);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.equipGridControl;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1036, 600);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.equipSearchContol;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(936, 24);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.addEquipButton;
+            this.layoutControlItem3.Location = new System.Drawing.Point(936, 0);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(100, 22);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(100, 22);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem3.Size = new System.Drawing.Size(100, 24);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // equipRowContextMenu
             // 
@@ -207,24 +222,18 @@ namespace ToyProject.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainerControl1);
+            this.Controls.Add(this.layoutControl1);
             this.Name = "EquipmentContentControl";
             this.Size = new System.Drawing.Size(1036, 624);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
-            this.splitContainerControl1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
-            this.splitContainerControl1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
-            this.splitContainerControl2.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).EndInit();
-            this.splitContainerControl2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.equipSearchContol.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.equipRowContextMenu.ResumeLayout(false);
             this.equipRowContextMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -232,9 +241,6 @@ namespace ToyProject.View
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraEditors.SearchControl equipSearchContol;
         private DevExpress.XtraGrid.GridControl equipGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView equipGridView;
@@ -246,5 +252,10 @@ namespace ToyProject.View
         private System.Windows.Forms.ToolStripTextBox deleteContextMenu;
         private System.Windows.Forms.ToolStripTextBox activateContextMenu;
         private System.Windows.Forms.ToolStripTextBox editContextMenu;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

@@ -57,7 +57,7 @@ namespace ToyProject.Presenter
             if (e.Id == null)
                 return;
 
-            await _equipmentService.SetEnabledEquipmentAsync(e.Id.Value, !e.Enabled);
+            await _equipmentService.SetEnabledEquipmentAsync(e.Id.Value, !e.IsEnabled);
             await Refresh();
         }
 

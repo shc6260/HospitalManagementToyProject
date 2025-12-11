@@ -31,10 +31,11 @@ namespace ToyProject
         {
             this.components = new System.ComponentModel.Container();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.gnbSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.gnbSearchEdit = new DevExpress.XtraEditors.PopupContainerEdit();
-            this.popupContainerControl1 = new DevExpress.XtraEditors.PopupContainerControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.newPatientButton = new DevExpress.XtraEditors.SimpleButton();
+            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.popupContainerControl2 = new DevExpress.XtraEditors.PopupContainerControl();
             this.gnbSearchGrid = new DevExpress.XtraGrid.GridControl();
             this.gnbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.nameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,9 +45,12 @@ namespace ToyProject
             this.socialSecurityNumberColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.addressColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.receptionColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.addPatientButton = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.gnbSearchEdit = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.mainMenuControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.mainTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.testTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -61,23 +65,20 @@ namespace ToyProject
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.mainFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fluentDesignFormContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
-            this.splitContainerControl1.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
-            this.splitContainerControl1.Panel2.SuspendLayout();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSplitContainer)).BeginInit();
-            this.gnbSplitContainer.Panel1.SuspendLayout();
-            this.gnbSplitContainer.Panel2.SuspendLayout();
-            this.gnbSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerControl1)).BeginInit();
-            this.popupContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gnbGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupContainerControl2)).BeginInit();
+            this.popupContainerControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gnbGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
@@ -85,74 +86,65 @@ namespace ToyProject
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.splitContainerControl1);
+            this.fluentDesignFormContainer1.Controls.Add(this.layoutControl1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(250, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
             this.fluentDesignFormContainer1.Size = new System.Drawing.Size(697, 635);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
-            // splitContainerControl1
+            // layoutControl1
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.layoutControl1.BackColor = System.Drawing.Color.White;
+            this.layoutControl1.Controls.Add(this.simpleButton3);
+            this.layoutControl1.Controls.Add(this.newPatientButton);
+            this.layoutControl1.Controls.Add(this.mainPanel);
+            this.layoutControl1.Controls.Add(this.gnbSearchEdit);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-1368, 459, 650, 400);
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(697, 635);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
             // 
-            // splitContainerControl1.Panel1
+            // simpleButton3
             // 
-            this.splitContainerControl1.Panel1.Controls.Add(this.gnbSplitContainer);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.simpleButton3.Location = new System.Drawing.Point(587, 36);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(100, 26);
+            this.simpleButton3.StyleController = this.layoutControl1;
+            this.simpleButton3.TabIndex = 10;
+            this.simpleButton3.Text = "신환접수";
             // 
-            // splitContainerControl1.Panel2
+            // newPatientButton
             // 
-            this.splitContainerControl1.Panel2.Controls.Add(this.mainPanel);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(697, 635);
-            this.splitContainerControl1.SplitterPosition = 66;
-            this.splitContainerControl1.TabIndex = 0;
+            this.newPatientButton.Location = new System.Drawing.Point(587, 10);
+            this.newPatientButton.Margin = new System.Windows.Forms.Padding(0);
+            this.newPatientButton.Name = "newPatientButton";
+            this.newPatientButton.Size = new System.Drawing.Size(100, 26);
+            this.newPatientButton.StyleController = this.layoutControl1;
+            this.newPatientButton.TabIndex = 11;
+            this.newPatientButton.Text = "환자등록";
+            this.newPatientButton.Click += new System.EventHandler(this.NewPatientButtonClick);
             // 
-            // gnbSplitContainer
+            // mainPanel
             // 
-            this.gnbSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gnbSplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.gnbSplitContainer.Name = "gnbSplitContainer";
+            this.mainPanel.Controls.Add(this.popupContainerControl2);
+            this.mainPanel.Location = new System.Drawing.Point(10, 62);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(677, 563);
+            this.mainPanel.TabIndex = 14;
             // 
-            // gnbSplitContainer.Panel1
+            // popupContainerControl2
             // 
-            this.gnbSplitContainer.Panel1.Controls.Add(this.gnbSearchEdit);
-            this.gnbSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            // 
-            // gnbSplitContainer.Panel2
-            // 
-            this.gnbSplitContainer.Panel2.Controls.Add(this.addPatientButton);
-            this.gnbSplitContainer.Panel2.Controls.Add(this.simpleButton1);
-            this.gnbSplitContainer.Size = new System.Drawing.Size(697, 66);
-            this.gnbSplitContainer.SplitterDistance = 592;
-            this.gnbSplitContainer.TabIndex = 2;
-            // 
-            // gnbSearchEdit
-            // 
-            this.gnbSearchEdit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gnbSearchEdit.Location = new System.Drawing.Point(5, 0);
-            this.gnbSearchEdit.Name = "gnbSearchEdit";
-            this.gnbSearchEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.gnbSearchEdit.Properties.PopupControl = this.popupContainerControl1;
-            this.gnbSearchEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.gnbSearchEdit.Size = new System.Drawing.Size(587, 20);
-            this.gnbSearchEdit.TabIndex = 1;
-            this.gnbSearchEdit.EditValueChanged += new System.EventHandler(this.gnbSearchEdit_EditValueChanged);
-            this.gnbSearchEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GnbPatientSearchEdit_KeyDown);
-            // 
-            // popupContainerControl1
-            // 
-            this.popupContainerControl1.AutoSize = true;
-            this.popupContainerControl1.Controls.Add(this.gnbSearchGrid);
-            this.popupContainerControl1.Location = new System.Drawing.Point(139, 33);
-            this.popupContainerControl1.Name = "popupContainerControl1";
-            this.popupContainerControl1.Size = new System.Drawing.Size(522, 195);
-            this.popupContainerControl1.TabIndex = 2;
+            this.popupContainerControl2.AutoSize = true;
+            this.popupContainerControl2.Controls.Add(this.gnbSearchGrid);
+            this.popupContainerControl2.Location = new System.Drawing.Point(78, 50);
+            this.popupContainerControl2.Name = "popupContainerControl2";
+            this.popupContainerControl2.Size = new System.Drawing.Size(522, 195);
+            this.popupContainerControl2.TabIndex = 14;
             // 
             // gnbSearchGrid
             // 
@@ -161,7 +153,7 @@ namespace ToyProject
             this.gnbSearchGrid.MainView = this.gnbGridView;
             this.gnbSearchGrid.Name = "gnbSearchGrid";
             this.gnbSearchGrid.Size = new System.Drawing.Size(522, 195);
-            this.gnbSearchGrid.TabIndex = 0;
+            this.gnbSearchGrid.TabIndex = 1;
             this.gnbSearchGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gnbGridView});
             // 
@@ -229,33 +221,77 @@ namespace ToyProject
             this.receptionColumn.Visible = true;
             this.receptionColumn.VisibleIndex = 6;
             // 
-            // addPatientButton
+            // gnbSearchEdit
             // 
-            this.addPatientButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addPatientButton.Location = new System.Drawing.Point(0, 23);
-            this.addPatientButton.Name = "addPatientButton";
-            this.addPatientButton.Size = new System.Drawing.Size(101, 23);
-            this.addPatientButton.TabIndex = 1;
-            this.addPatientButton.Text = "환자등록";
-            this.addPatientButton.Click += new System.EventHandler(this.AddPatientButtonClick);
+            this.gnbSearchEdit.Location = new System.Drawing.Point(12, 12);
+            this.gnbSearchEdit.Name = "gnbSearchEdit";
+            this.gnbSearchEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gnbSearchEdit.Properties.PopupControl = this.popupContainerControl2;
+            this.gnbSearchEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.gnbSearchEdit.Size = new System.Drawing.Size(573, 20);
+            this.gnbSearchEdit.StyleController = this.layoutControl1;
+            this.gnbSearchEdit.TabIndex = 9;
+            this.gnbSearchEdit.EditValueChanged += new System.EventHandler(this.gnbSearchEdit_EditValueChanged);
+            this.gnbSearchEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GnbPatientSearchEdit_KeyDown);
             // 
-            // simpleButton1
+            // Root
             // 
-            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.simpleButton1.Location = new System.Drawing.Point(0, 0);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(101, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "신환접수";
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(697, 635);
+            this.Root.TextVisible = false;
             // 
-            // mainPanel
+            // layoutControlItem2
             // 
-            this.mainPanel.Controls.Add(this.popupContainerControl1);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(697, 559);
-            this.mainPanel.TabIndex = 0;
+            this.layoutControlItem2.Control = this.mainPanel;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem2.Size = new System.Drawing.Size(677, 563);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.gnbSearchEdit;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(577, 52);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.newPatientButton;
+            this.layoutControlItem4.Location = new System.Drawing.Point(577, 0);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(100, 26);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(100, 26);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem4.Size = new System.Drawing.Size(100, 26);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.simpleButton3;
+            this.layoutControlItem5.Location = new System.Drawing.Point(577, 26);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 26);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 26);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem5.Size = new System.Drawing.Size(100, 26);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // mainMenuControl
             // 
@@ -347,6 +383,8 @@ namespace ToyProject
             // 
             // MainForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 666);
@@ -357,26 +395,23 @@ namespace ToyProject
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "MainForm";
             this.NavigationControl = this.mainMenuControl;
-            this.Text = "Form1";
+            this.Text = "U2Toy";
             this.fluentDesignFormContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
-            this.splitContainerControl1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
-            this.splitContainerControl1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            this.gnbSplitContainer.Panel1.ResumeLayout(false);
-            this.gnbSplitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSplitContainer)).EndInit();
-            this.gnbSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerControl1)).EndInit();
-            this.popupContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gnbGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupContainerControl2)).EndInit();
+            this.popupContainerControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gnbGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gnbSearchEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).EndInit();
@@ -396,15 +431,18 @@ namespace ToyProject
         private DevExpress.XtraBars.Navigation.AccordionControlElement equipmentTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement testItemTab;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.SplitContainer gnbSplitContainer;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.PanelControl mainPanel;
-        private DevExpress.XtraEditors.PopupContainerEdit gnbSearchEdit;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
-        private DevExpress.XtraEditors.PopupContainerControl popupContainerControl1;
+        private System.Windows.Forms.BindingSource mainFormBindingSource;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraEditors.PopupContainerEdit gnbSearchEdit;
+        private DevExpress.XtraEditors.SimpleButton newPatientButton;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.PanelControl mainPanel;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraEditors.PopupContainerControl popupContainerControl2;
         private DevExpress.XtraGrid.GridControl gnbSearchGrid;
         private DevExpress.XtraGrid.Views.Grid.GridView gnbGridView;
         private DevExpress.XtraGrid.Columns.GridColumn nameColumn;
@@ -414,8 +452,9 @@ namespace ToyProject
         private DevExpress.XtraGrid.Columns.GridColumn socialSecurityNumberColumn;
         private DevExpress.XtraGrid.Columns.GridColumn addressColumn;
         private DevExpress.XtraGrid.Columns.GridColumn receptionColumn;
-        private System.Windows.Forms.BindingSource mainFormBindingSource;
-        private DevExpress.XtraEditors.SimpleButton addPatientButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
 

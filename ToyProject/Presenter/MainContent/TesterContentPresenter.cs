@@ -57,7 +57,7 @@ namespace ToyProject.Presenter
             if (e.Id == null)
                 return;
 
-            await _testerService.SetEnabledTesterAsync(e.Id.Value, !e.Enabled);
+            await _testerService.SetEnabledTesterAsync(e.Id.Value, !e.IsEnabled);
             await Refresh();
         }
 

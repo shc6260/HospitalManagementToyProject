@@ -34,7 +34,7 @@ namespace ToyProject.View
 
             codeColumn.FieldName = nameof(Equipment.EquipmentCode);
             nameColumn.FieldName = nameof(Equipment.Name);
-            enabledColumn.FieldName = nameof(Equipment.Enabled);
+            enabledColumn.FieldName = nameof(Equipment.IsEnabled);
         }
 
         #endregion

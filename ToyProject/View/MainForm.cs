@@ -220,9 +220,9 @@ namespace ToyProject
             }
         }
 
-        private void AddPatientButtonClick(object sender, EventArgs e)
+        private void NewPatientButtonClick(object sender, EventArgs e)
         {
-            DialogExtension.ShowNewPatientDialog();
+            DialogExtension.ShowNewPatientDialog(this);
         }
 
         #endregion

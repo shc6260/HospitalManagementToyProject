@@ -43,7 +43,6 @@ namespace ToyProject.View
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeTextEdit.Properties)).BeginInit();
@@ -56,7 +55,6 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl2
@@ -77,9 +75,9 @@ namespace ToyProject.View
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(328, 139);
+            this.closeButton.Location = new System.Drawing.Point(355, 141);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(88, 22);
+            this.closeButton.Size = new System.Drawing.Size(63, 22);
             this.closeButton.StyleController = this.layoutControl2;
             this.closeButton.TabIndex = 11;
             this.closeButton.Text = "닫기";
@@ -87,9 +85,9 @@ namespace ToyProject.View
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(240, 139);
+            this.saveButton.Location = new System.Drawing.Point(292, 141);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(84, 22);
+            this.saveButton.Size = new System.Drawing.Size(63, 22);
             this.saveButton.StyleController = this.layoutControl2;
             this.saveButton.TabIndex = 12;
             this.saveButton.Text = "저장";
@@ -113,19 +111,15 @@ namespace ToyProject.View
             // 
             this.codeTextEdit.Location = new System.Drawing.Point(44, 49);
             this.codeTextEdit.Name = "codeTextEdit";
-            this.codeTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.codeTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.codeTextEdit.Size = new System.Drawing.Size(372, 26);
+            this.codeTextEdit.Size = new System.Drawing.Size(372, 20);
             this.codeTextEdit.StyleController = this.layoutControl2;
             this.codeTextEdit.TabIndex = 5;
             // 
             // nameTextEdit
             // 
-            this.nameTextEdit.Location = new System.Drawing.Point(44, 89);
+            this.nameTextEdit.Location = new System.Drawing.Point(44, 73);
             this.nameTextEdit.Name = "nameTextEdit";
-            this.nameTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.nameTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.nameTextEdit.Size = new System.Drawing.Size(372, 26);
+            this.nameTextEdit.Size = new System.Drawing.Size(372, 20);
             this.nameTextEdit.StyleController = this.layoutControl2;
             this.nameTextEdit.TabIndex = 4;
             // 
@@ -140,8 +134,7 @@ namespace ToyProject.View
             this.emptySpaceItem4,
             this.layoutControlItem6,
             this.layoutControlItem5,
-            this.layoutControlItem3,
-            this.emptySpaceItem2});
+            this.layoutControlItem3});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(428, 173);
             this.layoutControlGroup1.TextVisible = false;
@@ -149,18 +142,18 @@ namespace ToyProject.View
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.nameTextEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 77);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 61);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(408, 30);
+            this.layoutControlItem2.Size = new System.Drawing.Size(408, 24);
             this.layoutControlItem2.Text = "이름";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(20, 14);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 107);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 85);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(408, 20);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(408, 46);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -175,26 +168,34 @@ namespace ToyProject.View
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 127);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 131);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(228, 26);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(282, 22);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.saveButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(228, 127);
+            this.layoutControlItem6.Location = new System.Drawing.Point(282, 131);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(63, 22);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(63, 22);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem6.Size = new System.Drawing.Size(63, 22);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.closeButton;
-            this.layoutControlItem5.Location = new System.Drawing.Point(316, 127);
+            this.layoutControlItem5.Location = new System.Drawing.Point(345, 131);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(63, 22);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(63, 22);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(92, 26);
+            this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem5.Size = new System.Drawing.Size(63, 22);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -203,17 +204,9 @@ namespace ToyProject.View
             this.layoutControlItem3.Control = this.codeTextEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 37);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(408, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(408, 24);
             this.layoutControlItem3.Text = "코드";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(20, 14);
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 67);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(408, 10);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // EquipmentManagementDialogForm
             // 
@@ -223,6 +216,7 @@ namespace ToyProject.View
             this.Controls.Add(this.layoutControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EquipmentManagementDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EquipmentManagementDialogForm";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
@@ -236,7 +230,6 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -250,7 +243,6 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.SimpleButton closeButton;
