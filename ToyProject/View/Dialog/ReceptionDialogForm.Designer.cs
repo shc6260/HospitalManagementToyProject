@@ -65,15 +65,15 @@ namespace ToyProject.View.Dialog
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(969, 392, 1032, 932);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(734, 653);
+            this.layoutControl1.Size = new System.Drawing.Size(767, 653);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(422, 619);
+            this.saveButton.Location = new System.Drawing.Point(441, 619);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(143, 22);
+            this.saveButton.Size = new System.Drawing.Size(150, 22);
             this.saveButton.StyleController = this.layoutControl1;
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "저장";
@@ -81,9 +81,9 @@ namespace ToyProject.View.Dialog
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(569, 619);
+            this.closeButton.Location = new System.Drawing.Point(595, 619);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(153, 22);
+            this.closeButton.Size = new System.Drawing.Size(160, 22);
             this.closeButton.StyleController = this.layoutControl1;
             this.closeButton.TabIndex = 6;
             this.closeButton.Text = "닫기";
@@ -91,9 +91,9 @@ namespace ToyProject.View.Dialog
             // 
             // cancelReceptionButton
             // 
-            this.cancelReceptionButton.Location = new System.Drawing.Point(301, 619);
+            this.cancelReceptionButton.Location = new System.Drawing.Point(314, 619);
             this.cancelReceptionButton.Name = "cancelReceptionButton";
-            this.cancelReceptionButton.Size = new System.Drawing.Size(117, 22);
+            this.cancelReceptionButton.Size = new System.Drawing.Size(123, 22);
             this.cancelReceptionButton.StyleController = this.layoutControl1;
             this.cancelReceptionButton.TabIndex = 7;
             this.cancelReceptionButton.Text = "접수 취소";
@@ -112,7 +112,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem4,
             this.emptySpaceItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(734, 653);
+            this.Root.Size = new System.Drawing.Size(767, 653);
             this.Root.TextVisible = false;
             // 
             // patientInfoLabel
@@ -122,7 +122,7 @@ namespace ToyProject.View.Dialog
             this.patientInfoLabel.AppearanceItemCaption.Options.UseFont = true;
             this.patientInfoLabel.Location = new System.Drawing.Point(0, 37);
             this.patientInfoLabel.Name = "patientInfoLabel";
-            this.patientInfoLabel.Size = new System.Drawing.Size(714, 23);
+            this.patientInfoLabel.Size = new System.Drawing.Size(747, 23);
             this.patientInfoLabel.Text = "rrrrr";
             this.patientInfoLabel.TextSize = new System.Drawing.Size(44, 19);
             // 
@@ -135,34 +135,34 @@ namespace ToyProject.View.Dialog
             this.simpleLabelItem1.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem1.Location = new System.Drawing.Point(0, 0);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
-            this.simpleLabelItem1.Size = new System.Drawing.Size(714, 37);
+            this.simpleLabelItem1.Size = new System.Drawing.Size(747, 37);
             this.simpleLabelItem1.Text = "접수";
             this.simpleLabelItem1.TextSize = new System.Drawing.Size(44, 33);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.saveButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(410, 607);
+            this.layoutControlItem2.Location = new System.Drawing.Point(429, 607);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(154, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.closeButton;
-            this.layoutControlItem3.Location = new System.Drawing.Point(557, 607);
+            this.layoutControlItem3.Location = new System.Drawing.Point(583, 607);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(157, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(164, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.cancelReceptionButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(289, 607);
+            this.layoutControlItem4.Location = new System.Drawing.Point(302, 607);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(121, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(127, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -171,14 +171,14 @@ namespace ToyProject.View.Dialog
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 607);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(289, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(302, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // receptionControl
             // 
             this.receptionControl.Location = new System.Drawing.Point(12, 72);
             this.receptionControl.Name = "receptionControl";
-            this.receptionControl.Size = new System.Drawing.Size(710, 543);
+            this.receptionControl.Size = new System.Drawing.Size(743, 543);
             this.receptionControl.TabIndex = 4;
             // 
             // layoutControlItem1
@@ -186,7 +186,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem1.Control = this.receptionControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(714, 547);
+            this.layoutControlItem1.Size = new System.Drawing.Size(747, 547);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -194,9 +194,10 @@ namespace ToyProject.View.Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 653);
+            this.ClientSize = new System.Drawing.Size(767, 653);
             this.Controls.Add(this.layoutControl1);
             this.Name = "ReceptionDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "구환접수";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

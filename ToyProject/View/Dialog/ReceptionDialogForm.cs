@@ -14,10 +14,16 @@ namespace ToyProject.View.Dialog
 
         #region Helpers
 
-        public void LoadView(Patient patient)
+        public void LoadNew(Patient patient)
         {
-            SetPatientInfo(patient);
-            OnLoadView(patient);
+            SetPatientInfo(patient.Name, patient.ChartNumber);
+            OnLoadRequestByPatient(patient);
+        }
+
+        public void LoadReception(ReceptionWithPatientSimpleResponse reception)
+        {
+            SetPatientInfo(reception.PatientName, reception.Chartnumber);
+            OnLoadRequestByPatient(reception);
         }
 
         private void CloseButtonClick(object sender, EventArgs e)
@@ -61,17 +67,24 @@ namespace ToyProject.View.Dialog
         }
 
 
-        public event EventHandler<Patient> LoadRequest;
+        public event EventHandler<Patient> LoadRequestByPatient;
 
-        private void OnLoadView(Patient patient)
+        private void OnLoadRequestByPatient(Patient patient)
         {
-            LoadRequest?.Invoke(this, patient);
+            LoadRequestByPatient?.Invoke(this, patient);
         }
 
 
-        public void SetPatientInfo(Patient patient)
+        public event EventHandler<ReceptionWithPatientSimpleResponse> LoadRequestByReceptionSimple;
+
+        private void OnLoadRequestByPatient(ReceptionWithPatientSimpleResponse receptionSimple)
         {
-            patientInfoLabel.Text = $"환자정보 : {patient.Name}|{patient.ChartNumber}";
+            LoadRequestByReceptionSimple?.Invoke(this, receptionSimple);
+        }
+
+        public void SetPatientInfo(string name, string chartnumber)
+        {
+            patientInfoLabel.Text = $"환자정보 : {name}|{chartnumber}";
         }
 
         #endregion

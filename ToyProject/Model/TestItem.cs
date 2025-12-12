@@ -55,6 +55,19 @@ namespace ToyProject.Model
             );
         }
 
+        public static TestItem FromId(long id)
+        {
+            return new TestItem
+         (
+             id: id,
+             testItemCode: null,
+             name: null,
+             referenceMinValue: -1,
+             referenceMaxValue: -1,
+             isEnabled: true
+         );
+        }
+
         public TestItemRequestDto ToRequestDto()
         {
             return new TestItemRequestDto()

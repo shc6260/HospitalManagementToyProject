@@ -249,7 +249,7 @@ namespace ToyProject
 
         public void ShowReceptionMessage(Patient patient)
         {
-            DialogExtension.ShowReceptionDialog(this, patient);
+            DialogExtension.ShowNewReceptionDialog(this, patient);
         }
 
         public void ClearSearch()

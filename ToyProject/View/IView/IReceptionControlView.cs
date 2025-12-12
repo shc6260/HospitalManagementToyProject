@@ -5,7 +5,7 @@ namespace ToyProject.View.IView
 {
     public interface IReceptionControlView
     {
-        void SetData(IEnumerable<TestItem> testItems);
+        void SetData(Reception testItems);
 
         Reception GetReception();
     }

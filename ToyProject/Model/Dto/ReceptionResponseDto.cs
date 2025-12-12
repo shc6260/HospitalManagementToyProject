@@ -1,4 +1,5 @@
 ﻿using System;
+using ToyProject.Model.Type;
 
 namespace ToyProject.Model.Dto
 {
@@ -23,6 +24,16 @@ namespace ToyProject.Model.Dto
         public string Checkup_target_info { get; set; }
 
         public DateTime Reception_dt { get; set; }
+
+        public long? Test_Id { get; set; }
+
+        public string Test_Code { get; set; }
+
+        public string Test_Name { get; set; }
+
+        public StatusType Status { get; set; }
+
+        public long TestItem_id { get; set; }
     }
 
     public class ReceptionWithPatientSimpleResponseDto

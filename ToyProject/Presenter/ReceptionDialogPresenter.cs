@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToyProject.Core.Events;
 using ToyProject.Core.Helper;
 using ToyProject.Core.Service;
@@ -19,35 +15,36 @@ namespace ToyProject.Presenter
 
             _view.SaveReceptionRequest += ViewSaveReceptionRequest;
             _view.CancelReceptionRequest += ViewCancelReceptionRequest;
-            _view.LoadRequest += OnLoadRequest;
+            _view.LoadRequestByPatient += OnLoadRequest;
+            _view.LoadRequestByReceptionSimple += ViewLoadRequestByReceptionSimple;
 
             _receptionControlPresenter = new ReceptionControlPresenter(_view.IReceptionControlView, _messageService);
         }
 
         private readonly IReceptionDialogView _view;
         private readonly ReceptionControlPresenter _receptionControlPresenter;
-        private Patient _selectedPatient;
 
 
-        private async void OnLoadRequest(object sender, Patient e)
+        private void OnLoadRequest(object sender, Patient e)
         {
-            _selectedPatient = e;
-            await _receptionControlPresenter.LoadAsync();
+            _receptionControlPresenter.Load(e.Id.Value);
+        }
+
+        private async void ViewLoadRequestByReceptionSimple(object sender, ReceptionWithPatientSimpleResponse e)
+        {
+            await _receptionControlPresenter.LoadAsync(e.Id);
 
         }
 
 
         private void ViewCancelReceptionRequest(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private async void ViewSaveReceptionRequest(object sender, EventArgs e)
         {
-            if (_selectedPatient.Id == null)
-                return;
-
-            await _receptionControlPresenter.SaveReception(_selectedPatient.Id.Value);
+            await _receptionControlPresenter.SaveReception();
             EventBus.Instance.Publish(new ReceptionChangedEventArgs());
         }
     }

@@ -27,6 +27,15 @@ namespace ToyProject.Core.Service
             });
         }
 
+        public Task<Reception> FindReceptionById(long id)
+        {
+            return Task.Run(async () =>
+            {
+                var result = await _receptionRepository.FindReceptionWithTests(id);
+                return Reception.From(result);
+            });
+        }
+
         public Task SaveReception(Reception data)
         {
             return Task.Run(async () =>

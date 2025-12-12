@@ -5,7 +5,8 @@ using System.Windows.Forms;
 using ToyProject.Model;
 using ToyProject.View.IView;
 using System.ComponentModel;
-
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace ToyProject.View.Dialog
 {
@@ -23,13 +24,62 @@ namespace ToyProject.View.Dialog
             base.OnLoad(e);
 
             InitTestItemGridControl();
+            testGridControl.DataSource = new BindingList<Test>();
         }
 
         private void InitTestItemGridControl()
         {
-            nameColumn.FieldName = nameof(TestItem.Name);
-            codeColumn.FieldName = nameof(TestItem.TestItemCode);
-            referenceValueColumn.FieldName = nameof(TestItem.DisplayReferenceValue);
+            testNameColumn.FieldName = nameof(Test.TestName);
+            TestItemsColumn.FieldName = nameof(Test.DisplayTestItem);
+        }
+
+        #endregion
+
+
+        #region Helpers
+
+        private void AddTestButtonClick(object sender, EventArgs e)
+        {
+            var result = DialogExtension.ShowCreateTestDialog(ParentForm);
+            if (result == null)
+                return;
+
+            var tests = testGridControl.DataSource as BindingList<Test>;
+            tests.Add(result);
+        }
+
+        private void TestGridViewMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+                return;
+
+            GridView view = sender as GridView;
+            GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+
+            if (hitInfo.InRow || hitInfo.InRowCell)
+            {
+                view.FocusedRowHandle = hitInfo.RowHandle;
+                testItemRowContextMenu.Show(Control.MousePosition);
+            }
+        }
+
+        private void DeleteContextMenuClick(object sender, EventArgs e)
+        {
+            var row = testGridView.FocusedRowHandle;
+            testGridView.DeleteRow(row);
+
+            testItemRowContextMenu.Close();
+        }
+
+        private void EditContextMenuClick(object sender, EventArgs e)
+        {
+            var row = testGridView.GetFocusedRow() as Test;
+            if (row == null)
+                return;
+
+            DialogExtension.ShowCreateTestDialog(this, row);
+
+            testItemRowContextMenu.Close();
         }
 
         #endregion
@@ -37,6 +87,8 @@ namespace ToyProject.View.Dialog
 
         public Reception GetReception()
         {
+            var allTests = testGridControl.DataSource as IEnumerable<Test>;
+
             return new Reception
             (
                 null,
@@ -49,26 +101,25 @@ namespace ToyProject.View.Dialog
                 insurenceTextEdit.Text,
                 checkupTextEdit.Text,
                 receptionDateEdit.DateTime,
-                GetSelectedtestItems()
+                allTests
             );
         }
 
-        private IEnumerable<TestItem> GetSelectedtestItems()
+        public void SetData(Reception reception)
         {
-            var rows = testItemGridView.GetSelectedRows();
-            foreach (var handle in rows)
-            {
-                var item = testItemGridView.GetRow(handle) as TestItem;
-                if (item == null)
-                    continue;
+            if (reception == null)
+                return;
 
-                yield return item;
-            }
-        }
+            emergencyCheckBox.Checked = reception.IsEmergency;
+            nightCheckBox.Checked = reception.IsEmergency;
+            receptionMemoTextEdit.Text = reception.Memo;
+            insuredComboBox.SelectedText = reception.InsuredInfo;
+            specificalTextEdit.Text = reception.SpecificalCode;
+            insurenceTextEdit.Text = reception.InsuranceInfo;
+            checkupTextEdit.Text = reception.CheckupTargetInfo;
+            receptionDateEdit.DateTime = reception.ReceptionDate;
+            testGridControl.DataSource = new BindingList<Test>(reception.Tests.ToArray());
 
-        public void SetData(IEnumerable<TestItem> testItems)
-        {
-            testItemGridControl.DataSource = new BindingList<TestItem>(testItems.ToArray());
         }
     }
 }

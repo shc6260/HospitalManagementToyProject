@@ -138,6 +138,7 @@ namespace ToyProject.View
             this.ClientSize = new System.Drawing.Size(1220, 644);
             this.Controls.Add(this.FooterPanel);
             this.Name = "PatientDetailDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "환자상세";
             ((System.ComponentModel.ISupportInitialize)(this.FooterStackPanel)).EndInit();
             this.FooterStackPanel.ResumeLayout(false);

@@ -7,7 +7,9 @@ namespace ToyProject.View.IView
     {
         IReceptionControlView IReceptionControlView { get; }
 
-        event EventHandler<Patient> LoadRequest;
+        event EventHandler<Patient> LoadRequestByPatient;
+
+        event EventHandler<ReceptionWithPatientSimpleResponse> LoadRequestByReceptionSimple;
 
         event EventHandler CancelReceptionRequest;
 

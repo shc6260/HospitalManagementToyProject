@@ -12,87 +12,110 @@ namespace ToyProject.Core.Repositories
 {
     public class ReceptionRepository
     {
-        public Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindRecepionWithPatientInfo(DateTime from, DateTime to)
+        public async Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindRecepionWithPatientInfo(DateTime from, DateTime to)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var receptions = await conn.QueryAsync<ReceptionWithPatientSimpleResponseDto>(
-                        "findReceptionWithPatientSimple",
-                        new
-                        {
-                            reception_start_dt = from,
-                            reception_end_dt = to
-                        },
-                        commandType: CommandType.StoredProcedure
-                    );
+                var receptions = await conn.QueryAsync<ReceptionWithPatientSimpleResponseDto>(
+                    "findReceptionWithPatientSimple",
+                    new
+                    {
+                        reception_start_dt = from,
+                        reception_end_dt = to
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
 
-                    return receptions;
-                }
-            });
+                return receptions;
+            }
         }
 
-        public Task AddReception(ReceptionAddRequestDto dto)
+        public async Task<IEnumerable<ReceptionResponseDto>> FindReceptionWithTests(long id)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "addReception",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
+                var receptions = await conn.QueryAsync<ReceptionResponseDto>(
+                    "findReception",
+                    new
+                    {
+                        id = id
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
 
-                    return patients;
-                }
-            });
+                return receptions;
+            }
         }
 
-        public Task ModifyReception(ReceptionModifyRequestDto dto)
+
+
+        public async Task AddReception(ReceptionAddRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
+                conn.Open();
+
+                using (var tran = conn.BeginTransaction())
                 {
-                    conn.Open();
+                    try
+                    {
+                        var result = await conn.ExecuteScalarAsync<long>(
+                            "addReception",
+                            dto,
+                            commandType: CommandType.StoredProcedure
+                        );
 
-                    var patients = await conn.ExecuteAsync(
-                        "modifyReception",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
+                        await conn.ExecuteAsync(
+                             "addTest",
+                             dto,
+                             commandType: CommandType.StoredProcedure
+                         );
 
-                    return patients;
+
+                        tran.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        tran.Rollback();
+                        throw;
+                    }
                 }
-            });
+            }
         }
 
-        public Task DeleteReception(long id)
+        public async Task ModifyReception(ReceptionModifyRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "deleteReception",
-                        new
-                        {
-                            id = id
-                        },
-                        commandType: CommandType.StoredProcedure
-                    );
+                var patients = await conn.ExecuteAsync(
+                    "modifyReception",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
 
-                    return patients;
-                }
-            });
+        public async Task DeleteReception(long id)
+        {
+            using (var conn = DbConnectionFactory.CreateConnection())
+            {
+                conn.Open();
+
+                var patients = await conn.ExecuteAsync(
+                    "deleteReception",
+                    new
+                    {
+                        id = id
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
     }
 }

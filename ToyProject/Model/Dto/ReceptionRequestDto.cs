@@ -43,8 +43,6 @@ namespace ToyProject.Model.Dto
         public string Checkup_target_info { get; set; }
 
         public DateTime Reception_dt { get; set; }
-
-        public IEnumerable<long> TestItem_Ids { get; set; }
     }
 
     public class ReceptionFindRequestDto

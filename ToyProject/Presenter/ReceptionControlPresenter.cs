@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ToyProject.Core.Repositories;
 using ToyProject.Core.Service;
 using ToyProject.View.IView;
@@ -16,22 +12,26 @@ namespace ToyProject.Presenter
             _view = view;
 
             _receptionService = new ReceptionService(new ReceptionRepository());
-            _testItemService = new TestItemService(new TestItemRepository());
         }
 
         private readonly IReceptionControlView _view;
         private readonly ReceptionService _receptionService;
-        private readonly TestItemService _testItemService;
+        private long _selectedPatientId;
 
-        public async Task LoadAsync()
+        public void Load(long patientId)
         {
-            var testItems = await _testItemService.GetAllTestItemAsync();
-            _view.SetData(testItems);
+            _selectedPatientId = patientId;
         }
 
-        public async Task SaveReception(long patientId)
+        public async Task LoadAsync(long receptionId)
         {
-            var reception = _view.GetReception().WithPatientId(patientId);
+            var reception = await _receptionService.FindReceptionById(receptionId);
+            _view.SetData(reception);
+        }
+
+        public async Task SaveReception()
+        {
+            var reception = _view.GetReception().WithPatientId(_selectedPatientId);
             await _receptionService.SaveReception(reception);
         }
     }
