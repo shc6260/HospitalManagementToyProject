@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Events\ReceptionChangedEventArgs.cs" />
+    <Compile Include="Core\Factotry\ServiceFactory.cs" />
     <Compile Include="Core\Helper\DateRangeHelper.cs" />
     <Compile Include="Core\Helper\DelayInvoker.cs" />
     <Compile Include="Core\Helper\DialogHelper.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Core\Repositories\ReceptionRepository.cs" />
     <Compile Include="Core\Repositories\TesterRepository.cs" />
     <Compile Include="Core\Repositories\TestItemRepository.cs" />
+    <Compile Include="Core\Repositories\TestRepository.cs" />
     <Compile Include="Core\Service\EquipmentService.cs" />
     <Compile Include="Core\Service\MessageService.cs" />
     <Compile Include="Core\Service\PatientService.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Presenter\NewPatientDialogPresenter.cs" />
     <Compile Include="Presenter\MainContent\EquipmentContentPresenter.cs" />
     <Compile Include="Presenter\MainContent\TestItemContentPresenter.cs" />
+    <Compile Include="Presenter\NewPatientReceptionDialogPresenter.cs" />
     <Compile Include="Presenter\PatientDetailDialogPresenter.cs" />
     <Compile Include="Presenter\PatientEditPresenter.cs" />
     <Compile Include="Presenter\PresenterBase.cs" />
@@ -137,6 +140,12 @@
     <Compile Include="View\Dialog\NewPatientDialogForm.Designer.cs">
       <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\NewPatientReceptionDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\NewPatientReceptionDialogForm.Designer.cs">
+      <DependentUpon>NewPatientReceptionDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\ReceptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -151,6 +160,7 @@
     </Compile>
     <Compile Include="View\IView\ICreateTestDialogView.cs" />
     <Compile Include="View\IView\INewPatientDialogView.cs" />
+    <Compile Include="View\IView\INewPatientReceptionView.cs" />
     <Compile Include="View\IView\IReceptionControlView.cs" />
     <Compile Include="View\IView\IReceptionDialogView.cs" />
     <Compile Include="View\IView\MainContent\IMainContentControlView.cs" />
@@ -229,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\NewPatientDialogForm.resx">
       <DependentUpon>NewPatientDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\NewPatientReceptionDialogForm.resx">
+      <DependentUpon>NewPatientReceptionDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\ReceptionControl.resx">
       <DependentUpon>ReceptionControl.cs</DependentUpon>

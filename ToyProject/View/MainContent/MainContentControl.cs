@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +42,22 @@ namespace ToyProject.View
 
         #region Helpers
 
-        private void todayButton_Click(object sender, EventArgs e)
+        private void ReceptionGridViewMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+                return;
+
+            GridView view = sender as GridView;
+            GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+
+            if (hitInfo.InRow || hitInfo.InRowCell)
+            {
+                view.FocusedRowHandle = hitInfo.RowHandle;
+                equipRowContextMenu.Show(Control.MousePosition);
+            }
+        }
+
+        private void TodayButtonClick(object sender, EventArgs e)
         {
             fromDateEdit.DateTime = DateTime.Now;
             toDateEdit.DateTime = DateTime.Now;
@@ -56,6 +73,20 @@ namespace ToyProject.View
         private DateRange GetDateRange()
         {
             return new DateRange(fromDateEdit.DateTime, toDateEdit.DateTime);
+        }
+
+        private void EditReceptionMenuClick(object sender, EventArgs e)
+        {
+            var row = receptionGridView.GetFocusedRow() as ReceptionWithPatientSimpleResponse;
+            if (row == null)
+                return;
+
+            DialogExtension.ShowReceptionDialog(this, row);
+        }
+
+        private void TestButtonClick(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

@@ -53,39 +53,44 @@ namespace ToyProject.Core.Repositories
 
 
 
-        public async Task AddReception(ReceptionAddRequestDto dto)
+        public async Task AddReception(ReceptionAddRequestDto dto, IEnumerable<TestAddRequestDto> tests)
         {
             using (var conn = DbConnectionFactory.CreateConnection())
             {
                 conn.Open();
 
-                using (var tran = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        var result = await conn.ExecuteScalarAsync<long>(
+                var param = new DynamicParameters(dto);
+                var testTable = TestRepository.GetTestDataTable(tests);
+                param.Add("@tests", testTable.AsTableValuedParameter("TestAddType"));
+
+                await conn.ExecuteAsync(
                             "addReception",
-                            dto,
+                            param,
                             commandType: CommandType.StoredProcedure
                         );
-
-                        await conn.ExecuteAsync(
-                             "addTest",
-                             dto,
-                             commandType: CommandType.StoredProcedure
-                         );
-
-
-                        tran.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        tran.Rollback();
-                        throw;
-                    }
-                }
             }
         }
+
+        //public DataTable GetTestDataTable(IEnumerable<TestAddRequestDto> tests)
+        //{
+        //    if (tests.Any() == false)
+        //        return null;
+
+        //    var table = new DataTable();
+
+        //    table.Columns.Add(nameof(TestAddRequestDto.TestName), typeof(string));
+        //    table.Columns.Add(nameof(TestAddRequestDto.TestItemIds), typeof(string));
+
+        //    foreach (var item in tests)
+        //    {
+        //        table.Rows.Add(
+        //            item.TestName,
+        //            item.TestItemIds
+        //        );
+        //    }
+
+        //    return table;
+        //}
 
         public async Task ModifyReception(ReceptionModifyRequestDto dto)
         {

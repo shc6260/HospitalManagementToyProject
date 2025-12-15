@@ -90,6 +90,7 @@ namespace ToyProject
 
         #endregion
 
+
         #region Helper
 
         private void SelectedMainMenu(object sender, DevExpress.XtraBars.Navigation.SelectedElementChangedEventArgs e)
@@ -230,7 +231,13 @@ namespace ToyProject
             DialogExtension.ShowNewPatientDialog(this);
         }
 
+        private void NewReceptionPatientButtonClick(object sender, EventArgs e)
+        {
+            DialogExtension.ShowNewPatientReceptionDialog(this);
+        }
+
         #endregion
+
 
         #region IMainView
 

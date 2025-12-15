@@ -91,7 +91,7 @@ namespace ToyProject.View.Dialog
 
         public Test GetResult()
         {
-            return Test.FromAdd(nameTextEdit.Text, GetSelectedtestItems());
+            return Test.FromAdd(nameTextEdit.Text, GetSelectedtestItems().ToArray());
         }
 
         #endregion

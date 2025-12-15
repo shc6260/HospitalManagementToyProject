@@ -27,13 +27,15 @@ namespace ToyProject.Model.Dto
 
         public long? Test_Id { get; set; }
 
-        public string Test_Code { get; set; }
+        public Guid Test_Code { get; set; }
 
         public string Test_Name { get; set; }
 
         public StatusType Status { get; set; }
 
         public long TestItem_id { get; set; }
+
+        public string TestItem_Name { get; set; }
     }
 
     public class ReceptionWithPatientSimpleResponseDto

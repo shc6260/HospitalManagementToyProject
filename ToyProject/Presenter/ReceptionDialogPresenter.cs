@@ -37,9 +37,10 @@ namespace ToyProject.Presenter
         }
 
 
-        private void ViewCancelReceptionRequest(object sender, EventArgs e)
+        private async void ViewCancelReceptionRequest(object sender, EventArgs e)
         {
-            
+            await _receptionControlPresenter.DeleteReception();
+            EventBus.Instance.Publish(new ReceptionChangedEventArgs());
         }
 
         private async void ViewSaveReceptionRequest(object sender, EventArgs e)

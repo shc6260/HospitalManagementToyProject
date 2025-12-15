@@ -25,6 +25,7 @@ namespace ToyProject.View.Dialog
 
             InitTestItemGridControl();
             testGridControl.DataSource = new BindingList<Test>();
+            receptionDateEdit.DateTime = DateTime.Now;
         }
 
         private void InitTestItemGridControl()
@@ -77,9 +78,15 @@ namespace ToyProject.View.Dialog
             if (row == null)
                 return;
 
-            DialogExtension.ShowCreateTestDialog(this, row);
-
             testItemRowContextMenu.Close();
+            var result = DialogExtension.ShowCreateTestDialog(this, row);
+            if (result == null)
+                return;
+
+            var tests = testGridControl.DataSource as BindingList<Test>;
+            var index = tests.IndexOf(row);
+            tests.Remove(row);
+            tests.Insert(index, new Test(row.Id, row.TestCode, result.TestName, row.Status, result.TestItems));
         }
 
         #endregion
@@ -118,7 +125,7 @@ namespace ToyProject.View.Dialog
             insurenceTextEdit.Text = reception.InsuranceInfo;
             checkupTextEdit.Text = reception.CheckupTargetInfo;
             receptionDateEdit.DateTime = reception.ReceptionDate;
-            testGridControl.DataSource = new BindingList<Test>(reception.Tests.ToArray());
+            testGridControl.DataSource = new BindingList<Test>(reception.Tests.ToList());
 
         }
     }

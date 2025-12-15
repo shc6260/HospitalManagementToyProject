@@ -32,7 +32,7 @@ namespace ToyProject
             this.components = new System.ComponentModel.Container();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.newReceptionPatientButton = new DevExpress.XtraEditors.SimpleButton();
             this.newPatientButton = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.popupContainerControl2 = new DevExpress.XtraEditors.PopupContainerControl();
@@ -96,7 +96,7 @@ namespace ToyProject
             // layoutControl1
             // 
             this.layoutControl1.BackColor = System.Drawing.Color.White;
-            this.layoutControl1.Controls.Add(this.simpleButton3);
+            this.layoutControl1.Controls.Add(this.newReceptionPatientButton);
             this.layoutControl1.Controls.Add(this.newPatientButton);
             this.layoutControl1.Controls.Add(this.mainPanel);
             this.layoutControl1.Controls.Add(this.gnbSearchEdit);
@@ -109,14 +109,15 @@ namespace ToyProject
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // simpleButton3
+            // newReceptionPatientButton
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(587, 36);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(100, 26);
-            this.simpleButton3.StyleController = this.layoutControl1;
-            this.simpleButton3.TabIndex = 10;
-            this.simpleButton3.Text = "신환접수";
+            this.newReceptionPatientButton.Location = new System.Drawing.Point(587, 36);
+            this.newReceptionPatientButton.Name = "newReceptionPatientButton";
+            this.newReceptionPatientButton.Size = new System.Drawing.Size(100, 26);
+            this.newReceptionPatientButton.StyleController = this.layoutControl1;
+            this.newReceptionPatientButton.TabIndex = 10;
+            this.newReceptionPatientButton.Text = "신환접수";
+            this.newReceptionPatientButton.Click += new System.EventHandler(this.NewReceptionPatientButtonClick);
             // 
             // newPatientButton
             // 
@@ -282,7 +283,7 @@ namespace ToyProject
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.simpleButton3;
+            this.layoutControlItem5.Control = this.newReceptionPatientButton;
             this.layoutControlItem5.Location = new System.Drawing.Point(577, 26);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 26);
@@ -440,7 +441,7 @@ namespace ToyProject
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.PopupContainerEdit gnbSearchEdit;
         private DevExpress.XtraEditors.SimpleButton newPatientButton;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton newReceptionPatientButton;
         private DevExpress.XtraEditors.PanelControl mainPanel;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.PopupContainerControl popupContainerControl2;

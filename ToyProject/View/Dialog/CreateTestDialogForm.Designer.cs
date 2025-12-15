@@ -267,6 +267,7 @@ namespace ToyProject.View.Dialog
             this.ClientSize = new System.Drawing.Size(958, 424);
             this.Controls.Add(this.layoutControl1);
             this.Name = "CreateTestDialogForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nameTextEdit.Properties)).EndInit();

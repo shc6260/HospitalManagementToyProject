@@ -29,15 +29,17 @@ namespace ToyProject.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.receptionGridControl = new DevExpress.XtraGrid.GridControl();
-            this.receptionＧridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.receptionGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.nameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chartNumberColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.receptionDtColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.fromDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.receptionSearchButton = new DevExpress.XtraEditors.SimpleButton();
+            this.todayButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -45,12 +47,14 @@ namespace ToyProject.View
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.todayButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.equipRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editReceptionMenu = new System.Windows.Forms.ToolStripTextBox();
+            this.testButton = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.receptionGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionＧridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receptionGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -63,6 +67,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            this.equipRowContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -84,22 +89,24 @@ namespace ToyProject.View
             // receptionGridControl
             // 
             this.receptionGridControl.Location = new System.Drawing.Point(12, 36);
-            this.receptionGridControl.MainView = this.receptionＧridView;
+            this.receptionGridControl.MainView = this.receptionGridView;
             this.receptionGridControl.Name = "receptionGridControl";
             this.receptionGridControl.Size = new System.Drawing.Size(1176, 644);
             this.receptionGridControl.TabIndex = 6;
             this.receptionGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.receptionＧridView});
+            this.receptionGridView});
             // 
-            // receptionＧridView
+            // receptionGridView
             // 
-            this.receptionＧridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.receptionGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.nameColumn,
             this.chartNumberColumn,
             this.receptionDtColumn});
-            this.receptionＧridView.GridControl = this.receptionGridControl;
-            this.receptionＧridView.Name = "receptionＧridView";
-            this.receptionＧridView.OptionsView.ShowGroupPanel = false;
+            this.receptionGridView.GridControl = this.receptionGridControl;
+            this.receptionGridView.Name = "receptionGridView";
+            this.receptionGridView.OptionsBehavior.Editable = false;
+            this.receptionGridView.OptionsView.ShowGroupPanel = false;
+            this.receptionGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ReceptionGridViewMouseUp);
             // 
             // nameColumn
             // 
@@ -157,6 +164,16 @@ namespace ToyProject.View
             this.receptionSearchButton.TabIndex = 7;
             this.receptionSearchButton.Text = "조회";
             this.receptionSearchButton.Click += new System.EventHandler(this.receptionSearchButton_Click);
+            // 
+            // todayButton
+            // 
+            this.todayButton.Location = new System.Drawing.Point(569, 12);
+            this.todayButton.Name = "todayButton";
+            this.todayButton.Size = new System.Drawing.Size(96, 20);
+            this.todayButton.StyleController = this.layoutControl1;
+            this.todayButton.TabIndex = 7;
+            this.todayButton.Text = "오늘";
+            this.todayButton.Click += new System.EventHandler(this.TodayButtonClick);
             // 
             // Root
             // 
@@ -238,16 +255,6 @@ namespace ToyProject.View
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // todayButton
-            // 
-            this.todayButton.Location = new System.Drawing.Point(569, 12);
-            this.todayButton.Name = "todayButton";
-            this.todayButton.Size = new System.Drawing.Size(96, 20);
-            this.todayButton.StyleController = this.layoutControl1;
-            this.todayButton.TabIndex = 7;
-            this.todayButton.Text = "오늘";
-            this.todayButton.Click += new System.EventHandler(this.todayButton_Click);
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.todayButton;
@@ -263,6 +270,33 @@ namespace ToyProject.View
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
+            // equipRowContextMenu
+            // 
+            this.equipRowContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editReceptionMenu,
+            this.testButton});
+            this.equipRowContextMenu.Name = "contextMenuStrip1";
+            this.equipRowContextMenu.Size = new System.Drawing.Size(161, 54);
+            // 
+            // editReceptionMenu
+            // 
+            this.editReceptionMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.editReceptionMenu.Name = "editReceptionMenu";
+            this.editReceptionMenu.ReadOnly = true;
+            this.editReceptionMenu.Size = new System.Drawing.Size(100, 23);
+            this.editReceptionMenu.Text = "수정";
+            this.editReceptionMenu.Click += new System.EventHandler(this.EditReceptionMenuClick);
+            // 
+            // testButton
+            // 
+            this.testButton.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.testButton.Name = "testButton";
+            this.testButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.testButton.ReadOnly = true;
+            this.testButton.Size = new System.Drawing.Size(100, 23);
+            this.testButton.Text = "검사";
+            this.testButton.Click += new System.EventHandler(this.TestButtonClick);
+            // 
             // MainContentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -273,7 +307,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.receptionGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionＧridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receptionGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromDateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -286,6 +320,8 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            this.equipRowContextMenu.ResumeLayout(false);
+            this.equipRowContextMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -299,7 +335,7 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.GridControl receptionGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView receptionＧridView;
+        private DevExpress.XtraGrid.Views.Grid.GridView receptionGridView;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
@@ -310,5 +346,8 @@ namespace ToyProject.View
         private DevExpress.XtraGrid.Columns.GridColumn receptionDtColumn;
         private DevExpress.XtraEditors.SimpleButton todayButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private System.Windows.Forms.ContextMenuStrip equipRowContextMenu;
+        private System.Windows.Forms.ToolStripTextBox editReceptionMenu;
+        private System.Windows.Forms.ToolStripTextBox testButton;
     }
 }

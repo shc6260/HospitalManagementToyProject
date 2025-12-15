@@ -58,18 +58,18 @@ namespace ToyProject.Model
             var dto = receptionGroup.First();
 
             var tests = receptionGroup
-                .Where(x => x.Test_Id.HasValue)
-                .GroupBy(x => x.Test_Id)
+                .Where(i => i.Id == dto.Id)
+                .GroupBy(x => x.Test_Code)
                 .Select(g =>
                 {
                     var testDto = g.First();
 
                     return Test.From(
                         testDto.Test_Id,
-                        testDto.Test_Code,
+                        testDto.Test_Code.ToString(),
                         testDto.Test_Name,
                         testDto.Status,
-                        g.Select(i => i.TestItem_id)
+                        g.Select(i => TestItem.FromSimple(i.TestItem_id, i.TestItem_Name))
                     );
                 })
                 .ToArray();
@@ -85,7 +85,7 @@ namespace ToyProject.Model
                insuranceInfo: dto.Insurance_info,
                checkupTargetInfo: dto.Checkup_target_info,
                receptionDate: dto.Reception_dt,
-               tests: tests
+               tests: tests ?? Enumerable.Empty<Test>()
             );
         }
 
@@ -121,6 +121,11 @@ namespace ToyProject.Model
                 Reception_dt = ReceptionDate,
                 Specifical_code = SpecificalCode
             };
+        }
+
+        public IEnumerable<TestAddRequestDto> GetTestAddRequestDtos()
+        {
+            return Tests?.Select(i => i.ToAddDtoForReception()).ToArray();
         }
     }
 }

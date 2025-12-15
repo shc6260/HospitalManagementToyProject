@@ -55,13 +55,13 @@ namespace ToyProject.Model
             );
         }
 
-        public static TestItem FromId(long id)
+        public static TestItem FromSimple(long id, string name)
         {
             return new TestItem
          (
              id: id,
              testItemCode: null,
-             name: null,
+             name: name,
              referenceMinValue: -1,
              referenceMaxValue: -1,
              isEnabled: true

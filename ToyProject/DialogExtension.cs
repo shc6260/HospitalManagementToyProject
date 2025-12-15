@@ -56,12 +56,23 @@ namespace ToyProject
 
             return form.IsOk ? form.GetResult() : null;
         }
+
+        public static void ShowNewPatientReceptionDialog(IWin32Window parent)
+        {
+            FormManager.ShowForm
+           (
+               parent,
+               () => new NewPatientReceptionDialogForm(),
+               (f) => new NewPatientReceptionDialogPresenter(f, f.CreateMessageService())
+           );
+        }
     }
 
     public static class FormManager
     {
         public static f ShowForm<f, p>(IWin32Window parent, Func<f> createForm, Func<f, p> createPresenter, Action<f> Load = null)
-            where f : Form
+            where f : Form 
+            where p : PresenterBase
         {
             if (DialogHelper.IsFormOpen<f>())
             {

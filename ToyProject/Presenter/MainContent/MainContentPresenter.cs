@@ -2,8 +2,8 @@
 using System;
 using System.Threading.Tasks;
 using ToyProject.Core.Events;
+using ToyProject.Core.Factotry;
 using ToyProject.Core.Helper;
-using ToyProject.Core.Repositories;
 using ToyProject.Core.Service;
 using ToyProject.View.IView.MainContent;
 
@@ -13,7 +13,7 @@ namespace ToyProject.Presenter.MainContent
     {
         public MainContentPresenter(IMainContentControlView view, MessageService messageService) : base(messageService)
         {
-            _receptionService = new ReceptionService(new ReceptionRepository());
+            _receptionService = ServiceFactory.GetReceptionService();
 
             _view = view;
 
@@ -23,7 +23,7 @@ namespace ToyProject.Presenter.MainContent
         }
 
         private IMainContentControlView _view;
-        private ReceptionService _receptionService;
+        private readonly ReceptionService _receptionService;
 
         public override async Task Refresh()
         {
@@ -51,7 +51,7 @@ namespace ToyProject.Presenter.MainContent
 
         public void Dispose()
         {
-
+            EventBus.Instance.Unsubscribe(OnTesterUpdated);
         }
     }
 }

@@ -16,6 +16,9 @@ namespace ToyProject.View.Dialog
 
         public void LoadNew(Patient patient)
         {
+            cancelReceptionButton.Visible = false;
+            cancelReceptionButton.Enabled = false;
+
             SetPatientInfo(patient.Name, patient.ChartNumber);
             OnLoadRequestByPatient(patient);
         }
@@ -28,7 +31,6 @@ namespace ToyProject.View.Dialog
 
         private void CloseButtonClick(object sender, EventArgs e)
         {
-            OnCancelReceptionRequest();
             Close();
         }
 
@@ -40,6 +42,7 @@ namespace ToyProject.View.Dialog
 
         private void CancelReceptionButtonClick(object sender, EventArgs e)
         {
+            OnCancelReceptionRequest();
             Close();
         }
 
