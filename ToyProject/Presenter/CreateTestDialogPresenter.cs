@@ -1,4 +1,4 @@
-﻿using ToyProject.Core.Repositories;
+﻿using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.View.IView;
 
@@ -8,7 +8,7 @@ namespace ToyProject.Presenter
     {
         public CreateTestDialogPresenter(ICreateTestDialogView view, MessageService messageService) : base(messageService)
         {
-            _testItemService = new TestItemService(new TestItemRepository());
+            _testItemService = ServiceFactory.GetTestItemService();
 
             _view = view;
             _view.LoadRequest += ViewLoadRequest;

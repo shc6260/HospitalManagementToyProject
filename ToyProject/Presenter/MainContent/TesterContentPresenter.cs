@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToyProject.Core.Repositories;
+using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View.IView;
@@ -12,7 +12,7 @@ namespace ToyProject.Presenter
     {
         public TesterContentPresenter(ITesterContentControlView view, MessageService messageService) : base(messageService)
         {
-            _testerService = new TesterService(new TesterRepository());
+            _testerService = ServiceFactory.GetTesterService();
 
             _view = view;
 

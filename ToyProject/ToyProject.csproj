@@ -94,6 +94,7 @@
     <Compile Include="Core\Service\MessageService.cs" />
     <Compile Include="Core\Service\PatientService.cs" />
     <Compile Include="Core\Service\ReceptionService.cs" />
+    <Compile Include="Core\Service\TestService.cs" />
     <Compile Include="Core\Service\TesterService.cs" />
     <Compile Include="Core\Service\TestItemService.cs" />
     <Compile Include="DialogExtension.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Presenter\PatientEditPresenter.cs" />
     <Compile Include="Presenter\PresenterBase.cs" />
     <Compile Include="Presenter\MainContent\TesterContentPresenter.cs" />
+    <Compile Include="Presenter\MainContent\TestContentPresenter.cs" />
     <Compile Include="Presenter\ReceptionControlPresenter.cs" />
     <Compile Include="Presenter\ReceptionDialogPresenter.cs" />
     <Compile Include="View\Dialog\CreateTestDialogForm.cs">
@@ -165,6 +167,7 @@
     <Compile Include="View\IView\IReceptionDialogView.cs" />
     <Compile Include="View\IView\MainContent\IMainContentControlView.cs" />
     <Compile Include="View\IView\MainContent\ITestItemContentControlView.cs" />
+    <Compile Include="View\IView\MainContent\ITestContentControlView.cs" />
     <Compile Include="View\MainContent\EquipmentContentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

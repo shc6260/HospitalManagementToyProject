@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ToyProject.Core.Repositories;
+using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View.IView;
@@ -10,7 +10,7 @@ namespace ToyProject.Presenter
     {
         public PatientEditPresenter(IPatientEditControl view, Patient patient = null)
         {
-            _patientService = new PatientService(new PatientRepository());
+            _patientService = ServiceFactory.GetPatientService();
 
             _view = view;
             _view.SetPatient(patient);

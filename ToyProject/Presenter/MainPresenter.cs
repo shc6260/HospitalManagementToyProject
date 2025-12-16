@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToyProject.Core.Factotry;
 using ToyProject.Core.Helper;
-using ToyProject.Core.Repositories;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View;
@@ -13,7 +13,7 @@ namespace ToyProject.Presenter
     {
         public MainPresenter(IMainView view, MessageService messageService) : base(messageService)
         {
-            _patientService = new PatientService(new PatientRepository());
+            _patientService = ServiceFactory.GetPatientService();
 
             _view = view;
 
