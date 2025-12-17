@@ -37,6 +37,7 @@ namespace ToyProject
 
 
         private TestContentControl _testContent;
+        private TestContentPresenter _testContentPresenter;
 
         private TesterContentControl _testerContent;
 
@@ -124,8 +125,10 @@ namespace ToyProject
                     {
                         _testContent = new TestContentControl();
                         _testContent.Dock = DockStyle.Fill;
+                        _testContentPresenter = new TestContentPresenter(_testContent, _messageService);
                     }
 
+                    _currentPresenter = _testContentPresenter;
                     mainPanel.Controls.Add(_testContent);
 
                     break;

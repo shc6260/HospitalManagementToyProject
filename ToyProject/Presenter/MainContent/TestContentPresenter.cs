@@ -16,18 +16,16 @@ namespace ToyProject.Presenter.MainContent
             _testService = ServiceFactory.GetTestService();
 
             _view.RefreshRequested += OnRefreshRequested;
-            _view.UpdateTestRequested += OnUpdateTestRequested;
-            _view.DeleteTestRequested += OnDeleteTestRequested;
-            _view.ToggleStatusRequested += OnToggleStatusRequested;
+            _view.SaveRequested += OnSaveRequested;
         }
 
         private readonly ITestContentControlView _view;
         private readonly TestService _testService;
-        private IEnumerable<Test> _tests = new List<Test>();
+        private IEnumerable<TestDetail> _tests = new List<TestDetail>();
 
         public override async Task Refresh()
         {
-            _tests = await _testService.GetTestsAsync();
+            _tests = await _testService.GetTestsAsync(Model.Type.StatusType.Reception);
             _view.SetTestList(_tests);
         }
 
@@ -36,27 +34,9 @@ namespace ToyProject.Presenter.MainContent
             await Refresh();
         }
 
-        private async void OnUpdateTestRequested(object sender, Test test)
+        private async void OnSaveRequested(object sender, IEnumerable<DataTableChange<TestResult>> changes)
         {
-            await _testService.SaveTestAsync(test);
-            await Refresh();
-        }
-
-        private async void OnDeleteTestRequested(object sender, Test test)
-        {
-            if (test == null)
-                return;
-
-            await _testService.DeleteTestAsync(test);
-            await Refresh();
-        }
-
-        private async void OnToggleStatusRequested(object sender, Test test)
-        {
-            if (test == null)
-                return;
-
-            await _testService.ToggleStatusAsync(test);
+            await _testService.SaveChangesAsync(changes);
             await Refresh();
         }
     }

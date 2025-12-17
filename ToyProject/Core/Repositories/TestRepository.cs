@@ -6,11 +6,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Model.Dto;
+using ToyProject.Model.Type;
 
 namespace ToyProject.Core.Repositories
 {
     public class TestRepository
     {
+        public async Task<IEnumerable<TestDetailDto>> GetTestsAsync(StatusType status)
+        {
+            using (var conn = DbConnectionFactory.CreateConnection())
+            {
+                conn.Open();
+
+                return await conn.QueryAsync<TestDetailDto>(
+                    "findTest",
+                    new { status },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public async Task AddTestsAsync(IEnumerable<TestAddRequestDto> tests, long receptionId)
         {
             using (var conn = DbConnectionFactory.CreateConnection())

@@ -1,42 +1,59 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
+using ToyProject.Core.Helper;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
+using ToyProject.Model.Type;
 
 namespace ToyProject.Core.Service
 {
     public class TestService
     {
-        public TestService(TestRepository testRepository)
+        public TestService(TestRepository testRepository, TestResultRepository testResultRepository)
         {
             _testRepository = testRepository;
+            _testResultRepository = testResultRepository;
         }
 
         private readonly TestRepository _testRepository;
+        private readonly TestResultRepository _testResultRepository;
 
-        public Task<IEnumerable<Test>> GetTestsAsync()
+        public async Task<IEnumerable<TestDetail>> GetTestsAsync(StatusType status)
         {
-            // TODO: 저장소 조회 메서드가 준비되면 실제 데이터 조회 로직으로 교체
-            return Task.FromResult<IEnumerable<Test>>(Enumerable.Empty<Test>());
+            var dtoList = await _testRepository.GetTestsAsync(status);
+            return dtoList.IsNullOrEmpty() ? Enumerable.Empty<TestDetail>() : TestDetail.FromDtos(dtoList);
         }
 
-        public Task SaveTestAsync(Test test)
+        public async Task SaveChangesAsync(IEnumerable<DataTableChange<TestResult>> changes)
         {
-            // TODO: 추가/수정 로직 연결
-            return Task.CompletedTask;
+            if (changes.IsNullOrEmpty())
+                return;
+
+            var changeGroup = changes.GroupBy(i => i.ChangeType).ToDictionary(k => k.Key, v => v.Select(i => i.Data));
+
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                if (changeGroup.TryGetValue(DataRowState.Added, out var adds))
+                    await InsertAsync(adds);
+
+                if (changeGroup.TryGetValue(DataRowState.Modified, out var modifieds))
+                    await UpdateAsync(modifieds);
+
+                scope.Complete();
+            }
         }
 
-        public Task DeleteTestAsync(Test test)
+        private Task InsertAsync(IEnumerable<TestResult> test)
         {
-            // TODO: 삭제 로직 연결
-            return Task.CompletedTask;
+            return _testResultRepository.AddTestResultsAsync(test.Select(i => i.ToDto()).ToArray());
         }
 
-        public Task ToggleStatusAsync(Test test)
+        private Task UpdateAsync(IEnumerable<TestResult> test)
         {
-            // TODO: 상태 토글 로직 연결
-            return Task.CompletedTask;
+            return _testResultRepository.ModifyTestResultsAsync(test.Select(i => i.ToDto()).ToArray());
         }
     }
 }
