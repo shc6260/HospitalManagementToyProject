@@ -41,8 +41,14 @@ namespace ToyProject.Presenter
                         300,
                         async () =>
                         {
-                            _patients = await GetPatients();
-                            _view.SetPatientList(_patients);
+                            try
+                            {
+                                _patients = await GetPatients();
+                                _view.SetPatientList(_patients);
+                            }
+                            catch (System.Exception)
+                            {
+                            }
                         }
                     );
                 }

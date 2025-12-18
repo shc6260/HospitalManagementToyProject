@@ -32,7 +32,7 @@ namespace ToyProject.Presenter.MainContent
 
         private async void ViewSearchReceptionRequest(object sender, DevExpress.XtraEditors.Controls.DateRange e)
         {
-            await SetReception(e);
+            await _messageService.RunInProgressPopupAsync(() => SetReception(e));
         }
 
         private async Task SetReception(DateRange dateRange)
@@ -45,7 +45,13 @@ namespace ToyProject.Presenter.MainContent
         {
             if (e is ReceptionChangedEventArgs)
             {
-                await Refresh();
+                try
+                {
+                    await _messageService.RunInProgressPopupAsync(Refresh);
+                }
+                catch
+                {
+                }
             }
         }
 

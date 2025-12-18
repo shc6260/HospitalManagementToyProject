@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ToyProject.Model;
-using ToyProject.Model.Dto;
+using ToyProject.Model.Type;
 
 namespace ToyProject.View.IView.MainContent
 {
@@ -9,7 +9,9 @@ namespace ToyProject.View.IView.MainContent
     {
         void SetTestList(IEnumerable<TestDetail> items);
 
+        void SetData(IEnumerable<Equipment> equipments, IEnumerable<Tester> testers);
+
         event EventHandler RefreshRequested;
-        event EventHandler<IEnumerable<DataTableChange<TestResult>>> SaveRequested;
+        event EventHandler<(IEnumerable<DataTableChange<TestResult>> resultChanges, IEnumerable<(string Code, StatusType Status)> testChanges)> SaveRequested;
     }
 }

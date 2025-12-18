@@ -29,13 +29,21 @@ namespace ToyProject.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.testResultView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.desisionColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.judgementColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.testDateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.equipmentColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.equipmentComboboxEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.testerColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.testerComboboxEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.testGridControl = new DevExpress.XtraGrid.GridControl();
             this.testGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.receptionDateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,24 +52,31 @@ namespace ToyProject.View
             this.testNameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.testItemName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.referenceValueColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ComboboxItem = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.addResultcolumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.addResultButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.saveButton = new DevExpress.XtraEditors.SimpleButton();
             this.refreshButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.saveButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.testContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.progressMenu = new System.Windows.Forms.ToolStripTextBox();
+            this.completeMenu = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.testResultView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentComboboxEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testerComboboxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboboxItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addResultButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            this.testContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // testResultView
@@ -100,16 +115,32 @@ namespace ToyProject.View
             // equipmentColumn
             // 
             this.equipmentColumn.Caption = "검사장비";
+            this.equipmentColumn.ColumnEdit = this.equipmentComboboxEdit;
             this.equipmentColumn.Name = "equipmentColumn";
             this.equipmentColumn.Visible = true;
             this.equipmentColumn.VisibleIndex = 3;
             // 
+            // equipmentComboboxEdit
+            // 
+            this.equipmentComboboxEdit.AutoHeight = false;
+            this.equipmentComboboxEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.equipmentComboboxEdit.Name = "equipmentComboboxEdit";
+            // 
             // testerColumn
             // 
             this.testerColumn.Caption = "검사자";
+            this.testerColumn.ColumnEdit = this.testerComboboxEdit;
             this.testerColumn.Name = "testerColumn";
             this.testerColumn.Visible = true;
             this.testerColumn.VisibleIndex = 4;
+            // 
+            // testerComboboxEdit
+            // 
+            this.testerComboboxEdit.AutoHeight = false;
+            this.testerComboboxEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.testerComboboxEdit.Name = "testerComboboxEdit";
             // 
             // testGridControl
             // 
@@ -122,7 +153,9 @@ namespace ToyProject.View
             this.testGridControl.Margin = new System.Windows.Forms.Padding(0);
             this.testGridControl.Name = "testGridControl";
             this.testGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.ComboboxItem});
+            this.equipmentComboboxEdit,
+            this.testerComboboxEdit,
+            this.addResultButton});
             this.testGridControl.Size = new System.Drawing.Size(1130, 645);
             this.testGridControl.TabIndex = 4;
             this.testGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -137,7 +170,8 @@ namespace ToyProject.View
             this.patientNameColumn,
             this.testNameColumn,
             this.testItemName,
-            this.referenceValueColumn});
+            this.referenceValueColumn,
+            this.addResultcolumn});
             this.testGridView.GridControl = this.testGridControl;
             this.testGridView.GroupCount = 2;
             this.testGridView.Name = "testGridView";
@@ -150,6 +184,7 @@ namespace ToyProject.View
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.testCodeColumn, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.patientNameColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.testGridView.CustomDrawGroupRow += new DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventHandler(this.TestGridViewCustomDrawGroupRow);
+            this.testGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.TestGridViewPopupMenuShowing);
             // 
             // receptionDateColumn
             // 
@@ -195,12 +230,22 @@ namespace ToyProject.View
             this.referenceValueColumn.Visible = true;
             this.referenceValueColumn.VisibleIndex = 3;
             // 
-            // ComboboxItem
+            // addResultcolumn
             // 
-            this.ComboboxItem.AutoHeight = false;
-            this.ComboboxItem.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComboboxItem.Name = "ComboboxItem";
+            this.addResultcolumn.ColumnEdit = this.addResultButton;
+            this.addResultcolumn.Name = "addResultcolumn";
+            this.addResultcolumn.Visible = true;
+            this.addResultcolumn.VisibleIndex = 4;
+            // 
+            // addResultButton
+            // 
+            this.addResultButton.AutoHeight = false;
+            this.addResultButton.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "결과추가", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.addResultButton.Name = "addResultButton";
+            this.addResultButton.NullText = "결과추가";
+            this.addResultButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.addResultButton.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RepositoryItemButtonEdit1ButtonClick);
             // 
             // layoutControl1
             // 
@@ -214,6 +259,16 @@ namespace ToyProject.View
             this.layoutControl1.Size = new System.Drawing.Size(1154, 721);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "새로고침";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(12, 687);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(1130, 22);
+            this.saveButton.StyleController = this.layoutControl1;
+            this.saveButton.TabIndex = 5;
+            this.saveButton.Text = "저장";
+            this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
             // 
             // refreshButton
             // 
@@ -255,16 +310,6 @@ namespace ToyProject.View
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(12, 687);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(1130, 22);
-            this.saveButton.StyleController = this.layoutControl1;
-            this.saveButton.TabIndex = 5;
-            this.saveButton.Text = "저장";
-            this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.saveButton;
@@ -274,6 +319,30 @@ namespace ToyProject.View
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // testContextMenu
+            // 
+            this.testContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progressMenu,
+            this.completeMenu});
+            this.testContextMenu.Name = "testContextMenu";
+            this.testContextMenu.Size = new System.Drawing.Size(161, 54);
+            // 
+            // progressMenu
+            // 
+            this.progressMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.progressMenu.Name = "progressMenu";
+            this.progressMenu.Size = new System.Drawing.Size(100, 23);
+            this.progressMenu.Text = "검사중";
+            this.progressMenu.Click += new System.EventHandler(this.ProgressMenuClick);
+            // 
+            // completeMenu
+            // 
+            this.completeMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.completeMenu.Name = "completeMenu";
+            this.completeMenu.Size = new System.Drawing.Size(100, 23);
+            this.completeMenu.Text = "검사 완료";
+            this.completeMenu.Click += new System.EventHandler(this.CompleteMenuClick);
+            // 
             // TestContentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -282,15 +351,19 @@ namespace ToyProject.View
             this.Name = "TestContentControl";
             this.Size = new System.Drawing.Size(1154, 721);
             ((System.ComponentModel.ISupportInitialize)(this.testResultView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentComboboxEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testerComboboxEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboboxItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addResultButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            this.testContextMenu.ResumeLayout(false);
+            this.testContextMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,7 +383,6 @@ namespace ToyProject.View
         private DevExpress.XtraEditors.SimpleButton refreshButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.Columns.GridColumn referenceValueColumn;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox ComboboxItem;
         private DevExpress.XtraGrid.Views.Grid.GridView testResultView;
         private DevExpress.XtraGrid.Columns.GridColumn desisionColumn;
         private DevExpress.XtraGrid.Columns.GridColumn judgementColumn;
@@ -319,5 +391,12 @@ namespace ToyProject.View
         private DevExpress.XtraGrid.Columns.GridColumn testerColumn;
         private DevExpress.XtraEditors.SimpleButton saveButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox equipmentComboboxEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox testerComboboxEdit;
+        private System.Windows.Forms.ContextMenuStrip testContextMenu;
+        private System.Windows.Forms.ToolStripTextBox progressMenu;
+        private System.Windows.Forms.ToolStripTextBox completeMenu;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit addResultButton;
+        private DevExpress.XtraGrid.Columns.GridColumn addResultcolumn;
     }
 }

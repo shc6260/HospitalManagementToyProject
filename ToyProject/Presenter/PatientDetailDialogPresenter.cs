@@ -1,28 +1,45 @@
 ﻿using System;
+using System.Threading.Tasks;
+using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
 {
-    public class PatientDetailDialogPresenter
+    public class PatientDetailDialogPresenter : PresenterBase
     {
-        public PatientDetailDialogPresenter(IPatientDetailDialogView view, Patient patient)
+        public PatientDetailDialogPresenter(IPatientDetailDialogView view, MessageService messageService) : base(messageService)
         {
             _view = view;
 
             _view.SavePatient += View_SavePatient;
-
-            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, patient);
-            _patientId = patient?.Id;
+            _view.LoadRequest += View_LoadRequest;
         }
 
         private readonly IPatientDetailDialogView _view;
-        private readonly PatientEditPresenter _patientEditPresenter;
-        private readonly long? _patientId;
+        private PatientEditPresenter _patientEditPresenter;
+
+        public Task LoadAsync(Patient patient)
+        {
+            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, patient);
+
+            return Task.CompletedTask;
+        }
 
         private async void View_SavePatient(object sender, EventArgs e)
         {
-            await _patientEditPresenter.SavePatient();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _patientEditPresenter.SavePatient();
+            });
+        }
+
+        private async void View_LoadRequest(object sender, Patient e)
+        {
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await LoadAsync(e);
+            });
         }
     }
 }

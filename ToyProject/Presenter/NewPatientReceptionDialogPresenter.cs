@@ -26,8 +26,11 @@ namespace ToyProject.Presenter
             var patient = _view.PatientEditControl.GetPatient();
             var reception = _view.IReceptionControlView.GetReception();
 
-            await _receptionService.AddNewPatientReception(patient, reception);
-            EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _receptionService.AddNewPatientReception(patient, reception);
+                EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+            });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -24,6 +25,30 @@ namespace ToyProject.Core.Repositories
                     return patients;
                 }
             });
+        }
+
+        public async Task<bool> HasChanged(DateTime checkTime)
+        {
+            using (var conn = DbConnectionFactory.CreateConnection())
+            {
+                conn.Open();
+
+                var hasChanged = await conn.ExecuteScalarAsync<int>(
+                    @"
+                SELECT CASE
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM Tester
+                        WHERE modified_dt > @checkTime
+                    )
+                    THEN 1 ELSE 0
+                END
+                ",
+                    new { @checkTime = checkTime }
+                );
+
+                return hasChanged == 1;
+            }
         }
 
         public Task AddTester(TesterAddRequestDto dto)

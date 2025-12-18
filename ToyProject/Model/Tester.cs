@@ -55,5 +55,10 @@
                 Office_Info = OfficeInfo
             };
         }
+
+        public override string ToString()
+        {
+            return Name; 
+        }
     }
 }

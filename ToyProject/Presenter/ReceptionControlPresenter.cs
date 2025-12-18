@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
-using ToyProject.Core.Repositories;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.View.IView;

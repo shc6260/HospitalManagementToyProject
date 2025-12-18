@@ -6,6 +6,7 @@ using System.Transactions;
 using ToyProject.Core.Helper;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
+using ToyProject.Model.Dto;
 using ToyProject.Model.Type;
 
 namespace ToyProject.Core.Service
@@ -27,23 +28,34 @@ namespace ToyProject.Core.Service
             return dtoList.IsNullOrEmpty() ? Enumerable.Empty<TestDetail>() : TestDetail.FromDtos(dtoList);
         }
 
-        public async Task SaveChangesAsync(IEnumerable<DataTableChange<TestResult>> changes)
+        public async Task SaveChangesAsync(IEnumerable<DataTableChange<TestResult>> changes, IEnumerable<(string Code, StatusType Status)> testChanges)
+        {
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                await SaveResultsAsync(changes);
+
+                var testChangeDtos = testChanges.Select(i => new TestModifyRequestDto()
+                {
+                    Test_Code = i.Code,
+                    Status = i.Status
+                });
+                await _testRepository.ModifyTestsAsync(testChangeDtos);
+                scope.Complete();
+            }
+        }
+
+        private async Task SaveResultsAsync(IEnumerable<DataTableChange<TestResult>> changes)
         {
             if (changes.IsNullOrEmpty())
                 return;
 
             var changeGroup = changes.GroupBy(i => i.ChangeType).ToDictionary(k => k.Key, v => v.Select(i => i.Data));
 
-            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                if (changeGroup.TryGetValue(DataRowState.Added, out var adds))
-                    await InsertAsync(adds);
+            if (changeGroup.TryGetValue(DataRowState.Added, out var adds))
+                await InsertAsync(adds);
 
-                if (changeGroup.TryGetValue(DataRowState.Modified, out var modifieds))
-                    await UpdateAsync(modifieds);
-
-                scope.Complete();
-            }
+            if (changeGroup.TryGetValue(DataRowState.Modified, out var modifieds))
+                await UpdateAsync(modifieds);
         }
 
         private Task InsertAsync(IEnumerable<TestResult> test)

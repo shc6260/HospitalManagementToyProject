@@ -32,21 +32,27 @@ namespace ToyProject.Presenter
 
         private async void ViewLoadRequestByReceptionSimple(object sender, ReceptionWithPatientSimpleResponse e)
         {
-            await _receptionControlPresenter.LoadAsync(e.Id);
+            await _messageService.RunInProgressPopupAsync(() => _receptionControlPresenter.LoadAsync(e.Id));
 
         }
 
 
         private async void ViewCancelReceptionRequest(object sender, EventArgs e)
         {
-            await _receptionControlPresenter.DeleteReception();
-            EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _receptionControlPresenter.DeleteReception();
+                EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+            });
         }
 
         private async void ViewSaveReceptionRequest(object sender, EventArgs e)
         {
-            await _receptionControlPresenter.SaveReception();
-            EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+             await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _receptionControlPresenter.SaveReception();
+                EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+            });
         }
     }
 }

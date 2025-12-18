@@ -1,4 +1,5 @@
 ﻿using System;
+using ToyProject.Model;
 using ToyProject.View.IView;
 
 namespace ToyProject.View
@@ -20,6 +21,11 @@ namespace ToyProject.View
             OnSavePatient();
         }
 
+        public void LoadView(Patient patient)
+        {
+            OnLoadRequest(patient);
+        }
+
 
         #region IPatientDetailDialogView
 
@@ -31,6 +37,13 @@ namespace ToyProject.View
         private void OnSavePatient()
         {
             SavePatient?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler<Patient> LoadRequest;
+
+        public void OnLoadRequest(Patient args)
+        {
+            LoadRequest?.Invoke(this, args);
         }
 
         #endregion

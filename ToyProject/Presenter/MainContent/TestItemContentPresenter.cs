@@ -29,7 +29,7 @@ namespace ToyProject.Presenter.MainContent
 
         private async void OnLoaded(object sender, EventArgs e)
         {
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(Refresh);
         }
 
         public override async Task Refresh()
@@ -49,8 +49,11 @@ namespace ToyProject.Presenter.MainContent
                 return;
             }
 
-            await _testItemService.DeleteTestItemAsync(e.Id.Value);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testItemService.DeleteTestItemAsync(e.Id.Value);
+                await Refresh();
+            });
         }
 
         private async void OnToggleActiveRequested(object sender, TestItem e)
@@ -58,14 +61,20 @@ namespace ToyProject.Presenter.MainContent
             if (e.Id == null)
                 return;
 
-            await _testItemService.SetEnabledTestItemAsync(e.Id.Value, !e.IsEnabled);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testItemService.SetEnabledTestItemAsync(e.Id.Value, !e.IsEnabled);
+                await Refresh();
+            });
         }
 
         private async void OnUpdateEquipRequested(object sender, TestItem e)
         {
-            await _testItemService.SaveTestItemAsync(e);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testItemService.SaveTestItemAsync(e);
+                await Refresh();
+            });
         }
 
         private async Task<IEnumerable<TestItem>> GetTestItems()

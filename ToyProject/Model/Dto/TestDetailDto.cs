@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ToyProject.Model.Type;
 
 namespace ToyProject.Model.Dto
 {
@@ -7,7 +8,7 @@ namespace ToyProject.Model.Dto
     {
         // Test
         public long Id { get; set; }
-        public string Status { get; set; }
+        public StatusType? Status { get; set; }
         public long? TestItem_Id { get; set; }
         public string Test_Name { get; set; }
         public Guid? Test_Code { get; set; }

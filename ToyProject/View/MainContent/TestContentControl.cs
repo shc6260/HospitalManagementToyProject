@@ -1,10 +1,12 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using ToyProject.Core.Helper;
 using ToyProject.Model;
 using ToyProject.Model.Type;
 using ToyProject.View.IView.MainContent;
@@ -22,6 +24,7 @@ namespace ToyProject.View
         private const string RelationName = "TestResults";
         private const string MainTableName = "Main";
         private const string ResultTableName = "Result";
+        private int _contextMenuRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
         private DataSet _testDataSet;
         private DataTable _mainTable;
         private DataTable _resulsTable;
@@ -42,8 +45,8 @@ namespace ToyProject.View
             desisionColumn.FieldName = nameof(TestResult.Decision);
             judgementColumn.FieldName = nameof(TestResult.JudgementValue);
             testDateColumn.FieldName = nameof(TestResult.TestDate);
-            equipmentColumn.FieldName = nameof(TestResult.EquipmentName);
-            testerColumn.FieldName = nameof(TestResult.TesterName);
+            equipmentColumn.FieldName = nameof(TestResult.EquipmentId);
+            testerColumn.FieldName = nameof(TestResult.TesterId);
 
             _mainTable = new DataTable(MainTableName);
             _mainTable.Columns.Add(nameof(TestDetail.Id), typeof(long));
@@ -100,8 +103,9 @@ namespace ToyProject.View
 
                 var patientName = Convert.ToString(view.GetRowCellValue(childRowHandle, nameof(TestDetail.PatientName)));
                 var testName = Convert.ToString(view.GetRowCellValue(childRowHandle, nameof(TestDetail.TestName)));
+                var status = Convert.ToString(view.GetRowCellValue(childRowHandle, nameof(TestDetail.Status)));
 
-                groupInfo.GroupText = $"{patientName} / {testName}";
+                groupInfo.GroupText = $"{patientName} / {testName} / {status.ToStatusType().ToDisplayText()}";
             }
         }
 
@@ -119,7 +123,7 @@ namespace ToyProject.View
 
             foreach (DataRow row in changeTable.Rows)
             {
-                if (row.RowState != DataRowState.Added && row.RowState != DataRowState.Modified && row.RowState != DataRowState.Modified)
+                if (row.RowState != DataRowState.Added && row.RowState != DataRowState.Modified && row.RowState != DataRowState.Deleted)
                     continue;
 
                 list.Add(new DataTableChange<TestResult>
@@ -127,6 +131,34 @@ namespace ToyProject.View
                         changeType: row.RowState,
                         data: TestResult.FromDataRow(row, row.RowState == DataRowState.Deleted ? DataRowVersion.Original : DataRowVersion.Current)
                     ));
+            }
+
+            return list.Where(i => string.IsNullOrEmpty(i.Data.Decision) == false).ToArray();
+        }
+
+        private IEnumerable<(string Code, StatusType Status)> GetTestChanges()
+        {
+            var list = new List<(string Code, StatusType Status)>();
+
+            var changeTable = _mainTable.GetChanges();
+            if (changeTable == null)
+                return list;
+
+            foreach (DataRow row in changeTable.Rows)
+            {
+                if (row.RowState != DataRowState.Modified)
+                    continue;
+
+                var code = row.GetString(nameof(TestDetail.TestCode), DataRowVersion.Current);
+
+                if (list.Any(i => i.Code == code))
+                    continue;
+
+                list.Add(
+                (
+                    code,
+                    row.GetString(nameof(TestDetail.Status), DataRowVersion.Current).ToStatusType()
+                ));
             }
 
             return list;
@@ -140,7 +172,18 @@ namespace ToyProject.View
         private void SaveButtonClick(object sender, EventArgs e)
         {
             var changes = GetResultChanges();
-            OnSaveRequested(changes);
+            var testChanges = GetTestChanges();
+            OnSaveRequested(changes, testChanges);
+        }
+
+        private void ProgressMenuClick(object sender, EventArgs e)
+        {
+            SetStatusForContextRow(StatusType.Progress);
+        }
+
+        private void CompleteMenuClick(object sender, EventArgs e)
+        {
+            SetStatusForContextRow(StatusType.Complete);
         }
 
         #endregion
@@ -154,12 +197,12 @@ namespace ToyProject.View
             RefreshRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        public event EventHandler<IEnumerable<DataTableChange<TestResult>>> SaveRequested;
+        public event EventHandler<(IEnumerable<DataTableChange<TestResult>> resultChanges, IEnumerable<(string Code, StatusType Status)> testChanges)> SaveRequested;
 
 
-        private void OnSaveRequested(IEnumerable<DataTableChange<TestResult>> changes)
+        private void OnSaveRequested(IEnumerable<DataTableChange<TestResult>> changes, IEnumerable<(string Code, StatusType Status)> testChanges)
         {
-            SaveRequested?.Invoke(this, changes);
+            SaveRequested?.Invoke(this, (changes, testChanges));
         }
 
         public void SetTestList(IEnumerable<TestDetail> items)
@@ -214,6 +257,112 @@ namespace ToyProject.View
             _mainTable.AcceptChanges();
         }
 
+        public void SetData(IEnumerable<Equipment> equipments, IEnumerable<Tester> testers)
+        {
+            equipmentComboboxEdit.Items.Clear();
+            testerComboboxEdit.Items.Clear();
+
+            equipmentComboboxEdit.Items.AddRange(equipments.Select(i
+                => new ImageComboBoxItem(description: i.Name, value: i.Id))
+                .ToArray());
+            testerComboboxEdit.Items.AddRange(testers.Select(i
+                => new ImageComboBoxItem(description: i.Name, value: i.Id))
+                .ToArray());
+        }
+
         #endregion
+
+        private void SetStatusForContextRow(StatusType status)
+        {
+            var view = testGridView;
+            if (view == null)
+                return;
+
+            var rowHandle = _contextMenuRowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle
+                ? _contextMenuRowHandle
+                : view.FocusedRowHandle;
+
+            if (rowHandle == DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                return;
+
+            var statusValue = status.ToString();
+
+            void SetStatusOnDataRow(int dataRowHandle)
+            {
+                var dataRow = view.GetDataRow(dataRowHandle);
+                if (dataRow == null)
+                    return;
+
+                dataRow[nameof(TestDetail.Status)] = statusValue;
+            }
+
+            void ApplyRecursively(int handle)
+            {
+                if (view.IsGroupRow(handle))
+                {
+                    var childCount = view.GetChildRowCount(handle);
+                    for (int i = 0; i < childCount; i++)
+                    {
+                        int childHandle = view.GetChildRowHandle(handle, i);
+                        if (childHandle < 0)
+                            continue;
+
+                        ApplyRecursively(childHandle);
+                    }
+
+                    return;
+                }
+
+                SetStatusOnDataRow(handle);
+            }
+
+            ApplyRecursively(rowHandle);
+
+            view.RefreshData();
+            _contextMenuRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+        }
+
+        private void TestGridViewPopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            var view = sender as GridView;
+            if (view == null)
+                return;
+
+            if (!e.HitInfo.InGroupRow)
+                return;
+
+            int groupLevel = view.GetRowLevel(e.HitInfo.RowHandle);
+
+            // 예: 환자94 / wqdwqdwqd
+            if (groupLevel == 1)
+            {
+                _contextMenuRowHandle = e.HitInfo.RowHandle;
+                view.FocusedRowHandle = e.HitInfo.RowHandle;
+                testContextMenu.Show(Control.MousePosition);
+            }
+        }
+
+        private void RepositoryItemButtonEdit1ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            var view = testGridControl.FocusedView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            var rowHandle = view.FocusedRowHandle;
+            if (rowHandle < 0 || view.IsGroupRow(rowHandle))
+                return;
+
+            var mainRow = view.GetDataRow(rowHandle);
+            if (mainRow == null)
+                return;
+
+            var testId = (long)mainRow[nameof(TestDetail.Id)];
+
+            var newResultRow = _resulsTable.NewRow();
+            newResultRow[nameof(TestResult.TestId)] = testId;
+
+            _resulsTable.Rows.Add(newResultRow);
+
+            testGridControl.RefreshDataSource();
+        }
     }
 }

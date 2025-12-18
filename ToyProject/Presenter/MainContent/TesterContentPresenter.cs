@@ -27,7 +27,7 @@ namespace ToyProject.Presenter
 
         private async void OnLoaded(object sender, EventArgs e)
         {
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(Refresh);
         }
 
         public override async Task Refresh()
@@ -47,8 +47,11 @@ namespace ToyProject.Presenter
                 return;
             }
 
-            await _testerService.DeleteTesterAsync(e.Id.Value);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testerService.DeleteTesterAsync(e.Id.Value);
+                await Refresh();
+            });
         }
 
         private async void OnToggleActiveRequested(object sender, Tester e)
@@ -56,14 +59,20 @@ namespace ToyProject.Presenter
             if (e.Id == null)
                 return;
 
-            await _testerService.SetEnabledTesterAsync(e.Id.Value, !e.IsEnabled);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testerService.SetEnabledTesterAsync(e.Id.Value, !e.IsEnabled);
+                await Refresh();
+            });
         }
 
         private async void OnUpdateTesterRequested(object sender, Tester e)
         {
-            await _testerService.SaveTesterAsync(e);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _testerService.SaveTesterAsync(e);
+                await Refresh();
+            });
         }
 
         private async Task<IEnumerable<Tester>> GetTesters()

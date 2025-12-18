@@ -50,5 +50,10 @@ namespace ToyProject.Model
                 EquipmentCode = EquipmentCode
             };
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

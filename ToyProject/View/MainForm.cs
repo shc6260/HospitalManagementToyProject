@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraBars.FluentDesignSystem;
-using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
@@ -7,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyProject.Core.Service;
 using ToyProject.Model;
@@ -179,7 +179,11 @@ namespace ToyProject
             if (_currentPresenter == null)
                 return;
 
-            await _currentPresenter.Refresh();
+            await _messageService.RunInProgressAsync(async () =>
+            {
+                await Task.Delay(1000);
+                await _currentPresenter.Refresh();
+            });
         }
 
         private void gnbSearchEdit_EditValueChanged(object sender, EventArgs e)
@@ -252,9 +256,7 @@ namespace ToyProject
 
         public void ShowPatientDetail(Patient patient)
         {
-            var patientDetail = new PatientDetailDialogForm();
-            new PatientDetailDialogPresenter(patientDetail, patient);
-            patientDetail.Show();
+            DialogExtension.ShowPatientDetailDialog(this, patient);
         }
 
         public void ShowReceptionMessage(Patient patient)

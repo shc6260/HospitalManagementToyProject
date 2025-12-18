@@ -5,6 +5,7 @@ using ToyProject.Core.Helper;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.Presenter;
+using ToyProject.View;
 using ToyProject.View.Dialog;
 
 namespace ToyProject
@@ -18,8 +19,19 @@ namespace ToyProject
 
             var form = new NewPatientDialogForm();
             form.Owner = parent as Form;
-            new NewPatientDialogPresenter(form);
+            new NewPatientDialogPresenter(form, form.CreateMessageService());
             form.Show(parent);
+        }
+
+        public static void ShowPatientDetailDialog(IWin32Window parent, Patient patient)
+        {
+            FormManager.ShowForm
+           (
+               parent,
+               () => new PatientDetailDialogForm(),
+               (f) => new PatientDetailDialogPresenter(f, f.CreateMessageService()),
+               (f) => f.LoadView(patient)
+           );
         }
 
         public static void ShowNewReceptionDialog(IWin32Window parent, Patient patient)
@@ -71,7 +83,7 @@ namespace ToyProject
     public static class FormManager
     {
         public static f ShowForm<f, p>(IWin32Window parent, Func<f> createForm, Func<f, p> createPresenter, Action<f> Load = null)
-            where f : Form 
+            where f : Form
             where p : PresenterBase
         {
             if (DialogHelper.IsFormOpen<f>())

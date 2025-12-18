@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ToyProject.Core.Helper;
 using ToyProject.Model.Dto;
+using ToyProject.Model.Type;
 
 namespace ToyProject.Model
 {
@@ -11,7 +12,7 @@ namespace ToyProject.Model
     /// </summary>
     public class TestDetail
     {
-        public TestDetail(long id, string status, long? testItemId, string testName, Guid? testCode, string testItemName, decimal? referenceMaxValue,
+        public TestDetail(long id, StatusType? status, long? testItemId, string testName, Guid? testCode, string testItemName, decimal? referenceMaxValue,
             decimal? referenceMinValue, long receptionId, DateTime receptionDate, long patientId, string patientName, IEnumerable<TestResult> results)
         {
             Id = id;
@@ -33,7 +34,7 @@ namespace ToyProject.Model
 
         // Core identifiers and state
         public long Id { get; }
-        public string Status { get; }
+        public StatusType? Status { get; }
         public long? TestItemId { get; }
         public string TestName { get; }
         public Guid? TestCode { get; }
@@ -65,7 +66,7 @@ namespace ToyProject.Model
 
                 yield return new TestDetail(
                     id: dto.Id,
-                    status: dto.Status,
+                    status: dto.Status ?? StatusType.Reception,
                     testItemId: dto.TestItem_Id,
                     testName: dto.Test_Name,
                     testCode: dto.Test_Code,

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToyProject.Core.Class;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
 using ToyProject.Model.Dto;
@@ -12,12 +13,20 @@ namespace ToyProject.Core.Service
         public EquipmentService(EquipmentRepository equipmentRepository)
         {
             _equipmentRepository = equipmentRepository;
+            _equipmentListCache = new SimpleCache<IEnumerable<Equipment>>(args => _equipmentRepository.HasChanged(args), GetChacheListAsync);
         }
 
 
         private EquipmentRepository _equipmentRepository;
+        private SimpleCache<IEnumerable<Equipment>> _equipmentListCache;
 
-        public Task<IEnumerable<Equipment>> GetAllEquipmentAsync()
+
+        public async Task<IEnumerable<Equipment>> GetAllEquipmentAsync()
+        {
+            return await _equipmentListCache.GetAsync();
+        }
+
+        public Task<IEnumerable<Equipment>> GetChacheListAsync()
         {
             return Task.Run(async () =>
             {

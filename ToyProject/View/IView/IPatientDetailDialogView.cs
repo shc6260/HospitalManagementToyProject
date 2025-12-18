@@ -1,4 +1,5 @@
 ﻿using System;
+using ToyProject.Model;
 
 namespace ToyProject.View.IView
 {
@@ -7,5 +8,7 @@ namespace ToyProject.View.IView
         IPatientEditControl PatientEditControl { get; }
 
         event EventHandler SavePatient;
+
+        event EventHandler<Patient> LoadRequest;
     }
 }

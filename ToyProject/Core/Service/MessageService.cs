@@ -1,5 +1,9 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToyProject.View.Dialog;
 
 namespace ToyProject.Core.Service
 {
@@ -11,6 +15,10 @@ namespace ToyProject.Core.Service
         {
             _owner = owner;
         }
+
+        private SplashScreenManager _splash;
+
+
 
         public void ShowInfo(string message)
         {
@@ -26,6 +34,87 @@ namespace ToyProject.Core.Service
         {
             var result = XtraMessageBox.Show(_owner, message, "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             return result == DialogResult.OK;
+        }
+
+
+        public async Task RunInProgressAsync(Func<Task> task)
+        {
+            var owner = _owner as Form;
+            if (owner == null)
+                return;
+
+            IOverlaySplashScreenHandle handle = null;
+
+            try
+            {
+                var workTask = task();
+                var delayTask = Task.Delay(300);
+
+                if (await Task.WhenAny(workTask, delayTask) == delayTask)
+                    handle = SplashScreenManager.ShowOverlayForm(owner);
+
+                await workTask;
+            }
+            catch (Exception e)
+            {
+                if (handle != null)
+                    SplashScreenManager.CloseOverlayForm(handle);
+
+                ShowError(e.Message);
+            }
+            finally
+            {
+                if (handle != null)
+                    SplashScreenManager.CloseOverlayForm(handle);
+            }
+        }
+
+
+        public async Task RunInProgressPopupAsync(Func<Task> task)
+        {
+            var owner = _owner as Form;
+            if (owner == null)
+                return;
+
+            try
+            {
+                _splash = _splash ?? new SplashScreenManager(owner, typeof(ProgessPopup), useFadeIn: true, useFadeOut: true);
+
+                var workTask = task();
+                var delayTask = Task.Delay(300);
+
+                if (await Task.WhenAny(workTask, delayTask) == delayTask)
+                {
+                    owner.Enabled = false;
+                    _splash.ShowWaitForm();
+                }
+
+                await workTask;
+            }
+            catch (Exception e)
+            {
+                _splash.CloseWaitForm();
+                ShowError(e.Message);
+            }
+            finally
+            {
+                owner.Enabled = true;
+                if (_splash.IsSplashFormVisible)
+                    _splash.CloseWaitForm();
+            }
+        }
+
+
+        public async Task RunInTryCatchAsync(Func<Task> task)
+        {
+            try
+            {
+                await task();
+            }
+            catch (Exception e)
+            {
+                ShowError(e.Message);
+            }
         }
     }
 

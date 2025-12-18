@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Class\SimpleCache.cs" />
     <Compile Include="Core\Events\ReceptionChangedEventArgs.cs" />
     <Compile Include="Core\Factotry\ServiceFactory.cs" />
     <Compile Include="Core\Helper\DataRowExtension.cs" />
@@ -155,6 +156,12 @@
     </Compile>
     <Compile Include="View\Dialog\NewPatientReceptionDialogForm.Designer.cs">
       <DependentUpon>NewPatientReceptionDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ProgessPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProgessPopup.Designer.cs">
+      <DependentUpon>ProgessPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\ReceptionControl.cs">
       <SubType>UserControl</SubType>
@@ -253,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\NewPatientReceptionDialogForm.resx">
       <DependentUpon>NewPatientReceptionDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProgessPopup.resx">
+      <DependentUpon>ProgessPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\ReceptionControl.resx">
       <DependentUpon>ReceptionControl.cs</DependentUpon>

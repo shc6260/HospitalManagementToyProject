@@ -36,14 +36,12 @@ namespace ToyProject.Presenter
             if (e.Id == null)
                 return;
 
-            if (true)
-            {
-                _messageService.Confirm("삭제가 불가능한 검사자입니다.");
-                return;
-            }
 
-            await _equipmentService.DeleteEquipmentAsync(e.Id.Value);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _equipmentService.DeleteEquipmentAsync(e.Id.Value);
+                await Refresh();
+            });
         }
 
         private async void OnToggleActiveRequested(object sender, Equipment e)
@@ -51,14 +49,20 @@ namespace ToyProject.Presenter
             if (e.Id == null)
                 return;
 
-            await _equipmentService.SetEnabledEquipmentAsync(e.Id.Value, !e.IsEnabled);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _equipmentService.SetEnabledEquipmentAsync(e.Id.Value, !e.IsEnabled);
+                await Refresh();
+            });
         }
 
         private async void OnUpdateEquipRequested(object sender, Equipment e)
         {
-            await _equipmentService.SaveEquipmentAsync(e);
-            await Refresh();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _equipmentService.SaveEquipmentAsync(e);
+                await Refresh();
+            });
         }
 
         private async Task<IEnumerable<Equipment>> GetTesters()

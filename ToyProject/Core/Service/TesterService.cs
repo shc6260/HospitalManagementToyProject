@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToyProject.Core.Class;
+using ToyProject.Core.Helper;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
 
@@ -8,20 +10,25 @@ namespace ToyProject.Core.Service
 {
     public class TesterService
     {
-        private TesterRepository _testerRepository;
 
         public TesterService(TesterRepository testerRepository)
         {
             _testerRepository = testerRepository;
+            _testerListCache = new SimpleCache<IEnumerable<Tester>>(args => _testerRepository.HasChanged(args), GetChacheListAsync);
         }
 
-        public Task<IEnumerable<Tester>> GetAllTesterAsync()
+        private TesterRepository _testerRepository;
+        private SimpleCache<IEnumerable<Tester>> _testerListCache;
+
+        public async Task<IEnumerable<Tester>> GetAllTesterAsync()
         {
-            return Task.Run(async () =>
-            {
-                var result = await _testerRepository.FindAll();
-                return result.Select(Tester.From);
-            });
+            return await _testerListCache.GetAsync();
+        }
+
+        private async Task<IEnumerable<Tester>> GetChacheListAsync()
+        {
+            var result = await _testerRepository.FindAll();
+            return result.Select(Tester.From);
         }
 
         public Task SaveTesterAsync(Tester data)

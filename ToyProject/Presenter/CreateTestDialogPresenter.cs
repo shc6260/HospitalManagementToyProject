@@ -21,8 +21,11 @@ namespace ToyProject.Presenter
 
         private async void ViewLoadRequest(object sender, Model.Test e)
         {
-            var result = await _testItemService.GetAllTestItemAsync();
-            _view.SetTestItems(result, e?.TestItems);
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                var result = await _testItemService.GetAllTestItemAsync();
+                _view.SetTestItems(result, e?.TestItems);
+            });
         }
     }
 }

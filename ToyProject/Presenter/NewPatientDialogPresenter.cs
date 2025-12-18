@@ -1,11 +1,12 @@
 ﻿using System;
+using ToyProject.Core.Service;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
 {
-    public class NewPatientDialogPresenter
+    public class NewPatientDialogPresenter : PresenterBase
     {
-        public NewPatientDialogPresenter(INewPatientDialogView view)
+        public NewPatientDialogPresenter(INewPatientDialogView view, MessageService messageService) : base(messageService)
         {
             _view = view;
 
@@ -21,7 +22,10 @@ namespace ToyProject.Presenter
 
         private async void View_SavePatient(object sender, EventArgs e)
         {
-            await _patientEditPresenter.SavePatient();
+            await _messageService.RunInProgressPopupAsync(async () =>
+            {
+                await _patientEditPresenter.SavePatient();
+            });
         }
     }
 }
