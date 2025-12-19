@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ToyProject.Core.Helper;
@@ -12,18 +13,17 @@ namespace ToyProject
 {
     public static class DialogExtension
     {
-        public static void ShowNewPatientDialog(IWin32Window parent)
+        public static void ShowNewPatientDialog(this IWin32Window parent)
         {
-            if (DialogHelper.IsFormOpen<NewPatientDialogForm>())
-                return;
-
-            var form = new NewPatientDialogForm();
-            form.Owner = parent as Form;
-            new NewPatientDialogPresenter(form, form.CreateMessageService());
-            form.Show(parent);
+            FormManager.ShowForm
+           (
+               parent,
+               () => new NewPatientDialogForm(),
+               (f) => new NewPatientDialogPresenter(f, f.CreateMessageService())
+           );
         }
 
-        public static void ShowPatientDetailDialog(IWin32Window parent, Patient patient)
+        public static void ShowPatientDetailDialog(this IWin32Window parent, Patient patient)
         {
             FormManager.ShowForm
            (
@@ -34,7 +34,7 @@ namespace ToyProject
            );
         }
 
-        public static void ShowNewReceptionDialog(IWin32Window parent, Patient patient)
+        public static void ShowNewReceptionDialog(this IWin32Window parent, Patient patient)
         {
             FormManager.ShowForm
             (
@@ -45,7 +45,7 @@ namespace ToyProject
             );
         }
 
-        public static void ShowReceptionDialog(IWin32Window parent, ReceptionWithPatientSimpleResponse reception)
+        public static void ShowReceptionDialog(this IWin32Window parent, ReceptionWithPatientSimpleResponse reception)
         {
             FormManager.ShowForm
             (
@@ -56,7 +56,7 @@ namespace ToyProject
             );
         }
 
-        public static Test ShowCreateTestDialog(IWin32Window parent, Test test = null)
+        public static Test ShowCreateTestDialog(this IWin32Window parent, Test test = null)
         {
             var form = FormManager.ShowDialogForm
             (
@@ -69,7 +69,7 @@ namespace ToyProject
             return form.IsOk ? form.GetResult() : null;
         }
 
-        public static void ShowNewPatientReceptionDialog(IWin32Window parent)
+        public static void ShowNewPatientReceptionDialog(this IWin32Window parent)
         {
             FormManager.ShowForm
            (
@@ -78,11 +78,22 @@ namespace ToyProject
                (f) => new NewPatientReceptionDialogPresenter(f, f.CreateMessageService())
            );
         }
+
+        public static Equipment ShowEquipmentManagementDialog(this IWin32Window parent, Equipment item)
+        {
+            var form = new EquipmentManagementDialogForm(item);
+            var owner = (parent as Form) ?? (parent as Control)?.FindForm();
+            form.Owner = owner;
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.ShowDialog(owner);
+
+            return form.GetResult();
+        }
     }
 
     public static class FormManager
     {
-        public static f ShowForm<f, p>(IWin32Window parent, Func<f> createForm, Func<f, p> createPresenter, Action<f> Load = null)
+        public static f ShowForm<f, p>(IWin32Window parent, Func<f> createForm, Func<f, p> createPresenter, Action<f> Load = null, bool attachOwner = false)
             where f : Form
             where p : PresenterBase
         {
@@ -97,10 +108,27 @@ namespace ToyProject
             }
 
             var form = createForm();
-            var presetner = createPresenter(form);
-            form.Owner = parent as Form;
-            Load?.Invoke(form);
-            form.Show(parent);
+            var presetner = createPresenter?.Invoke(form);
+            var owner = (parent as Form) ?? (parent as Control)?.FindForm();
+            form.Owner = owner;
+            form.TopMost = false;
+
+            if (owner != null)
+            {
+                form.StartPosition = FormStartPosition.Manual;
+                form.Shown += (_, __) =>
+                {
+                    var targetX = owner.Location.X + (owner.Width - form.Width) / 2;
+                    var targetY = owner.Location.Y + (owner.Height - form.Height) / 2;
+                    form.Location = new Point(targetX, targetY);
+                };
+                Load?.Invoke(form);
+                form.Show(owner);
+            }
+
+            if (attachOwner == false)
+                form.Owner = null;
+
             return form;
         }
 
@@ -120,9 +148,11 @@ namespace ToyProject
 
             var form = createForm();
             var presetner = createPresenter(form);
-            form.Owner = parent as Form;
+            var owner = (parent as Form) ?? (parent as Control)?.FindForm();
+            form.Owner = owner;
+            form.StartPosition = FormStartPosition.CenterParent;
             Load?.Invoke(form);
-            form.ShowDialog(parent);
+            form.ShowDialog(owner);
             return form;
         }
     }

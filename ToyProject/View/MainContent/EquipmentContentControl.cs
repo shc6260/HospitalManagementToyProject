@@ -90,7 +90,7 @@ namespace ToyProject.View
             equipRowContextMenu.Close();
         }
 
-        private void addEquipButton_Click(object sender, EventArgs e)
+        private void AddEquipButtonClick(object sender, EventArgs e)
         {
             var result = ShowManagementDialog(null);
             if (result == null)
@@ -101,10 +101,7 @@ namespace ToyProject.View
 
         public Equipment ShowManagementDialog(Equipment item)
         {
-            var form = new EquipmentManagementDialogForm(item);
-            form.ShowDialog();
-
-            return form.GetResult();
+            return this.ShowEquipmentManagementDialog(item);
         }
 
         #endregion

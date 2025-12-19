@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
+using ToyProject.Model.Type;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
@@ -12,18 +14,21 @@ namespace ToyProject.Presenter
         {
             _view = view;
 
+            _testService = ServiceFactory.GetTestService();
+
             _view.SavePatient += View_SavePatient;
             _view.LoadRequest += View_LoadRequest;
         }
 
         private readonly IPatientDetailDialogView _view;
         private PatientEditPresenter _patientEditPresenter;
+        private TestService _testService;
 
-        public Task LoadAsync(Patient patient)
+        public async Task LoadAsync(Patient patient)
         {
             _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, patient);
-
-            return Task.CompletedTask;
+            var testDetail = await _testService.GetTestsAsync(StatusType.Complete, _patientEditPresenter.LoadedPatientId);
+            _view.SetTestItems(testDetail);
         }
 
         private async void View_SavePatient(object sender, EventArgs e)

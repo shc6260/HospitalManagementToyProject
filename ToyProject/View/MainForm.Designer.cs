@@ -55,7 +55,7 @@ namespace ToyProject
             this.mainTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.testTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
-            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.hospitalManagementMenu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.testerTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.equipmentTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.testItemTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -88,9 +88,9 @@ namespace ToyProject
             // 
             this.fluentDesignFormContainer1.Controls.Add(this.layoutControl1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(250, 31);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(122, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(697, 635);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(876, 668);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // layoutControl1
@@ -105,13 +105,13 @@ namespace ToyProject
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-1368, 459, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(697, 635);
+            this.layoutControl1.Size = new System.Drawing.Size(876, 668);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // newReceptionPatientButton
             // 
-            this.newReceptionPatientButton.Location = new System.Drawing.Point(587, 36);
+            this.newReceptionPatientButton.Location = new System.Drawing.Point(766, 36);
             this.newReceptionPatientButton.Name = "newReceptionPatientButton";
             this.newReceptionPatientButton.Size = new System.Drawing.Size(100, 26);
             this.newReceptionPatientButton.StyleController = this.layoutControl1;
@@ -121,7 +121,7 @@ namespace ToyProject
             // 
             // newPatientButton
             // 
-            this.newPatientButton.Location = new System.Drawing.Point(587, 10);
+            this.newPatientButton.Location = new System.Drawing.Point(766, 10);
             this.newPatientButton.Margin = new System.Windows.Forms.Padding(0);
             this.newPatientButton.Name = "newPatientButton";
             this.newPatientButton.Size = new System.Drawing.Size(100, 26);
@@ -135,7 +135,7 @@ namespace ToyProject
             this.mainPanel.Controls.Add(this.popupContainerControl2);
             this.mainPanel.Location = new System.Drawing.Point(10, 62);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(677, 563);
+            this.mainPanel.Size = new System.Drawing.Size(856, 596);
             this.mainPanel.TabIndex = 14;
             // 
             // popupContainerControl2
@@ -230,10 +230,10 @@ namespace ToyProject
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gnbSearchEdit.Properties.PopupControl = this.popupContainerControl2;
             this.gnbSearchEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.gnbSearchEdit.Size = new System.Drawing.Size(573, 20);
+            this.gnbSearchEdit.Size = new System.Drawing.Size(752, 20);
             this.gnbSearchEdit.StyleController = this.layoutControl1;
             this.gnbSearchEdit.TabIndex = 9;
-            this.gnbSearchEdit.EditValueChanged += new System.EventHandler(this.gnbSearchEdit_EditValueChanged);
+            this.gnbSearchEdit.EditValueChanged += new System.EventHandler(this.GnbSearchEditEditValueChanged);
             this.gnbSearchEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GnbPatientSearchEdit_KeyDown);
             // 
             // Root
@@ -246,7 +246,7 @@ namespace ToyProject
             this.layoutControlItem4,
             this.layoutControlItem5});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(697, 635);
+            this.Root.Size = new System.Drawing.Size(876, 668);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -255,7 +255,7 @@ namespace ToyProject
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem2.Size = new System.Drawing.Size(677, 563);
+            this.layoutControlItem2.Size = new System.Drawing.Size(856, 596);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -264,14 +264,14 @@ namespace ToyProject
             this.layoutControlItem3.Control = this.gnbSearchEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(577, 52);
+            this.layoutControlItem3.Size = new System.Drawing.Size(756, 52);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.newPatientButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(577, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(756, 0);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -284,7 +284,7 @@ namespace ToyProject
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.newReceptionPatientButton;
-            this.layoutControlItem5.Location = new System.Drawing.Point(577, 26);
+            this.layoutControlItem5.Location = new System.Drawing.Point(756, 26);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -302,11 +302,14 @@ namespace ToyProject
             this.mainTab,
             this.testTab,
             this.accordionControlSeparator1,
-            this.accordionControlElement3});
+            this.hospitalManagementMenu});
             this.mainMenuControl.Location = new System.Drawing.Point(0, 31);
+            this.mainMenuControl.MinimumSize = new System.Drawing.Size(60, 668);
             this.mainMenuControl.Name = "mainMenuControl";
-            this.mainMenuControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.mainMenuControl.Size = new System.Drawing.Size(250, 635);
+            this.mainMenuControl.OptionsMinimizing.ElementHeight = 60;
+            this.mainMenuControl.Padding = new System.Windows.Forms.Padding(3);
+            this.mainMenuControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
+            this.mainMenuControl.Size = new System.Drawing.Size(122, 668);
             this.mainMenuControl.TabIndex = 1;
             this.mainMenuControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             this.mainMenuControl.SelectedElementChanged += new DevExpress.XtraBars.Navigation.SelectedElementChangedEventHandler(this.SelectedMainMenu);
@@ -327,40 +330,52 @@ namespace ToyProject
             // 
             this.accordionControlSeparator1.Name = "accordionControlSeparator1";
             // 
-            // accordionControlElement3
+            // hospitalManagementMenu
             // 
-            this.accordionControlElement3.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.hospitalManagementMenu.Appearance.Default.Options.UseTextOptions = true;
+            this.hospitalManagementMenu.Appearance.Default.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.hospitalManagementMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.testerTab,
             this.equipmentTab,
             this.testItemTab});
-            this.accordionControlElement3.Expanded = true;
-            this.accordionControlElement3.Name = "accordionControlElement3";
-            this.accordionControlElement3.Text = "병원관리";
+            this.hospitalManagementMenu.Expanded = true;
+            this.hospitalManagementMenu.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
+            this.hospitalManagementMenu.Name = "hospitalManagementMenu";
+            this.hospitalManagementMenu.Text = "병원관리";
             // 
             // testerTab
             // 
+            this.testerTab.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
             this.testerTab.Name = "testerTab";
             this.testerTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.testerTab.Text = "검사자관리";
+            this.testerTab.Text = "  검사자관리";
             // 
             // equipmentTab
             // 
             this.equipmentTab.Name = "equipmentTab";
             this.equipmentTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.equipmentTab.Text = "장비관리";
+            this.equipmentTab.Text = "  장비관리";
             // 
             // testItemTab
             // 
             this.testItemTab.Name = "testItemTab";
             this.testItemTab.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.testItemTab.Text = "검사항목관리";
+            this.testItemTab.Text = "  검사항목관리";
             // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(947, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(998, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -388,16 +403,17 @@ namespace ToyProject
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 666);
+            this.ClientSize = new System.Drawing.Size(998, 699);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.mainMenuControl);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.MinimumSize = new System.Drawing.Size(949, 667);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "MainForm";
             this.NavigationControl = this.mainMenuControl;
             this.Text = "U2Toy";
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.fluentDesignFormContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -428,7 +444,7 @@ namespace ToyProject
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement mainTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement testTab;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement hospitalManagementMenu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement testerTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement equipmentTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement testItemTab;

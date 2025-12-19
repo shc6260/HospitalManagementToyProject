@@ -17,7 +17,7 @@
                     return "접수";
 
                 case StatusType.Progress:
-                    return "진행중";
+                    return "검사중";
 
                 case StatusType.Complete:
                     return "완료";

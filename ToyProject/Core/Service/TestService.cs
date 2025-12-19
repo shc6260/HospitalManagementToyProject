@@ -22,9 +22,9 @@ namespace ToyProject.Core.Service
         private readonly TestRepository _testRepository;
         private readonly TestResultRepository _testResultRepository;
 
-        public async Task<IEnumerable<TestDetail>> GetTestsAsync(StatusType status)
+        public async Task<IEnumerable<TestDetail>> GetTestsAsync(StatusType? status = null, long? patientId = null)
         {
-            var dtoList = await _testRepository.GetTestsAsync(status);
+            var dtoList = await _testRepository.GetTestsAsync(status, patientId);
             return dtoList.IsNullOrEmpty() ? Enumerable.Empty<TestDetail>() : TestDetail.FromDtos(dtoList);
         }
 

@@ -79,7 +79,7 @@ namespace ToyProject.View.Dialog
                 return;
 
             testItemRowContextMenu.Close();
-            var result = DialogExtension.ShowCreateTestDialog(this, row);
+            var result = this.ShowCreateTestDialog(row);
             if (result == null)
                 return;
 

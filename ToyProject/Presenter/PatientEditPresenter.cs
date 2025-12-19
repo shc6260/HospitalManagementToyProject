@@ -14,16 +14,16 @@ namespace ToyProject.Presenter
 
             _view = view;
             _view.SetPatient(patient);
-            _loadedPatientId = patient?.Id;
+            LoadedPatientId = patient?.Id;
         }
 
         private readonly IPatientEditControl _view;
         private readonly PatientService _patientService;
-        private long? _loadedPatientId;
+        public long? LoadedPatientId { get; private set; }
 
         public async Task<long> SavePatient()
         {
-            var patient = _loadedPatientId == null ? _view.GetPatient() : _view.GetPatient().WithId(_loadedPatientId.Value);
+            var patient = LoadedPatientId == null ? _view.GetPatient() : _view.GetPatient().WithId(LoadedPatientId.Value);
             return await _patientService.SavePatientAcync(patient);
         }
     }

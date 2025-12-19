@@ -81,7 +81,7 @@ namespace ToyProject.View
             if (row == null)
                 return;
 
-            DialogExtension.ShowReceptionDialog(this, row);
+            this.ShowReceptionDialog(row);
         }
 
         private void TestButtonClick(object sender, EventArgs e)

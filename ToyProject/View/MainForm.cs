@@ -78,7 +78,6 @@ namespace ToyProject
             addressColumn.FieldName = nameof(Patient.Address);
 
 
-            // 🔹 "접수" 버튼 컬럼 추가
             var buttonEdit = new RepositoryItemButtonEdit
             {
                 TextEditStyle = TextEditStyles.HideTextEditor
@@ -87,6 +86,12 @@ namespace ToyProject
             buttonEdit.Buttons[0].Kind = ButtonPredefines.Glyph;
 
             receptionColumn.ColumnEdit = buttonEdit;
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            hospitalManagementMenu.Expanded = false;
+            hospitalManagementMenu.Expanded = true;
         }
 
         #endregion
@@ -181,12 +186,11 @@ namespace ToyProject
 
             await _messageService.RunInProgressAsync(async () =>
             {
-                await Task.Delay(1000);
                 await _currentPresenter.Refresh();
             });
         }
 
-        private void gnbSearchEdit_EditValueChanged(object sender, EventArgs e)
+        private void GnbSearchEditEditValueChanged(object sender, EventArgs e)
         {
             if (gnbSearchEdit.IsPopupOpen == false)
             {
@@ -235,12 +239,12 @@ namespace ToyProject
 
         private void NewPatientButtonClick(object sender, EventArgs e)
         {
-            DialogExtension.ShowNewPatientDialog(this);
+            this.ShowNewPatientDialog();
         }
 
         private void NewReceptionPatientButtonClick(object sender, EventArgs e)
         {
-            DialogExtension.ShowNewPatientReceptionDialog(this);
+            this.ShowNewPatientReceptionDialog();
         }
 
         #endregion
@@ -256,12 +260,12 @@ namespace ToyProject
 
         public void ShowPatientDetail(Patient patient)
         {
-            DialogExtension.ShowPatientDetailDialog(this, patient);
+            this.ShowPatientDetailDialog(patient);
         }
 
         public void ShowReceptionMessage(Patient patient)
         {
-            DialogExtension.ShowNewReceptionDialog(this, patient);
+            this.ShowNewReceptionDialog(patient);
         }
 
         public void ClearSearch()

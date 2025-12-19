@@ -116,7 +116,7 @@ namespace ToyProject.View.Dialog
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1090, 384, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(788, 688);
+            this.layoutControl1.Size = new System.Drawing.Size(735, 688);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -125,7 +125,7 @@ namespace ToyProject.View.Dialog
             this.testGridControl.Location = new System.Drawing.Point(12, 171);
             this.testGridControl.MainView = this.testGridView;
             this.testGridControl.Name = "testGridControl";
-            this.testGridControl.Size = new System.Drawing.Size(764, 270);
+            this.testGridControl.Size = new System.Drawing.Size(711, 270);
             this.testGridControl.TabIndex = 14;
             this.testGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.testGridView});
@@ -160,20 +160,20 @@ namespace ToyProject.View.Dialog
             // 
             this.label1.Location = new System.Drawing.Point(12, 145);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(661, 22);
+            this.label1.Size = new System.Drawing.Size(615, 22);
             this.label1.TabIndex = 13;
             this.label1.Text = "검사 선택";
             // 
             // receptionDateEdit
             // 
             this.receptionDateEdit.EditValue = null;
-            this.receptionDateEdit.Location = new System.Drawing.Point(576, 12);
+            this.receptionDateEdit.Location = new System.Drawing.Point(540, 12);
             this.receptionDateEdit.Name = "receptionDateEdit";
             this.receptionDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.receptionDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.receptionDateEdit.Size = new System.Drawing.Size(200, 20);
+            this.receptionDateEdit.Size = new System.Drawing.Size(183, 20);
             this.receptionDateEdit.StyleController = this.layoutControl1;
             this.receptionDateEdit.TabIndex = 10;
             // 
@@ -181,7 +181,7 @@ namespace ToyProject.View.Dialog
             // 
             this.specificalTextEdit.Location = new System.Drawing.Point(84, 61);
             this.specificalTextEdit.Name = "specificalTextEdit";
-            this.specificalTextEdit.Size = new System.Drawing.Size(692, 20);
+            this.specificalTextEdit.Size = new System.Drawing.Size(639, 20);
             this.specificalTextEdit.StyleController = this.layoutControl1;
             this.specificalTextEdit.TabIndex = 9;
             // 
@@ -189,7 +189,7 @@ namespace ToyProject.View.Dialog
             // 
             this.checkupTextEdit.Location = new System.Drawing.Point(84, 109);
             this.checkupTextEdit.Name = "checkupTextEdit";
-            this.checkupTextEdit.Size = new System.Drawing.Size(692, 20);
+            this.checkupTextEdit.Size = new System.Drawing.Size(639, 20);
             this.checkupTextEdit.StyleController = this.layoutControl1;
             this.checkupTextEdit.TabIndex = 8;
             // 
@@ -197,32 +197,32 @@ namespace ToyProject.View.Dialog
             // 
             this.insurenceTextEdit.Location = new System.Drawing.Point(84, 85);
             this.insurenceTextEdit.Name = "insurenceTextEdit";
-            this.insurenceTextEdit.Size = new System.Drawing.Size(692, 20);
+            this.insurenceTextEdit.Size = new System.Drawing.Size(639, 20);
             this.insurenceTextEdit.StyleController = this.layoutControl1;
             this.insurenceTextEdit.TabIndex = 7;
             // 
             // insuredComboBox
             // 
             this.insuredComboBox.FormattingEnabled = true;
-            this.insuredComboBox.Location = new System.Drawing.Point(249, 36);
+            this.insuredComboBox.Location = new System.Drawing.Point(238, 36);
             this.insuredComboBox.Name = "insuredComboBox";
-            this.insuredComboBox.Size = new System.Drawing.Size(527, 20);
+            this.insuredComboBox.Size = new System.Drawing.Size(485, 20);
             this.insuredComboBox.TabIndex = 6;
             // 
             // emergencyCheckBox
             // 
             this.emergencyCheckBox.Location = new System.Drawing.Point(12, 36);
             this.emergencyCheckBox.Name = "emergencyCheckBox";
-            this.emergencyCheckBox.Size = new System.Drawing.Size(73, 20);
+            this.emergencyCheckBox.Size = new System.Drawing.Size(68, 20);
             this.emergencyCheckBox.TabIndex = 5;
             this.emergencyCheckBox.Text = "응급";
             this.emergencyCheckBox.UseVisualStyleBackColor = true;
             // 
             // nightCheckBox
             // 
-            this.nightCheckBox.Location = new System.Drawing.Point(89, 36);
+            this.nightCheckBox.Location = new System.Drawing.Point(84, 36);
             this.nightCheckBox.Name = "nightCheckBox";
-            this.nightCheckBox.Size = new System.Drawing.Size(84, 20);
+            this.nightCheckBox.Size = new System.Drawing.Size(78, 20);
             this.nightCheckBox.TabIndex = 4;
             this.nightCheckBox.Text = "야간";
             this.nightCheckBox.UseVisualStyleBackColor = true;
@@ -232,15 +232,15 @@ namespace ToyProject.View.Dialog
             this.receptionMemoTextEdit.Location = new System.Drawing.Point(12, 463);
             this.receptionMemoTextEdit.Name = "receptionMemoTextEdit";
             this.receptionMemoTextEdit.Properties.AutoHeight = false;
-            this.receptionMemoTextEdit.Size = new System.Drawing.Size(764, 213);
+            this.receptionMemoTextEdit.Size = new System.Drawing.Size(711, 213);
             this.receptionMemoTextEdit.StyleController = this.layoutControl1;
             this.receptionMemoTextEdit.TabIndex = 11;
             // 
             // addTestButton
             // 
-            this.addTestButton.Location = new System.Drawing.Point(677, 145);
+            this.addTestButton.Location = new System.Drawing.Point(631, 145);
             this.addTestButton.Name = "addTestButton";
-            this.addTestButton.Size = new System.Drawing.Size(96, 22);
+            this.addTestButton.Size = new System.Drawing.Size(92, 22);
             this.addTestButton.StyleController = this.layoutControl1;
             this.addTestButton.TabIndex = 12;
             this.addTestButton.Text = "검사 추가";
@@ -267,15 +267,15 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem10,
             this.simpleSeparator1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(788, 688);
+            this.Root.Size = new System.Drawing.Size(735, 688);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.nightCheckBox;
-            this.layoutControlItem1.Location = new System.Drawing.Point(77, 24);
+            this.layoutControlItem1.Location = new System.Drawing.Point(72, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(88, 25);
+            this.layoutControlItem1.Size = new System.Drawing.Size(82, 25);
             this.layoutControlItem1.Text = "야간";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -285,7 +285,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem4.Control = this.insurenceTextEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 73);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(768, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(715, 24);
             this.layoutControlItem4.Text = "보험정보";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 14);
             // 
@@ -294,16 +294,16 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem5.Control = this.checkupTextEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 97);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(768, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(715, 24);
             this.layoutControlItem5.Text = "검진정보";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.receptionDateEdit;
-            this.layoutControlItem7.Location = new System.Drawing.Point(519, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(483, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(249, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(232, 24);
             this.layoutControlItem7.Text = "접수시간";
             this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(40, 14);
@@ -314,7 +314,7 @@ namespace ToyProject.View.Dialog
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(519, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(483, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sd
@@ -322,7 +322,7 @@ namespace ToyProject.View.Dialog
             this.sd.Control = this.emergencyCheckBox;
             this.sd.Location = new System.Drawing.Point(0, 24);
             this.sd.Name = "sd";
-            this.sd.Size = new System.Drawing.Size(77, 25);
+            this.sd.Size = new System.Drawing.Size(72, 25);
             this.sd.Text = "응급";
             this.sd.TextSize = new System.Drawing.Size(0, 0);
             this.sd.TextVisible = false;
@@ -330,9 +330,9 @@ namespace ToyProject.View.Dialog
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.insuredComboBox;
-            this.layoutControlItem3.Location = new System.Drawing.Point(165, 24);
+            this.layoutControlItem3.Location = new System.Drawing.Point(154, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(603, 25);
+            this.layoutControlItem3.Size = new System.Drawing.Size(561, 25);
             this.layoutControlItem3.Text = "급여구분";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 14);
             // 
@@ -342,7 +342,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem6.CustomizationFormText = "산정특례코드";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(768, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(715, 24);
             this.layoutControlItem6.Text = "산정특례정보";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 14);
             // 
@@ -351,7 +351,7 @@ namespace ToyProject.View.Dialog
             this.simpleLabelItem1.AllowHotTrack = false;
             this.simpleLabelItem1.Location = new System.Drawing.Point(0, 433);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
-            this.simpleLabelItem1.Size = new System.Drawing.Size(768, 18);
+            this.simpleLabelItem1.Size = new System.Drawing.Size(715, 18);
             this.simpleLabelItem1.Text = "접수메모";
             this.simpleLabelItem1.TextSize = new System.Drawing.Size(60, 14);
             // 
@@ -361,7 +361,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 451);
             this.layoutControlItem8.MinSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(768, 217);
+            this.layoutControlItem8.Size = new System.Drawing.Size(715, 217);
             this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
@@ -369,12 +369,9 @@ namespace ToyProject.View.Dialog
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.addTestButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(665, 133);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(100, 0);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(55, 26);
+            this.layoutControlItem2.Location = new System.Drawing.Point(619, 133);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(103, 26);
-            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem2.Size = new System.Drawing.Size(96, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -383,18 +380,15 @@ namespace ToyProject.View.Dialog
             this.simpleSeparator2.AllowHotTrack = false;
             this.simpleSeparator2.Location = new System.Drawing.Point(0, 121);
             this.simpleSeparator2.Name = "simpleSeparator2";
-            this.simpleSeparator2.Size = new System.Drawing.Size(768, 11);
+            this.simpleSeparator2.Size = new System.Drawing.Size(715, 11);
             this.simpleSeparator2.Spacing = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.label1;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 133);
-            this.layoutControlItem9.MaxSize = new System.Drawing.Size(665, 26);
-            this.layoutControlItem9.MinSize = new System.Drawing.Size(665, 26);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(665, 26);
-            this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem9.Size = new System.Drawing.Size(619, 26);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -404,7 +398,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 159);
             this.layoutControlItem10.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(768, 274);
+            this.layoutControlItem10.Size = new System.Drawing.Size(715, 274);
             this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
@@ -414,7 +408,7 @@ namespace ToyProject.View.Dialog
             this.simpleSeparator1.AllowHotTrack = false;
             this.simpleSeparator1.Location = new System.Drawing.Point(0, 132);
             this.simpleSeparator1.Name = "simpleSeparator1";
-            this.simpleSeparator1.Size = new System.Drawing.Size(768, 1);
+            this.simpleSeparator1.Size = new System.Drawing.Size(715, 1);
             // 
             // gridColumn1
             // 
@@ -483,7 +477,7 @@ namespace ToyProject.View.Dialog
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Name = "ReceptionControl";
-            this.Size = new System.Drawing.Size(788, 688);
+            this.Size = new System.Drawing.Size(735, 688);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.testGridControl)).EndInit();

@@ -30,24 +30,24 @@ namespace ToyProject.View.Dialog
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.saveButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.closeButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
-            this.patientEditControl1 = new ToyProject.View.PatientEditControl();
-            this.receptionControl1 = new ToyProject.View.Dialog.ReceptionControl();
+            this.closeButton = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.receptionControl1 = new ToyProject.View.Dialog.ReceptionControl();
+            this.patientEditControl1 = new ToyProject.View.PatientEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,69 +60,19 @@ namespace ToyProject.View.Dialog
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1375, 733);
+            this.layoutControl1.Size = new System.Drawing.Size(1125, 566);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem3,
-            this.layoutControlItem2,
-            this.emptySpaceItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1375, 733);
-            this.Root.TextVisible = false;
-            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(1189, 699);
+            this.saveButton.Location = new System.Drawing.Point(972, 532);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(85, 22);
+            this.saveButton.Size = new System.Drawing.Size(68, 22);
             this.saveButton.StyleController = this.layoutControl1;
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "저장";
             this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.saveButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(1177, 687);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(89, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // closeButton
-            // 
-            this.closeButton.Location = new System.Drawing.Point(1278, 699);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(85, 22);
-            this.closeButton.StyleController = this.layoutControl1;
-            this.closeButton.TabIndex = 6;
-            this.closeButton.Text = "닫기";
-            this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.closeButton;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1266, 687);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(89, 26);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.tablePanel1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1355, 687);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // tablePanel1
             // 
@@ -135,52 +85,103 @@ namespace ToyProject.View.Dialog
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1351, 683);
+            this.tablePanel1.Size = new System.Drawing.Size(1101, 516);
             this.tablePanel1.TabIndex = 4;
             // 
-            // patientEditControl1
+            // closeButton
             // 
-            this.tablePanel1.SetColumn(this.patientEditControl1, 0);
-            this.patientEditControl1.Location = new System.Drawing.Point(3, 44);
-            this.patientEditControl1.Name = "patientEditControl1";
-            this.tablePanel1.SetRow(this.patientEditControl1, 0);
-            this.patientEditControl1.Size = new System.Drawing.Size(670, 595);
-            this.patientEditControl1.TabIndex = 0;
+            this.closeButton.Location = new System.Drawing.Point(1044, 532);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(69, 22);
+            this.closeButton.StyleController = this.layoutControl1;
+            this.closeButton.TabIndex = 6;
+            this.closeButton.Text = "닫기";
+            this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
             // 
-            // receptionControl1
+            // Root
             // 
-            this.tablePanel1.SetColumn(this.receptionControl1, 1);
-            this.receptionControl1.Location = new System.Drawing.Point(679, 3);
-            this.receptionControl1.Name = "receptionControl1";
-            this.tablePanel1.SetRow(this.receptionControl1, 0);
-            this.receptionControl1.Size = new System.Drawing.Size(670, 677);
-            this.receptionControl1.TabIndex = 1;
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem2,
+            this.emptySpaceItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(1125, 566);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.tablePanel1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(1105, 520);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.closeButton;
+            this.layoutControlItem3.Location = new System.Drawing.Point(1032, 520);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(73, 26);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.saveButton;
+            this.layoutControlItem2.Location = new System.Drawing.Point(960, 520);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(72, 26);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 687);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 520);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1177, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(960, 26);
             this.emptySpaceItem1.Text = " ";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // receptionControl1
+            // 
+            this.tablePanel1.SetColumn(this.receptionControl1, 1);
+            this.receptionControl1.Location = new System.Drawing.Point(554, 3);
+            this.receptionControl1.Name = "receptionControl1";
+            this.tablePanel1.SetRow(this.receptionControl1, 0);
+            this.receptionControl1.Size = new System.Drawing.Size(545, 510);
+            this.receptionControl1.TabIndex = 1;
+            // 
+            // patientEditControl1
+            // 
+            this.tablePanel1.SetColumn(this.patientEditControl1, 0);
+            this.patientEditControl1.Location = new System.Drawing.Point(3, 3);
+            this.patientEditControl1.Name = "patientEditControl1";
+            this.tablePanel1.SetRow(this.patientEditControl1, 0);
+            this.patientEditControl1.Size = new System.Drawing.Size(545, 510);
+            this.patientEditControl1.TabIndex = 0;
             // 
             // NewPatientReceptionDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 733);
+            this.ClientSize = new System.Drawing.Size(1125, 566);
             this.Controls.Add(this.layoutControl1);
+            this.MinimumSize = new System.Drawing.Size(1141, 605);
             this.Name = "NewPatientReceptionDialogForm";
             this.Text = "신환접수";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
             this.tablePanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 

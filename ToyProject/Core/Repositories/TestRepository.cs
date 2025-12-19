@@ -12,7 +12,7 @@ namespace ToyProject.Core.Repositories
 {
     public class TestRepository
     {
-        public async Task<IEnumerable<TestDetailDto>> GetTestsAsync(StatusType status)
+        public async Task<IEnumerable<TestDetailDto>> GetTestsAsync(StatusType? status = null, long? patientId = null)
         {
             using (var conn = DbConnectionFactory.CreateConnection())
             {
@@ -20,7 +20,7 @@ namespace ToyProject.Core.Repositories
 
                 return await conn.QueryAsync<TestDetailDto>(
                     "findTest",
-                    new { status },
+                    new { status = status?.ToString(), patientId = patientId },
                     commandType: CommandType.StoredProcedure);
             }
         }

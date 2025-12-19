@@ -57,9 +57,9 @@ namespace ToyProject.View
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.testerRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.activateContextMenu = new System.Windows.Forms.ToolStripTextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -88,6 +88,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.testerRowContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -100,11 +101,11 @@ namespace ToyProject.View
             this.tableLayoutPanel2.Controls.Add(this.splitContainerControl1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.layoutControl1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1402, 681);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1382, 661);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -124,7 +125,7 @@ namespace ToyProject.View
             // 
             this.splitContainerControl1.Panel2.Controls.Add(this.testItemGridControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(695, 675);
+            this.splitContainerControl1.Size = new System.Drawing.Size(685, 655);
             this.splitContainerControl1.SplitterPosition = 25;
             this.splitContainerControl1.TabIndex = 1;
             // 
@@ -138,7 +139,7 @@ namespace ToyProject.View
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.testItemSearchContol.Properties.Client = this.testItemGridControl;
-            this.testItemSearchContol.Size = new System.Drawing.Size(695, 20);
+            this.testItemSearchContol.Size = new System.Drawing.Size(685, 20);
             this.testItemSearchContol.TabIndex = 1;
             // 
             // testItemGridControl
@@ -147,7 +148,7 @@ namespace ToyProject.View
             this.testItemGridControl.Location = new System.Drawing.Point(0, 0);
             this.testItemGridControl.MainView = this.testItemGridView;
             this.testItemGridControl.Name = "testItemGridControl";
-            this.testItemGridControl.Size = new System.Drawing.Size(695, 640);
+            this.testItemGridControl.Size = new System.Drawing.Size(685, 620);
             this.testItemGridControl.TabIndex = 0;
             this.testItemGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.testItemGridView});
@@ -202,27 +203,28 @@ namespace ToyProject.View
             this.layoutControl1.Controls.Add(this.referenceMinTextEdit);
             this.layoutControl1.Controls.Add(this.referenceMaxTextEdit);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(704, 3);
+            this.layoutControl1.Location = new System.Drawing.Point(694, 3);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1458, 359, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(695, 675);
+            this.layoutControl1.Size = new System.Drawing.Size(685, 655);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(559, 643);
+            this.resetButton.Location = new System.Drawing.Point(575, 26);
+            this.resetButton.MinimumSize = new System.Drawing.Size(100, 0);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(63, 22);
+            this.resetButton.Size = new System.Drawing.Size(100, 22);
             this.resetButton.StyleController = this.layoutControl1;
             this.resetButton.TabIndex = 9;
-            this.resetButton.Text = "초기화";
+            this.resetButton.Text = "신규 항목 추가";
             this.resetButton.Click += new System.EventHandler(this.ResetButtonClick);
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(622, 643);
+            this.saveButton.Location = new System.Drawing.Point(612, 623);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(63, 22);
             this.saveButton.StyleController = this.layoutControl1;
@@ -232,33 +234,33 @@ namespace ToyProject.View
             // 
             // codeTextEdit
             // 
-            this.codeTextEdit.Location = new System.Drawing.Point(54, 48);
+            this.codeTextEdit.Location = new System.Drawing.Point(54, 50);
             this.codeTextEdit.Name = "codeTextEdit";
-            this.codeTextEdit.Size = new System.Drawing.Size(629, 20);
+            this.codeTextEdit.Size = new System.Drawing.Size(619, 20);
             this.codeTextEdit.StyleController = this.layoutControl1;
             this.codeTextEdit.TabIndex = 5;
             // 
             // nameTextEdit
             // 
-            this.nameTextEdit.Location = new System.Drawing.Point(54, 72);
+            this.nameTextEdit.Location = new System.Drawing.Point(54, 74);
             this.nameTextEdit.Name = "nameTextEdit";
-            this.nameTextEdit.Size = new System.Drawing.Size(629, 20);
+            this.nameTextEdit.Size = new System.Drawing.Size(619, 20);
             this.nameTextEdit.StyleController = this.layoutControl1;
             this.nameTextEdit.TabIndex = 6;
             // 
             // referenceMinTextEdit
             // 
-            this.referenceMinTextEdit.Location = new System.Drawing.Point(54, 96);
+            this.referenceMinTextEdit.Location = new System.Drawing.Point(54, 98);
             this.referenceMinTextEdit.Name = "referenceMinTextEdit";
-            this.referenceMinTextEdit.Size = new System.Drawing.Size(264, 20);
+            this.referenceMinTextEdit.Size = new System.Drawing.Size(259, 20);
             this.referenceMinTextEdit.StyleController = this.layoutControl1;
             this.referenceMinTextEdit.TabIndex = 7;
             // 
             // referenceMaxTextEdit
             // 
-            this.referenceMaxTextEdit.Location = new System.Drawing.Point(401, 96);
+            this.referenceMaxTextEdit.Location = new System.Drawing.Point(395, 98);
             this.referenceMaxTextEdit.Name = "referenceMaxTextEdit";
-            this.referenceMaxTextEdit.Size = new System.Drawing.Size(282, 20);
+            this.referenceMaxTextEdit.Size = new System.Drawing.Size(278, 20);
             this.referenceMaxTextEdit.StyleController = this.layoutControl1;
             this.referenceMaxTextEdit.TabIndex = 8;
             // 
@@ -276,53 +278,54 @@ namespace ToyProject.View
             this.emptySpaceItem7,
             this.emptySpaceItem6,
             this.layoutControlItem1,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.emptySpaceItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(695, 675);
+            this.Root.Size = new System.Drawing.Size(685, 655);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.codeTextEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 36);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 38);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(675, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(665, 24);
             this.layoutControlItem2.Text = "코드";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(30, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.nameTextEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 62);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(675, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(665, 24);
             this.layoutControlItem3.Text = "이름";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(30, 14);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.referenceMinTextEdit;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 86);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(310, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(305, 24);
             this.layoutControlItem4.Text = "참고치";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(30, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.referenceMaxTextEdit;
-            this.layoutControlItem5.Location = new System.Drawing.Point(347, 84);
+            this.layoutControlItem5.Location = new System.Drawing.Point(341, 86);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(328, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(324, 24);
             this.layoutControlItem5.Text = "~";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(30, 14);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 108);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 110);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(675, 525);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(665, 503);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem5
@@ -330,29 +333,29 @@ namespace ToyProject.View
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(675, 36);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(665, 16);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem7
             // 
             this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(310, 84);
+            this.emptySpaceItem7.Location = new System.Drawing.Point(305, 86);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(37, 24);
+            this.emptySpaceItem7.Size = new System.Drawing.Size(36, 24);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 633);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 613);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(549, 22);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(602, 22);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.saveButton;
-            this.layoutControlItem1.Location = new System.Drawing.Point(612, 633);
+            this.layoutControlItem1.Location = new System.Drawing.Point(602, 613);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(63, 22);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(63, 22);
             this.layoutControlItem1.Name = "layoutControlItem1";
@@ -364,16 +367,24 @@ namespace ToyProject.View
             // 
             // layoutControlItem6
             // 
+            this.layoutControlItem6.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.layoutControlItem6.Control = this.resetButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(549, 633);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(63, 22);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(63, 22);
+            this.layoutControlItem6.Location = new System.Drawing.Point(565, 16);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(100, 22);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem6.Size = new System.Drawing.Size(63, 22);
+            this.layoutControlItem6.Size = new System.Drawing.Size(100, 22);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
+            // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 16);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(565, 22);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
             // 
@@ -386,21 +397,13 @@ namespace ToyProject.View
             // testerRowContextMenu
             // 
             this.testerRowContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteContextMenu,
             this.activateContextMenu});
             this.testerRowContextMenu.Name = "contextMenuStrip1";
-            this.testerRowContextMenu.Size = new System.Drawing.Size(161, 54);
-            // 
-            // deleteContextMenu
-            // 
-            this.deleteContextMenu.Name = "deleteContextMenu";
-            this.deleteContextMenu.ReadOnly = true;
-            this.deleteContextMenu.Size = new System.Drawing.Size(100, 23);
-            this.deleteContextMenu.Text = "삭제";
-            this.deleteContextMenu.Click += new System.EventHandler(this.DeleteContextMenuClick);
+            this.testerRowContextMenu.Size = new System.Drawing.Size(181, 51);
             // 
             // activateContextMenu
             // 
+            this.activateContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.activateContextMenu.Name = "activateContextMenu";
             this.activateContextMenu.ReadOnly = true;
             this.activateContextMenu.Size = new System.Drawing.Size(100, 23);
@@ -411,6 +414,7 @@ namespace ToyProject.View
             // 
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "TestItemContentControl";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(1402, 681);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -439,6 +443,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.testerRowContextMenu.ResumeLayout(false);
             this.testerRowContextMenu.PerformLayout();
@@ -478,7 +483,7 @@ namespace ToyProject.View
         private DevExpress.XtraEditors.SimpleButton resetButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private System.Windows.Forms.ContextMenuStrip testerRowContextMenu;
-        private System.Windows.Forms.ToolStripTextBox deleteContextMenu;
         private System.Windows.Forms.ToolStripTextBox activateContextMenu;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
     }
 }

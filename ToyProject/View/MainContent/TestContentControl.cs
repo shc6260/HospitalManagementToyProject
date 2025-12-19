@@ -18,6 +18,7 @@ namespace ToyProject.View
         public TestContentControl()
         {
             InitializeComponent();
+            InitStatusComboBox();
             InitGridView();
         }
 
@@ -30,6 +31,20 @@ namespace ToyProject.View
         private DataTable _resulsTable;
 
         #region Init Control
+
+        private void InitStatusComboBox()
+        {
+            statusCheckedComboBox.Properties.Items.Clear();
+
+            foreach (StatusType status in Enum.GetValues(typeof(StatusType)))
+            {
+                var item = new CheckedListBoxItem(status, status.ToDisplayText());
+                statusCheckedComboBox.Properties.Items.Add(item);
+
+                if (status == StatusType.Reception || status == StatusType.Progress)
+                    item.CheckState = CheckState.Checked;
+            }
+        }
 
         private void InitGridView()
         {
@@ -164,6 +179,30 @@ namespace ToyProject.View
             return list;
         }
 
+        private void StatusCheckedComboBoxEditValueChanged(object sender, EventArgs e)
+        {
+            FilterGrid();
+        }
+
+        private void FilterGrid()
+        {
+            var checkedStatuses = statusCheckedComboBox.Properties.Items
+                            .GetCheckedValues()
+                            .Cast<object>()
+                            .Select(v => v.ToString())
+                            .Where(v => string.IsNullOrWhiteSpace(v) == false)
+                            .ToArray();
+
+            if (checkedStatuses.Any() == false)
+            {
+                testGridView.ActiveFilterString = string.Empty;
+                return;
+            }
+
+            var statusFilter = string.Join(",", checkedStatuses.Select(s => $"'{s}'"));
+            testGridView.ActiveFilterString = $"[{nameof(TestDetail.Status)}] IN ({statusFilter})";
+        }
+
         private void RefreshButtonClick(object sender, EventArgs e)
         {
             OnRefreshRequested();
@@ -209,7 +248,7 @@ namespace ToyProject.View
         {
             _resulsTable.Clear();
             _mainTable.Clear();
-            ;
+
             foreach (var item in items ?? Enumerable.Empty<TestDetail>())
             {
                 var mainRow = _mainTable.NewRow();
@@ -255,6 +294,7 @@ namespace ToyProject.View
             testGridControl.DataSource = _testDataSet;
             testGridControl.DataMember = MainTableName;
             _mainTable.AcceptChanges();
+            FilterGrid();
         }
 
         public void SetData(IEnumerable<Equipment> equipments, IEnumerable<Tester> testers)
@@ -333,7 +373,6 @@ namespace ToyProject.View
 
             int groupLevel = view.GetRowLevel(e.HitInfo.RowHandle);
 
-            // 예: 환자94 / wqdwqdwqd
             if (groupLevel == 1)
             {
                 _contextMenuRowHandle = e.HitInfo.RowHandle;
@@ -342,7 +381,7 @@ namespace ToyProject.View
             }
         }
 
-        private void RepositoryItemButtonEdit1ButtonClick(object sender, ButtonPressedEventArgs e)
+        private void RepositoryItemButtonEditButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var view = testGridControl.FocusedView as DevExpress.XtraGrid.Views.Grid.GridView;
             if (view == null) return;

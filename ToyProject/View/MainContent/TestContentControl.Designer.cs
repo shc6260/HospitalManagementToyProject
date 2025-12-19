@@ -55,15 +55,19 @@ namespace ToyProject.View
             this.addResultcolumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.addResultButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.statusCheckedComboBox = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.saveButton = new DevExpress.XtraEditors.SimpleButton();
             this.refreshButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.testContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.progressMenu = new System.Windows.Forms.ToolStripTextBox();
             this.completeMenu = new System.Windows.Forms.ToolStripTextBox();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.testResultView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentComboboxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testerComboboxEdit)).BeginInit();
@@ -72,11 +76,15 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.addResultButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statusCheckedComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.testContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // testResultView
@@ -164,6 +172,7 @@ namespace ToyProject.View
             // 
             // testGridView
             // 
+            this.testGridView.ActiveFilterEnabled = false;
             this.testGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.receptionDateColumn,
             this.testCodeColumn,
@@ -178,6 +187,7 @@ namespace ToyProject.View
             this.testGridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.testGridView.OptionsDetail.AllowExpandEmptyDetails = true;
             this.testGridView.OptionsDetail.ShowDetailTabs = false;
+            this.testGridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.testGridView.OptionsView.ShowGroupPanel = false;
             this.testGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.receptionDateColumn, DevExpress.Data.ColumnSortOrder.Descending),
@@ -245,26 +255,42 @@ namespace ToyProject.View
             this.addResultButton.Name = "addResultButton";
             this.addResultButton.NullText = "결과추가";
             this.addResultButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.addResultButton.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RepositoryItemButtonEdit1ButtonClick);
+            this.addResultButton.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RepositoryItemButtonEditButtonClick);
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.statusCheckedComboBox);
             this.layoutControl1.Controls.Add(this.saveButton);
             this.layoutControl1.Controls.Add(this.refreshButton);
             this.layoutControl1.Controls.Add(this.testGridControl);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-861, 709, 650, 400);
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(1154, 721);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "새로고침";
             // 
+            // statusCheckedComboBox
+            // 
+            this.statusCheckedComboBox.Location = new System.Drawing.Point(68, 12);
+            this.statusCheckedComboBox.Name = "statusCheckedComboBox";
+            this.statusCheckedComboBox.Properties.AllowMultiSelect = true;
+            this.statusCheckedComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.statusCheckedComboBox.Properties.ShowButtons = false;
+            this.statusCheckedComboBox.Properties.ShowPopupCloseButton = false;
+            this.statusCheckedComboBox.Size = new System.Drawing.Size(239, 20);
+            this.statusCheckedComboBox.StyleController = this.layoutControl1;
+            this.statusCheckedComboBox.TabIndex = 6;
+            this.statusCheckedComboBox.EditValueChanged += new System.EventHandler(this.StatusCheckedComboBoxEditValueChanged);
+            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(12, 687);
+            this.saveButton.Location = new System.Drawing.Point(1040, 687);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(1130, 22);
+            this.saveButton.Size = new System.Drawing.Size(102, 22);
             this.saveButton.StyleController = this.layoutControl1;
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "저장";
@@ -272,9 +298,9 @@ namespace ToyProject.View
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(12, 12);
+            this.refreshButton.Location = new System.Drawing.Point(1040, 12);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(1130, 22);
+            this.refreshButton.Size = new System.Drawing.Size(102, 22);
             this.refreshButton.StyleController = this.layoutControl1;
             this.refreshButton.TabIndex = 0;
             this.refreshButton.Text = "새로고침";
@@ -287,7 +313,10 @@ namespace ToyProject.View
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.emptySpaceItem1,
+            this.emptySpaceItem2});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1154, 721);
             this.Root.TextVisible = false;
@@ -304,20 +333,29 @@ namespace ToyProject.View
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.refreshButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1028, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1134, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(106, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.saveButton;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 675);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1028, 675);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1134, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(106, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.statusCheckedComboBox;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(299, 26);
+            this.layoutControlItem4.Text = "검사 상태";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(44, 14);
             // 
             // testContextMenu
             // 
@@ -332,7 +370,7 @@ namespace ToyProject.View
             this.progressMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.progressMenu.Name = "progressMenu";
             this.progressMenu.Size = new System.Drawing.Size(100, 23);
-            this.progressMenu.Text = "검사중";
+            this.progressMenu.Text = "검사 시작";
             this.progressMenu.Click += new System.EventHandler(this.ProgressMenuClick);
             // 
             // completeMenu
@@ -342,6 +380,22 @@ namespace ToyProject.View
             this.completeMenu.Size = new System.Drawing.Size(100, 23);
             this.completeMenu.Text = "검사 완료";
             this.completeMenu.Click += new System.EventHandler(this.CompleteMenuClick);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(299, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(729, 26);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 675);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(1028, 26);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // TestContentControl
             // 
@@ -358,12 +412,16 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.addResultButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.statusCheckedComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.testContextMenu.ResumeLayout(false);
             this.testContextMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,5 +456,9 @@ namespace ToyProject.View
         private System.Windows.Forms.ToolStripTextBox completeMenu;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit addResultButton;
         private DevExpress.XtraGrid.Columns.GridColumn addResultcolumn;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit statusCheckedComboBox;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
     }
 }

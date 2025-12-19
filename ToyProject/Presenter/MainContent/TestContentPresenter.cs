@@ -30,7 +30,7 @@ namespace ToyProject.Presenter.MainContent
 
         public override async Task Refresh()
         {
-            _tests = await _testService.GetTestsAsync(Model.Type.StatusType.Reception);
+            _tests = await _testService.GetTestsAsync();
             _view.SetTestList(_tests);
 
             var equipments = await _equipmentService.GetAllEquipmentAsync();
