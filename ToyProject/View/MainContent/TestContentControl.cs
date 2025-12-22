@@ -371,7 +371,7 @@ namespace ToyProject.View
                     resultRow[nameof(TestResult.Id)] = result?.Id ?? (object)DBNull.Value;
                     resultRow[nameof(TestResult.TestId)] = result?.TestId ?? item.Id;
                     resultRow[nameof(TestResult.Decision)] = result?.Decision ?? (object)DBNull.Value;
-                    resultRow[nameof(TestResult.TestDate)] = result?.TestDate ?? (object)DBNull.Value;
+                    resultRow[nameof(TestResult.TestDate)] = result?.TestDate ?? DateTime.Now;
                     resultRow[nameof(TestResult.JudgementValue)] = result?.JudgementValue ?? (object)DBNull.Value;
                     resultRow[nameof(TestResult.EquipmentId)] = result?.EquipmentId ?? (object)DBNull.Value;
                     resultRow[nameof(TestResult.EquipmentCode)] = result?.EquipmentCode ?? (object)DBNull.Value;
