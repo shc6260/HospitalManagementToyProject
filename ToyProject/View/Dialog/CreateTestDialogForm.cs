@@ -94,6 +94,18 @@ namespace ToyProject.View.Dialog
             return Test.FromAdd(nameTextEdit.Text, GetSelectedtestItems().ToArray());
         }
 
+        private void SaveButtonClick(object sender, EventArgs e)
+        {
+            IsOk = true;
+            Close();
+        }
+
+        private void CancleButtonClick(object sender, EventArgs e)
+        {
+            IsOk = false;
+            Close();
+        }
+
         #endregion
 
 
@@ -115,17 +127,5 @@ namespace ToyProject.View.Dialog
         }
 
         #endregion
-
-        private void SaveButtonClick(object sender, EventArgs e)
-        {
-            IsOk = true;
-            Close();
-        }
-
-        private void CancleButtonClick(object sender, EventArgs e)
-        {
-            IsOk = false;
-            Close();
-        }
     }
 }

@@ -79,5 +79,13 @@ namespace ToyProject.Presenter
         {
             return await _testerService.GetAllTesterAsync();
         }
+
+        public override void Dispose()
+        {
+            _view.UpdateTesterRequested -= OnUpdateTesterRequested;
+            _view.ToggleActiveRequested -= OnToggleActiveRequested;
+            _view.TesterDeleteRequested -= OnTesterDeleteRequested;
+            base.Dispose();
+        }
     }
 }

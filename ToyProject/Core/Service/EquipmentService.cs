@@ -21,18 +21,16 @@ namespace ToyProject.Core.Service
         private SimpleCache<IEnumerable<Equipment>> _equipmentListCache;
 
 
-        public async Task<IEnumerable<Equipment>> GetAllEquipmentAsync()
+        public async Task<IEnumerable<Equipment>> GetAllEquipmentAsync(bool? isEnabled = null)
         {
-            return await _equipmentListCache.GetAsync();
+            var result = await _equipmentListCache.GetAsync();
+            return isEnabled == null ? result : result.Where(i => i.IsEnabled == isEnabled).ToList();
         }
 
-        public Task<IEnumerable<Equipment>> GetChacheListAsync()
+        public async Task<IEnumerable<Equipment>> GetChacheListAsync()
         {
-            return Task.Run(async () =>
-            {
-                var result = await _equipmentRepository.FindAll();
-                return result.Select(Equipment.From);
-            });
+            var result = await _equipmentRepository.FindAll();
+            return result.Select(Equipment.From);
         }
 
         public Task SaveEquipmentAsync(Equipment data)

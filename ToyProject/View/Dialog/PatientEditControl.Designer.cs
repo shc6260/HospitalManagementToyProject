@@ -34,37 +34,37 @@ namespace ToyProject.View
             this.label1 = new System.Windows.Forms.Label();
             this.QualificationTxt = new DevExpress.XtraEditors.TextEdit();
             this.AddressTxt = new DevExpress.XtraEditors.TextEdit();
+            this.GenderTxt = new DevExpress.XtraEditors.TextEdit();
             this.SocialSecurityNumberTxt = new DevExpress.XtraEditors.TextEdit();
             this.PhoneNumberTxt = new DevExpress.XtraEditors.TextEdit();
             this.NameTxt = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.GenderTxt = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatientMemoTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QualificationTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTxt.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenderTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SocialSecurityNumberTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneNumberTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GenderTxt.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -80,7 +80,7 @@ namespace ToyProject.View
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1083, 303, 650, 400);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1022, 421, 650, 400);
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(831, 595);
             this.layoutControl1.TabIndex = 1;
@@ -121,6 +121,15 @@ namespace ToyProject.View
             this.AddressTxt.StyleController = this.layoutControl1;
             this.AddressTxt.TabIndex = 8;
             // 
+            // GenderTxt
+            // 
+            this.GenderTxt.Location = new System.Drawing.Point(84, 60);
+            this.GenderTxt.Name = "GenderTxt";
+            this.GenderTxt.Properties.ReadOnly = true;
+            this.GenderTxt.Size = new System.Drawing.Size(735, 20);
+            this.GenderTxt.StyleController = this.layoutControl1;
+            this.GenderTxt.TabIndex = 7;
+            // 
             // SocialSecurityNumberTxt
             // 
             this.SocialSecurityNumberTxt.Location = new System.Drawing.Point(84, 36);
@@ -132,9 +141,9 @@ namespace ToyProject.View
             // 
             // PhoneNumberTxt
             // 
-            this.PhoneNumberTxt.Location = new System.Drawing.Point(489, 12);
+            this.PhoneNumberTxt.Location = new System.Drawing.Point(494, 12);
             this.PhoneNumberTxt.Name = "PhoneNumberTxt";
-            this.PhoneNumberTxt.Size = new System.Drawing.Size(330, 20);
+            this.PhoneNumberTxt.Size = new System.Drawing.Size(325, 20);
             this.PhoneNumberTxt.StyleController = this.layoutControl1;
             this.PhoneNumberTxt.TabIndex = 5;
             // 
@@ -172,15 +181,6 @@ namespace ToyProject.View
             this.layoutControlItem1.Text = "이름";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.PhoneNumberTxt;
-            this.layoutControlItem2.Location = new System.Drawing.Point(405, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(406, 24);
-            this.layoutControlItem2.Text = "전화번호";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 14);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.SocialSecurityNumberTxt;
@@ -189,6 +189,15 @@ namespace ToyProject.View
             this.layoutControlItem3.Size = new System.Drawing.Size(811, 24);
             this.layoutControlItem3.Text = "주민등록번호";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 14);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.GenderTxt;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(811, 24);
+            this.layoutControlItem4.Text = "성별";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem5
             // 
@@ -231,23 +240,15 @@ namespace ToyProject.View
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
-            // layoutControlItem4
+            // layoutControlItem2
             // 
-            this.layoutControlItem4.Control = this.GenderTxt;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(811, 24);
-            this.layoutControlItem4.Text = "성별";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 14);
-            // 
-            // GenderTxt
-            // 
-            this.GenderTxt.Location = new System.Drawing.Point(84, 60);
-            this.GenderTxt.Name = "GenderTxt";
-            this.GenderTxt.Properties.ReadOnly = true;
-            this.GenderTxt.Size = new System.Drawing.Size(735, 20);
-            this.GenderTxt.StyleController = this.layoutControl1;
-            this.GenderTxt.TabIndex = 7;
+            this.layoutControlItem2.Control = this.PhoneNumberTxt;
+            this.layoutControlItem2.Location = new System.Drawing.Point(405, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(406, 24);
+            this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(5, 0, 0, 0);
+            this.layoutControlItem2.Text = "전화번호";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 14);
             // 
             // PatientEditControl
             // 
@@ -261,19 +262,19 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.PatientMemoTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QualificationTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTxt.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenderTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SocialSecurityNumberTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneNumberTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GenderTxt.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }

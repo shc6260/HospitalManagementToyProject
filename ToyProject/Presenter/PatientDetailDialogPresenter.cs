@@ -46,5 +46,12 @@ namespace ToyProject.Presenter
                 await LoadAsync(e);
             });
         }
+
+        public override void Dispose()
+        {
+            _view.SavePatient -= View_SavePatient;
+            _view.LoadRequest -= View_LoadRequest;
+            base.Dispose();
+        }
     }
 }

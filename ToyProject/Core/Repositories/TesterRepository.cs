@@ -10,21 +10,18 @@ namespace ToyProject.Core.Repositories
 {
     public class TesterRepository
     {
-        public Task<IEnumerable<TesterResponseDto>> FindAll()
+        public async Task<IEnumerable<TesterResponseDto>> FindAll()
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.QueryAsync<TesterResponseDto>(
-                        "select * from Tester"
-                    );
+                var patients = await conn.QueryAsync<TesterResponseDto>(
+                    "select * from Tester"
+                );
 
-                    return patients;
-                }
-            });
+                return patients;
+            }
         }
 
         public async Task<bool> HasChanged(DateTime checkTime)
@@ -51,64 +48,49 @@ namespace ToyProject.Core.Repositories
             }
         }
 
-        public Task AddTester(TesterAddRequestDto dto)
+        public async Task AddTester(TesterAddRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "addTester",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "addTester",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
 
-        public Task ModifyTester(TesterRequestDto dto)
+        public async Task ModifyTester(TesterRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "modifyTester",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "modifyTester",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
 
-        public Task DeleteTester(long id)
+        public async Task DeleteTester(long id)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "delete_tester",
-                        new
-                        {
-                            id = id
-                        },
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "delete_tester",
+                    new
+                    {
+                        id = id
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
     }
 }

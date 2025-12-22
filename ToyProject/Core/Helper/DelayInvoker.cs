@@ -42,9 +42,9 @@ namespace ToyProject.Core.Helper
                 if (token.IsCancellationRequested == false)
                     await action();
             }
-            catch (TaskCanceledException)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.ToString());
             }
         }
 

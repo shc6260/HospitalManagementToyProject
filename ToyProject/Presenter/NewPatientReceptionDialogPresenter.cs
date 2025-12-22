@@ -32,5 +32,11 @@ namespace ToyProject.Presenter
                 EventBus.Instance.Publish(new ReceptionChangedEventArgs());
             });
         }
+
+        public override void Dispose()
+        {
+            _view.SavePatient -= ViewSavePatient;
+            base.Dispose();
+        }
     }
 }

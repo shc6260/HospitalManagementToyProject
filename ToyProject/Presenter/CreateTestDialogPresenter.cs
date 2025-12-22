@@ -23,9 +23,15 @@ namespace ToyProject.Presenter
         {
             await _messageService.RunInProgressPopupAsync(async () =>
             {
-                var result = await _testItemService.GetAllTestItemAsync();
+                var result = await _testItemService.GetAllTestItemAsync(true);
                 _view.SetTestItems(result, e?.TestItems);
             });
+        }
+
+        public override void Dispose()
+        {
+            _view.LoadRequest -= ViewLoadRequest;
+            base.Dispose();
         }
     }
 }

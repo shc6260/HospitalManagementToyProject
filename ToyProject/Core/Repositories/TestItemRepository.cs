@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -9,81 +10,87 @@ namespace ToyProject.Core.Repositories
 {
     public class TestItemRepository
     {
-        public Task<IEnumerable<TestItemResponseDto>> FindAll()
+        public async Task<IEnumerable<TestItemResponseDto>> FindAll()
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.QueryAsync<TestItemResponseDto>(
-                        "select * from TestItem"
-                    );
+                var patients = await conn.QueryAsync<TestItemResponseDto>(
+                    "select * from TestItem"
+                );
 
-                    return patients;
-                }
-            });
+                return patients;
+            }
         }
 
-        public Task AddTestItem(TestItemAddRequestDto dto)
+        public async Task<bool> HasChanged(DateTime checkTime)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "addTestitem",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
+                var hasChanged = await conn.ExecuteScalarAsync<int>(
+                    @"
+                SELECT CASE
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM TestItem
+                        WHERE modified_dt > @checkTime
+                    )
+                    THEN 1 ELSE 0
+                END
+                ",
+                    new { checkTime = checkTime }
+                );
 
-                    return patients;
-                }
-            });
+                return hasChanged == 1;
+            }
         }
 
-        public Task ModifyTestItem(TestItemRequestDto dto)
+        public async Task AddTestItem(TestItemAddRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "modifyTestitem",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "addTestitem",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
 
-        public Task DeleteTestItem(long id)
+        public async Task ModifyTestItem(TestItemRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "deleteTestitem",
-                        new
-                        {
-                            id = id
-                        },
-                        commandType: CommandType.StoredProcedure
-                    );
+                await conn.ExecuteAsync(
+                    "modifyTestitem",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
 
-                    return patients;
-                }
-            });
+        public async Task DeleteTestItem(long id)
+        {
+            using (var conn = DbConnectionFactory.CreateConnection())
+            {
+                conn.Open();
+
+                await conn.ExecuteAsync(
+                    "deleteTestitem",
+                    new
+                    {
+                        id = id
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
     }
 }

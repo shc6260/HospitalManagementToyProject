@@ -23,7 +23,7 @@ namespace ToyProject.Model.Dto
 
         public string Checkup_target_info { get; set; }
 
-        public DateTime Reception_dt { get; set; }
+        public DateTime? Reception_dt { get; set; }
     }
 
     public class ReceptionAddRequestDto

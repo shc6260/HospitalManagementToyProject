@@ -61,6 +61,7 @@ namespace ToyProject.Core.Service
                     SplashScreenManager.CloseOverlayForm(handle);
 
                 ShowError(e.Message);
+                Console.WriteLine(e.ToString());
             }
             finally
             {
@@ -93,13 +94,15 @@ namespace ToyProject.Core.Service
             }
             catch (Exception e)
             {
-                _splash.CloseWaitForm();
+                if (_splash?.IsSplashFormVisible == true)
+                    _splash.CloseWaitForm();
                 ShowError(e.Message);
+                Console.WriteLine(e.ToString());
             }
             finally
             {
                 owner.Enabled = true;
-                if (_splash.IsSplashFormVisible)
+                if (_splash?.IsSplashFormVisible == true)
                     _splash.CloseWaitForm();
             }
         }
@@ -114,6 +117,7 @@ namespace ToyProject.Core.Service
             catch (Exception e)
             {
                 ShowError(e.Message);
+                Console.WriteLine(e.ToString());
             }
         }
     }

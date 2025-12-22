@@ -27,5 +27,11 @@ namespace ToyProject.Presenter
                 await _patientEditPresenter.SavePatient();
             });
         }
+
+        public override void Dispose()
+        {
+            _view.SavePatient -= View_SavePatient;
+            base.Dispose();
+        }
     }
 }

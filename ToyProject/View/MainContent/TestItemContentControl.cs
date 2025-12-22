@@ -1,6 +1,5 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,13 +50,15 @@ namespace ToyProject.View
             if (e.Button != MouseButtons.Right)
                 return;
 
-            GridView view = sender as GridView;
-            GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+            var view = sender as GridView;
+            var hitInfo = view.CalcHitInfo(e.Location);
+            var item = view.GetRow(hitInfo.RowHandle) as TestItem;
 
             if (hitInfo.InRow || hitInfo.InRowCell)
             {
                 view.FocusedRowHandle = hitInfo.RowHandle;
                 testerRowContextMenu.Show(Control.MousePosition);
+                activateContextMenu.Text = item?.IsEnabled == false ? "활성화" : "비활성화";
             }
         }
 
@@ -92,9 +93,9 @@ namespace ToyProject.View
 
         private void SaveButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(codeTextEdit.Text) 
-                || string.IsNullOrWhiteSpace(nameTextEdit.Text) 
-                || string.IsNullOrWhiteSpace(referenceMinTextEdit.Text) 
+            if (string.IsNullOrWhiteSpace(codeTextEdit.Text)
+                || string.IsNullOrWhiteSpace(nameTextEdit.Text)
+                || string.IsNullOrWhiteSpace(referenceMinTextEdit.Text)
                 || string.IsNullOrWhiteSpace(referenceMaxTextEdit.Text))
             {
                 XtraMessageBox.Show(this, "빈 값이 있습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,11 +159,10 @@ namespace ToyProject.View
 
         public void SetTestItemList(IEnumerable<TestItem> items)
         {
+            
             testItemGridControl.DataSource = new BindingList<TestItem>(items.ToArray());
-
         }
 
         #endregion
-
     }
 }

@@ -10,34 +10,8 @@ namespace ToyProject.View
             InitializeComponent();
         }
 
-        public Patient GetPatient()
-        {
-            return Patient.From
-            (
-                null,
-                null,
-                NameTxt.Text,
-                SocialSecurityNumberTxt.Text,
-                null,
-                PhoneNumberTxt.Text,
-                AddressTxt.Text,
-                PatientMemoTxt.Text,
-                QualificationTxt.Text
-            );
-        }
 
-        public void SetPatient(Patient patient)
-        {
-            if (patient == null)
-                return;
-
-            NameTxt.Text = patient.Name;
-            PhoneNumberTxt.Text = patient.PhoneNumber;
-            SocialSecurityNumberTxt.Text = patient.SocialSecurityNumber;
-            AddressTxt.Text = patient.Address;
-            QualificationTxt.Text = patient.QualificationInfo;
-            PatientMemoTxt.Text = patient.Memo;
-        }
+        #region Helpers
 
         private void SocialSecurityNumberTxtEditValueChanged(object sender, System.EventArgs e)
         {
@@ -66,6 +40,42 @@ namespace ToyProject.View
                     GenderTxt.Text = "여";
                     break;
             }
+        } 
+
+        #endregion
+
+
+        #region IPatientEditControl
+
+        public Patient GetPatient()
+        {
+            return Patient.From
+            (
+                null,
+                null,
+                NameTxt.Text,
+                SocialSecurityNumberTxt.Text,
+                null,
+                PhoneNumberTxt.Text,
+                AddressTxt.Text,
+                PatientMemoTxt.Text,
+                QualificationTxt.Text
+            );
         }
+
+        public void SetPatient(Patient patient)
+        {
+            if (patient == null)
+                return;
+
+            NameTxt.Text = patient.Name;
+            PhoneNumberTxt.Text = patient.PhoneNumber;
+            SocialSecurityNumberTxt.Text = patient.SocialSecurityNumber;
+            AddressTxt.Text = patient.Address;
+            QualificationTxt.Text = patient.QualificationInfo;
+            PatientMemoTxt.Text = patient.Memo;
+        } 
+
+        #endregion
     }
 }

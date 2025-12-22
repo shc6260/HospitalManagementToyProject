@@ -20,9 +20,10 @@ namespace ToyProject.Core.Service
         private TesterRepository _testerRepository;
         private SimpleCache<IEnumerable<Tester>> _testerListCache;
 
-        public async Task<IEnumerable<Tester>> GetAllTesterAsync()
+        public async Task<IEnumerable<Tester>> GetAllTesterAsync(bool? isEnabled = null)
         {
-            return await _testerListCache.GetAsync();
+            var result = await _testerListCache.GetAsync();
+            return isEnabled == null ? result : result.Where(i => i.IsEnabled == isEnabled).ToList();
         }
 
         private async Task<IEnumerable<Tester>> GetChacheListAsync()

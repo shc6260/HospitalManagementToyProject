@@ -12,7 +12,7 @@ namespace ToyProject.Core.Repositories
 {
     public class ReceptionRepository
     {
-        public async Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindRecepionWithPatientInfo(DateTime from, DateTime to)
+        public async Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindReceptionWithPatientInfo(DateTime from, DateTime to)
         {
             using (var conn = DbConnectionFactory.CreateConnection())
             {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToyProject.Core.Class;
 using ToyProject.Core.Repositories;
 using ToyProject.Model;
 using ToyProject.Model.Dto;
@@ -14,15 +15,23 @@ namespace ToyProject.Core.Service
         public TestItemService(TestItemRepository testItemRepository)
         {
             _testItemRepository = testItemRepository;
+            _testItemListCache = new SimpleCache<IEnumerable<TestItem>>(args => _testItemRepository.HasChanged(args), () => GetCacheAllTestItemAsync());
+
         }
 
-        public Task<IEnumerable<TestItem>> GetAllTestItemAsync()
+        private SimpleCache<IEnumerable<TestItem>> _testItemListCache;
+
+        public async Task<IEnumerable<TestItem>> GetAllTestItemAsync(bool? isEnabled = null)
         {
-            return Task.Run(async () =>
-            {
-                var result = await _testItemRepository.FindAll();
-                return result.Select(TestItem.From);
-            });
+            var result = await _testItemListCache.GetAsync();
+            return isEnabled == null ? result : result.Where(i => i.IsEnabled == isEnabled).ToList();
+        }
+
+
+        public async Task<IEnumerable<TestItem>> GetCacheAllTestItemAsync()
+        {
+            var result = await _testItemRepository.FindAll();
+            return result.Select(TestItem.From);
         }
 
         public Task SaveTestItemAsync(TestItem data)

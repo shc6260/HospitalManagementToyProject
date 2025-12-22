@@ -31,12 +31,12 @@ namespace ToyProject.View.Dialog
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.receptionDateEdit = new DevExpress.XtraEditors.DateTimeOffsetEdit();
             this.testGridControl = new DevExpress.XtraGrid.GridControl();
             this.testGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.testNameColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TestItemsColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.receptionDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.specificalTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.checkupTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.insurenceTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -49,7 +49,6 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.sd = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -57,10 +56,10 @@ namespace ToyProject.View.Dialog
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.codeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,10 +70,9 @@ namespace ToyProject.View.Dialog
             this.editContextMenu = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.specificalTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkupTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.insurenceTextEdit.Properties)).BeginInit();
@@ -83,7 +81,6 @@ namespace ToyProject.View.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -91,18 +88,18 @@ namespace ToyProject.View.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.testItemRowContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.receptionDateEdit);
             this.layoutControl1.Controls.Add(this.testGridControl);
             this.layoutControl1.Controls.Add(this.label1);
-            this.layoutControl1.Controls.Add(this.receptionDateEdit);
             this.layoutControl1.Controls.Add(this.specificalTextEdit);
             this.layoutControl1.Controls.Add(this.checkupTextEdit);
             this.layoutControl1.Controls.Add(this.insurenceTextEdit);
@@ -120,12 +117,26 @@ namespace ToyProject.View.Dialog
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // receptionDateEdit
+            // 
+            this.receptionDateEdit.EditValue = null;
+            this.receptionDateEdit.Location = new System.Drawing.Point(522, 12);
+            this.receptionDateEdit.Name = "receptionDateEdit";
+            this.receptionDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.receptionDateEdit.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm";
+            this.receptionDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.receptionDateEdit.Properties.MaskSettings.Set("mask", "yyyy-MM-dd HH:mm");
+            this.receptionDateEdit.Size = new System.Drawing.Size(201, 20);
+            this.receptionDateEdit.StyleController = this.layoutControl1;
+            this.receptionDateEdit.TabIndex = 15;
+            // 
             // testGridControl
             // 
-            this.testGridControl.Location = new System.Drawing.Point(12, 171);
+            this.testGridControl.Location = new System.Drawing.Point(12, 160);
             this.testGridControl.MainView = this.testGridView;
             this.testGridControl.Name = "testGridControl";
-            this.testGridControl.Size = new System.Drawing.Size(711, 270);
+            this.testGridControl.Size = new System.Drawing.Size(711, 281);
             this.testGridControl.TabIndex = 14;
             this.testGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.testGridView});
@@ -158,24 +169,13 @@ namespace ToyProject.View.Dialog
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 145);
+            this.label1.Font = new System.Drawing.Font("굴림", 8F);
+            this.label1.Location = new System.Drawing.Point(12, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(615, 22);
             this.label1.TabIndex = 13;
             this.label1.Text = "검사 선택";
-            // 
-            // receptionDateEdit
-            // 
-            this.receptionDateEdit.EditValue = null;
-            this.receptionDateEdit.Location = new System.Drawing.Point(540, 12);
-            this.receptionDateEdit.Name = "receptionDateEdit";
-            this.receptionDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.receptionDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.receptionDateEdit.Size = new System.Drawing.Size(183, 20);
-            this.receptionDateEdit.StyleController = this.layoutControl1;
-            this.receptionDateEdit.TabIndex = 10;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // specificalTextEdit
             // 
@@ -204,6 +204,9 @@ namespace ToyProject.View.Dialog
             // insuredComboBox
             // 
             this.insuredComboBox.FormattingEnabled = true;
+            this.insuredComboBox.Items.AddRange(new object[] {
+            "급여",
+            "비급여"});
             this.insuredComboBox.Location = new System.Drawing.Point(238, 36);
             this.insuredComboBox.Name = "insuredComboBox";
             this.insuredComboBox.Size = new System.Drawing.Size(485, 20);
@@ -231,6 +234,8 @@ namespace ToyProject.View.Dialog
             // 
             this.receptionMemoTextEdit.Location = new System.Drawing.Point(12, 463);
             this.receptionMemoTextEdit.Name = "receptionMemoTextEdit";
+            this.receptionMemoTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.receptionMemoTextEdit.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.receptionMemoTextEdit.Properties.AutoHeight = false;
             this.receptionMemoTextEdit.Size = new System.Drawing.Size(711, 213);
             this.receptionMemoTextEdit.StyleController = this.layoutControl1;
@@ -238,7 +243,7 @@ namespace ToyProject.View.Dialog
             // 
             // addTestButton
             // 
-            this.addTestButton.Location = new System.Drawing.Point(631, 145);
+            this.addTestButton.Location = new System.Drawing.Point(631, 134);
             this.addTestButton.Name = "addTestButton";
             this.addTestButton.Size = new System.Drawing.Size(92, 22);
             this.addTestButton.StyleController = this.layoutControl1;
@@ -254,7 +259,6 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem1,
             this.layoutControlItem4,
             this.layoutControlItem5,
-            this.layoutControlItem7,
             this.emptySpaceItem2,
             this.sd,
             this.layoutControlItem3,
@@ -262,10 +266,10 @@ namespace ToyProject.View.Dialog
             this.simpleLabelItem1,
             this.layoutControlItem8,
             this.layoutControlItem2,
-            this.simpleSeparator2,
             this.layoutControlItem9,
             this.layoutControlItem10,
-            this.simpleSeparator1});
+            this.simpleSeparator1,
+            this.layoutControlItem11});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(735, 688);
             this.Root.TextVisible = false;
@@ -298,23 +302,12 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem5.Text = "검진정보";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.receptionDateEdit;
-            this.layoutControlItem7.Location = new System.Drawing.Point(483, 0);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(232, 24);
-            this.layoutControlItem7.Text = "접수시간";
-            this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(40, 14);
-            this.layoutControlItem7.TextToControlDistance = 5;
-            // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(483, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(438, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sd
@@ -369,24 +362,17 @@ namespace ToyProject.View.Dialog
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.addTestButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(619, 133);
+            this.layoutControlItem2.Location = new System.Drawing.Point(619, 122);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(96, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // simpleSeparator2
-            // 
-            this.simpleSeparator2.AllowHotTrack = false;
-            this.simpleSeparator2.Location = new System.Drawing.Point(0, 121);
-            this.simpleSeparator2.Name = "simpleSeparator2";
-            this.simpleSeparator2.Size = new System.Drawing.Size(715, 11);
-            this.simpleSeparator2.Spacing = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            // 
             // layoutControlItem9
             // 
+            this.layoutControlItem9.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem9.Control = this.label1;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 133);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 122);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(619, 26);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
@@ -395,10 +381,10 @@ namespace ToyProject.View.Dialog
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.testGridControl;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 159);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 148);
             this.layoutControlItem10.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(715, 274);
+            this.layoutControlItem10.Size = new System.Drawing.Size(715, 285);
             this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
@@ -406,9 +392,18 @@ namespace ToyProject.View.Dialog
             // simpleSeparator1
             // 
             this.simpleSeparator1.AllowHotTrack = false;
-            this.simpleSeparator1.Location = new System.Drawing.Point(0, 132);
+            this.simpleSeparator1.Location = new System.Drawing.Point(0, 121);
             this.simpleSeparator1.Name = "simpleSeparator1";
             this.simpleSeparator1.Size = new System.Drawing.Size(715, 1);
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.receptionDateEdit;
+            this.layoutControlItem11.Location = new System.Drawing.Point(438, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(277, 24);
+            this.layoutControlItem11.Text = "접수일시";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(60, 14);
             // 
             // gridColumn1
             // 
@@ -480,10 +475,9 @@ namespace ToyProject.View.Dialog
             this.Size = new System.Drawing.Size(735, 688);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receptionDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.specificalTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkupTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.insurenceTextEdit.Properties)).EndInit();
@@ -492,7 +486,6 @@ namespace ToyProject.View.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -500,10 +493,10 @@ namespace ToyProject.View.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.testItemRowContextMenu.ResumeLayout(false);
             this.testItemRowContextMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -514,7 +507,6 @@ namespace ToyProject.View.Dialog
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraEditors.DateEdit receptionDateEdit;
         private DevExpress.XtraEditors.TextEdit specificalTextEdit;
         private DevExpress.XtraEditors.TextEdit checkupTextEdit;
         private DevExpress.XtraEditors.TextEdit insurenceTextEdit;
@@ -528,7 +520,6 @@ namespace ToyProject.View.Dialog
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
@@ -544,12 +535,13 @@ namespace ToyProject.View.Dialog
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton addTestButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
         private System.Windows.Forms.ContextMenuStrip testItemRowContextMenu;
         private System.Windows.Forms.ToolStripTextBox deleteContextMenu;
         private System.Windows.Forms.ToolStripTextBox editContextMenu;
+        private DevExpress.XtraEditors.DateTimeOffsetEdit receptionDateEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
     }
 }

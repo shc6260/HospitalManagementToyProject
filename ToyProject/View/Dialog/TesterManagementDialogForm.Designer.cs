@@ -197,7 +197,7 @@ namespace ToyProject.View
             // 
             this.saveButton.Location = new System.Drawing.Point(276, 209);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(63, 22);
+            this.saveButton.Size = new System.Drawing.Size(60, 22);
             this.saveButton.StyleController = this.layoutControl1;
             this.saveButton.TabIndex = 8;
             this.saveButton.Text = "저장";
@@ -236,6 +236,7 @@ namespace ToyProject.View
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem6.Size = new System.Drawing.Size(63, 22);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 3, 0, 0);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 

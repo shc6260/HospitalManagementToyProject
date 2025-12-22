@@ -81,5 +81,13 @@ namespace ToyProject.Presenter.MainContent
         {
             return await _testItemService.GetAllTestItemAsync();
         }
+
+        public override void Dispose()
+        {
+            _view.UpdateTestItemRequested -= OnUpdateEquipRequested;
+            _view.ToggleActiveRequested -= OnToggleActiveRequested;
+            _view.DeleteTestItemRequested -= OnDeleteEquipRequested;
+            base.Dispose();
+        }
     }
 }

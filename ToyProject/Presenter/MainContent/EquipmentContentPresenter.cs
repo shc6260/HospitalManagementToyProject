@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
@@ -68,6 +67,14 @@ namespace ToyProject.Presenter
         private async Task<IEnumerable<Equipment>> GetTesters()
         {
             return await _equipmentService.GetAllEquipmentAsync();
+        }
+
+        public override void Dispose()
+        {
+            _view.UpdateEquipRequested -= OnUpdateEquipRequested;
+            _view.ToggleActiveRequested -= OnToggleActiveRequested;
+            _view.DeleteEquipRequested -= OnDeleteEquipRequested;
+            base.Dispose();
         }
     }
 }

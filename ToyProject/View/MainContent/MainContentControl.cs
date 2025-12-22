@@ -84,11 +84,6 @@ namespace ToyProject.View
             this.ShowReceptionDialog(row);
         }
 
-        private void TestButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
 

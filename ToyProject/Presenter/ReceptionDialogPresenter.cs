@@ -54,5 +54,15 @@ namespace ToyProject.Presenter
                 EventBus.Instance.Publish(new ReceptionChangedEventArgs());
             });
         }
+
+        public override void Dispose()
+        {
+            _view.SaveReceptionRequest -= ViewSaveReceptionRequest;
+            _view.CancelReceptionRequest -= ViewCancelReceptionRequest;
+            _view.LoadRequestByPatient -= OnLoadRequest;
+            _view.LoadRequestByReceptionSimple -= ViewLoadRequestByReceptionSimple;
+            _receptionControlPresenter.Dispose();
+            base.Dispose();
+        }
     }
 }

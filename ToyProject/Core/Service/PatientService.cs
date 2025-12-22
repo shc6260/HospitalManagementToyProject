@@ -15,13 +15,10 @@ namespace ToyProject.Core.Service
 
         private PatientRepository _patientRepository;
 
-        public Task<IEnumerable<Patient>> FindPatientsForGnbAsync(string searchText)
+        public async Task<IEnumerable<Patient>> FindPatientsForGnbAsync(string searchText)
         {
-            return Task.Run(async () =>
-            {
-                var result = await _patientRepository.FindPatientsForGnbAsync(searchText);
-                return result.Select(Patient.From);
-            });
+            var result = await _patientRepository.FindPatientsForGnbAsync(searchText);
+            return result.Select(Patient.From);
         }
 
         public Task<long> SavePatientAcync(Patient data)

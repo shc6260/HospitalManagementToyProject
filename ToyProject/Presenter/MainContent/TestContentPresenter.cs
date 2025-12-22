@@ -33,8 +33,8 @@ namespace ToyProject.Presenter.MainContent
             _tests = await _testService.GetTestsAsync();
             _view.SetTestList(_tests);
 
-            var equipments = await _equipmentService.GetAllEquipmentAsync();
-            var testers = await _testerService.GetAllTesterAsync();
+            var equipments = await _equipmentService.GetAllEquipmentAsync(true);
+            var testers = await _testerService.GetAllTesterAsync(true);
 
             _view.SetData(equipments, testers);
         }
@@ -51,6 +51,13 @@ namespace ToyProject.Presenter.MainContent
                 await _testService.SaveChangesAsync(change.resultChanges, change.testChanges);
                 await Refresh();
             });
+        }
+
+        public override void Dispose()
+        {
+            _view.RefreshRequested -= OnRefreshRequested;
+            _view.SaveRequested -= OnSaveRequested;
+            base.Dispose();
         }
     }
 }

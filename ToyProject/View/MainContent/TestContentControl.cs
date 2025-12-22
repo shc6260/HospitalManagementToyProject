@@ -18,8 +18,8 @@ namespace ToyProject.View
         public TestContentControl()
         {
             InitializeComponent();
-            InitStatusComboBox();
             InitGridView();
+            InitStatusComboBox();
         }
 
         private const string RelationName = "TestResults";
@@ -126,6 +126,7 @@ namespace ToyProject.View
 
         #endregion
 
+
         #region Helpers
 
         private IEnumerable<DataTableChange<TestResult>> GetResultChanges()
@@ -203,6 +204,100 @@ namespace ToyProject.View
             testGridView.ActiveFilterString = $"[{nameof(TestDetail.Status)}] IN ({statusFilter})";
         }
 
+
+        private void TestGridViewPopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            var view = sender as GridView;
+            if (view == null)
+                return;
+
+            if (!e.HitInfo.InGroupRow)
+                return;
+
+            int groupLevel = view.GetRowLevel(e.HitInfo.RowHandle);
+
+            if (groupLevel == 1)
+            {
+                _contextMenuRowHandle = e.HitInfo.RowHandle;
+                view.FocusedRowHandle = e.HitInfo.RowHandle;
+                testContextMenu.Show(Control.MousePosition);
+            }
+        }
+
+        private void SetStatusForContextRow(StatusType status)
+        {
+            var view = testGridView;
+            if (view == null)
+                return;
+
+            var rowHandle = _contextMenuRowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle
+                ? _contextMenuRowHandle
+                : view.FocusedRowHandle;
+
+            if (rowHandle == DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                return;
+
+            var statusValue = status.ToString();
+
+            void SetStatusOnDataRow(int dataRowHandle)
+            {
+                var dataRow = view.GetDataRow(dataRowHandle);
+                if (dataRow == null)
+                    return;
+
+                dataRow[nameof(TestDetail.Status)] = statusValue;
+            }
+
+            void ApplyRecursively(int handle)
+            {
+                if (view.IsGroupRow(handle))
+                {
+                    var childCount = view.GetChildRowCount(handle);
+                    for (int i = 0; i < childCount; i++)
+                    {
+                        int childHandle = view.GetChildRowHandle(handle, i);
+                        if (childHandle < 0)
+                            continue;
+
+                        ApplyRecursively(childHandle);
+                    }
+
+                    return;
+                }
+
+                SetStatusOnDataRow(handle);
+            }
+
+            ApplyRecursively(rowHandle);
+
+            view.RefreshData();
+            _contextMenuRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+        }
+
+        private void RepositoryItemButtonEditButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            var view = testGridControl.FocusedView as GridView;
+            if (view == null)
+                return;
+
+            var rowHandle = view.FocusedRowHandle;
+            if (rowHandle < 0 || view.IsGroupRow(rowHandle))
+                return;
+
+            var mainRow = view.GetDataRow(rowHandle);
+            if (mainRow == null)
+                return;
+
+            var testId = (long)mainRow[nameof(TestDetail.Id)];
+
+            var newResultRow = _resulsTable.NewRow();
+            newResultRow[nameof(TestResult.TestId)] = testId;
+
+            _resulsTable.Rows.Add(newResultRow);
+
+            testGridControl.RefreshDataSource();
+        }
+
         private void RefreshButtonClick(object sender, EventArgs e)
         {
             OnRefreshRequested();
@@ -226,6 +321,7 @@ namespace ToyProject.View
         }
 
         #endregion
+
 
         #region ITestContentControlView
 
@@ -311,97 +407,5 @@ namespace ToyProject.View
         }
 
         #endregion
-
-        private void SetStatusForContextRow(StatusType status)
-        {
-            var view = testGridView;
-            if (view == null)
-                return;
-
-            var rowHandle = _contextMenuRowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle
-                ? _contextMenuRowHandle
-                : view.FocusedRowHandle;
-
-            if (rowHandle == DevExpress.XtraGrid.GridControl.InvalidRowHandle)
-                return;
-
-            var statusValue = status.ToString();
-
-            void SetStatusOnDataRow(int dataRowHandle)
-            {
-                var dataRow = view.GetDataRow(dataRowHandle);
-                if (dataRow == null)
-                    return;
-
-                dataRow[nameof(TestDetail.Status)] = statusValue;
-            }
-
-            void ApplyRecursively(int handle)
-            {
-                if (view.IsGroupRow(handle))
-                {
-                    var childCount = view.GetChildRowCount(handle);
-                    for (int i = 0; i < childCount; i++)
-                    {
-                        int childHandle = view.GetChildRowHandle(handle, i);
-                        if (childHandle < 0)
-                            continue;
-
-                        ApplyRecursively(childHandle);
-                    }
-
-                    return;
-                }
-
-                SetStatusOnDataRow(handle);
-            }
-
-            ApplyRecursively(rowHandle);
-
-            view.RefreshData();
-            _contextMenuRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
-        }
-
-        private void TestGridViewPopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            var view = sender as GridView;
-            if (view == null)
-                return;
-
-            if (!e.HitInfo.InGroupRow)
-                return;
-
-            int groupLevel = view.GetRowLevel(e.HitInfo.RowHandle);
-
-            if (groupLevel == 1)
-            {
-                _contextMenuRowHandle = e.HitInfo.RowHandle;
-                view.FocusedRowHandle = e.HitInfo.RowHandle;
-                testContextMenu.Show(Control.MousePosition);
-            }
-        }
-
-        private void RepositoryItemButtonEditButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            var view = testGridControl.FocusedView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-            var rowHandle = view.FocusedRowHandle;
-            if (rowHandle < 0 || view.IsGroupRow(rowHandle))
-                return;
-
-            var mainRow = view.GetDataRow(rowHandle);
-            if (mainRow == null)
-                return;
-
-            var testId = (long)mainRow[nameof(TestDetail.Id)];
-
-            var newResultRow = _resulsTable.NewRow();
-            newResultRow[nameof(TestResult.TestId)] = testId;
-
-            _resulsTable.Rows.Add(newResultRow);
-
-            testGridControl.RefreshDataSource();
-        }
     }
 }

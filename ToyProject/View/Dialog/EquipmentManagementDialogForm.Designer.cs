@@ -67,7 +67,7 @@ namespace ToyProject.View
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(497, 177, 650, 400);
+            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(691, 411, 650, 400);
             this.layoutControl2.Root = this.layoutControlGroup1;
             this.layoutControl2.Size = new System.Drawing.Size(428, 173);
             this.layoutControl2.TabIndex = 5;
@@ -87,7 +87,7 @@ namespace ToyProject.View
             // 
             this.saveButton.Location = new System.Drawing.Point(292, 141);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(63, 22);
+            this.saveButton.Size = new System.Drawing.Size(60, 22);
             this.saveButton.StyleController = this.layoutControl2;
             this.saveButton.TabIndex = 12;
             this.saveButton.Text = "저장";
@@ -183,6 +183,7 @@ namespace ToyProject.View
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem6.Size = new System.Drawing.Size(63, 22);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 3, 0, 0);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 

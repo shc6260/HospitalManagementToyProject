@@ -5,7 +5,7 @@ namespace ToyProject.Core.Helper
 {
     public static class DateRangeHelper
     {
-        public static DateRange Today()
+        public static DateRange ToDayRange()
         {
             return new DateRange(DateTime.Today, DateTime.Today);
         }

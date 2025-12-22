@@ -24,57 +24,46 @@ namespace ToyProject.Core.Service
         private PatientRepository _patientRepository;
 
 
-        public Task<IEnumerable<ReceptionWithPatientSimpleResponse>> GetRecepionWithPatientInfo(DateRange dateRange)
+        public async Task<IEnumerable<ReceptionWithPatientSimpleResponse>> GetRecepionWithPatientInfo(DateRange dateRange)
         {
-            return Task.Run(async () =>
-            {
-                var result = await _receptionRepository.FindRecepionWithPatientInfo(dateRange.StartDate, dateRange.EndDate);
-                return result.Select(ReceptionWithPatientSimpleResponse.From);
-            });
+            var result = await _receptionRepository.FindReceptionWithPatientInfo(dateRange.StartDate, dateRange.EndDate);
+            return result.Select(ReceptionWithPatientSimpleResponse.From);
         }
 
-        public Task<Reception> FindReceptionById(long id)
+        public async Task<Reception> FindReceptionById(long id)
         {
-            return Task.Run(async () =>
-            {
-                var result = await _receptionRepository.FindReceptionWithTests(id);
-                return Reception.From(result);
-            });
+            var result = await _receptionRepository.FindReceptionWithTests(id);
+            return Reception.From(result);
         }
 
-        public Task AddNewPatientReception(Patient patient, Reception reception)
+        public async Task AddNewPatientReception(Patient patient, Reception reception)
         {
-            return Task.Run(async () =>
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
-                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-                {
-                    var patient_id = await _patientRepository.AddPatientsAsync(patient.ToAddRequestDto());
+                var patient_id = await _patientRepository.AddPatientsAsync(patient.ToAddRequestDto());
 
-                    var saveReception = reception.WithPatientId(patient_id);
-                    await _receptionRepository.AddReception(saveReception.ToAddRequestDto(), saveReception.GetTestAddRequestDtos());
+                var saveReception = reception.WithPatientId(patient_id);
+                await _receptionRepository.AddReception(saveReception.ToAddRequestDto(), saveReception.GetTestAddRequestDtos());
 
-                    scope.Complete();
-                }
-            });
+                scope.Complete();
+            }
         }
 
-        public Task SaveReception(Reception data, Reception origin)
+        public async Task SaveReception(Reception data, Reception origin)
         {
-            return Task.Run(async () =>
+            if (origin?.Id == null)
             {
-                if (origin?.Id == null)
-                {
-                    await _receptionRepository.AddReception(data.ToAddRequestDto(), data.GetTestAddRequestDtos());
-                    return;
-                }
+                await _receptionRepository.AddReception(data.ToAddRequestDto(), data.GetTestAddRequestDtos());
+                return;
+            }
 
-                await ModlfyReceptions(data, origin);
-
-            });
+            await ModlfyReceptions(data, origin);
         }
 
         private async Task ModlfyReceptions(Reception data, Reception origin)
         {
+            await _receptionRepository.ModifyReception(data.ToModifyRequestDto(origin.Id.Value));
+
             var currentById = data.Tests
                 .Where(t => t.Id.HasValue)
                 .ToDictionary(t => t.Id.Value);
@@ -118,12 +107,9 @@ namespace ToyProject.Core.Service
             }
         }
 
-        public Task DeleteReception(long id)
+        public async Task DeleteReception(long id)
         {
-            return Task.Run(async () =>
-            {
-                await _receptionRepository.DeleteReception(id);
-            });
+            await _receptionRepository.DeleteReception(id);
         }
 
         //public Task SaveReception(Reception data)

@@ -10,21 +10,18 @@ namespace ToyProject.Core.Repositories
 {
     public class EquipmentRepository
     {
-        public Task<IEnumerable<EquipmentResponseDto>> FindAll()
+        public async Task<IEnumerable<EquipmentResponseDto>> FindAll()
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.QueryAsync<EquipmentResponseDto>(
-                        "select * from Equipment"
-                    );
+                var patients = await conn.QueryAsync<EquipmentResponseDto>(
+                    "select * from Equipment"
+                );
 
-                    return patients;
-                }
-            });
+                return patients;
+            }
         }
 
 
@@ -52,64 +49,49 @@ namespace ToyProject.Core.Repositories
             }
         }
 
-        public Task AddEquipment(EquipmentAddRequestDto dto)
+        public async Task AddEquipment(EquipmentAddRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "addEquipment",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "addEquipment",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
 
-        public Task ModifyEquipment(EquipmentRequestDto dto)
+        public async Task ModifyEquipment(EquipmentRequestDto dto)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "modifyEquipment",
-                        dto,
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "modifyEquipment",
+                    dto,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
 
-        public Task DeleteEquipment(long id)
+        public async Task DeleteEquipment(long id)
         {
-            return Task.Run(async () =>
+            using (var conn = DbConnectionFactory.CreateConnection())
             {
-                using (var conn = DbConnectionFactory.CreateConnection())
-                {
-                    conn.Open();
+                conn.Open();
 
-                    var patients = await conn.ExecuteAsync(
-                        "deleteEquipment",
-                        new
-                        {
-                            id = id
-                        },
-                        commandType: CommandType.StoredProcedure
-                    );
-
-                    return patients;
-                }
-            });
+                await conn.ExecuteAsync(
+                    "deleteEquipment",
+                    new
+                    {
+                        id = id
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
     }
 }

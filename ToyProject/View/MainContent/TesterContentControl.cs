@@ -29,7 +29,7 @@ namespace ToyProject.View
 
         private void InitTesterGridControl()
         {
-            testerSearchContol.Properties.NullValuePrompt = "이름 검색...";
+            testerSearchContol.Properties.NullValuePrompt = "검색...";
 
             nameColumn.FieldName = nameof(Tester.Name);
             licenseNumberColumn.FieldName = nameof(Tester.LicenseNumber);
@@ -49,11 +49,14 @@ namespace ToyProject.View
 
             GridView view = sender as GridView;
             GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+            var item = view.GetRow(hitInfo.RowHandle) as Tester;
+
 
             if (hitInfo.InRow || hitInfo.InRowCell)
             {
                 view.FocusedRowHandle = hitInfo.RowHandle;
                 testerRowContextMenu.Show(Control.MousePosition);
+                activateContextMenu.Text = item?.IsEnabled == false ? "활성화" : "비활성화";
             }
         }
 

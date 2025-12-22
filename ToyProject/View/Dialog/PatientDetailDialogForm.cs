@@ -20,6 +20,8 @@ namespace ToyProject.View
             InitGridView();
         }
 
+        #region Init Control
+
         private void InitGridView()
         {
             //testGridView Column
@@ -103,6 +105,16 @@ namespace ToyProject.View
             }
         }
 
+        #endregion
+
+
+        #region Helpers
+
+        public void LoadView(Patient patient)
+        {
+            OnLoadRequest(patient);
+        }
+
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -112,12 +124,9 @@ namespace ToyProject.View
         {
             OnSavePatient();
             Close();
-        }
+        } 
 
-        public void LoadView(Patient patient)
-        {
-            OnLoadRequest(patient);
-        }
+        #endregion
 
 
         #region IPatientDetailDialogView

@@ -12,6 +12,8 @@ namespace ToyProject.View.Dialog
         }
 
 
+        #region Helpers
+
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             OnSavePatient();
@@ -21,7 +23,10 @@ namespace ToyProject.View.Dialog
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Close();
-        }
+        } 
+
+        #endregion
+
 
         #region INewPatientDialogView
 

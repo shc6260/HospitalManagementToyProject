@@ -25,7 +25,7 @@ namespace ToyProject.View.Dialog
 
             InitTestItemGridControl();
             testGridControl.DataSource = new BindingList<Test>();
-            receptionDateEdit.DateTime = DateTime.Now;
+            receptionDateEdit.DateTimeOffset = DateTime.Now;
         }
 
         private void InitTestItemGridControl()
@@ -92,6 +92,8 @@ namespace ToyProject.View.Dialog
         #endregion
 
 
+        #region IReceptionControlView
+
         public Reception GetReception()
         {
             var allTests = testGridControl.DataSource as IEnumerable<Test>;
@@ -103,11 +105,11 @@ namespace ToyProject.View.Dialog
                 emergencyCheckBox.Checked,
                 nightCheckBox.Checked,
                 receptionMemoTextEdit.Text,
-                insuredComboBox.SelectedText,
+                insuredComboBox.Text,
                 specificalTextEdit.Text,
                 insurenceTextEdit.Text,
                 checkupTextEdit.Text,
-                receptionDateEdit.DateTime,
+                receptionDateEdit.DateTimeOffset.DateTime,
                 allTests
             );
         }
@@ -124,9 +126,10 @@ namespace ToyProject.View.Dialog
             specificalTextEdit.Text = reception.SpecificalCode;
             insurenceTextEdit.Text = reception.InsuranceInfo;
             checkupTextEdit.Text = reception.CheckupTargetInfo;
-            receptionDateEdit.DateTime = reception.ReceptionDate;
+            receptionDateEdit.DateTimeOffset = reception.ReceptionDate;
             testGridControl.DataSource = new BindingList<Test>(reception.Tests.ToList());
+        } 
 
-        }
+        #endregion
     }
 }

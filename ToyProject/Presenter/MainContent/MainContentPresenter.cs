@@ -9,7 +9,7 @@ using ToyProject.View.IView.MainContent;
 
 namespace ToyProject.Presenter.MainContent
 {
-    public class MainContentPresenter : PresenterBase, IDisposable
+    public class MainContentPresenter : PresenterBase
     {
         public MainContentPresenter(IMainContentControlView view, MessageService messageService) : base(messageService)
         {
@@ -27,7 +27,7 @@ namespace ToyProject.Presenter.MainContent
 
         public override async Task Refresh()
         {
-            await SetReception(DateRangeHelper.Today());
+            await SetReception(DateRangeHelper.ToDayRange());
         }
 
         private async void ViewSearchReceptionRequest(object sender, DevExpress.XtraEditors.Controls.DateRange e)
@@ -49,15 +49,18 @@ namespace ToyProject.Presenter.MainContent
                 {
                     await _messageService.RunInProgressPopupAsync(Refresh);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex.ToString());
                 }
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             EventBus.Instance.Unsubscribe(OnTesterUpdated);
+            _view.SearchReceptionRequest -= ViewSearchReceptionRequest;
+            base.Dispose();
         }
     }
 }

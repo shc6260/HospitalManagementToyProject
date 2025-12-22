@@ -39,7 +39,7 @@ namespace ToyProject.Core.Class
         private async Task<T> SetAsync()
         {
             _data = await _loadFunc();
-            _cachedTime = DateTime.UtcNow;
+            _cachedTime = DateTime.Now;
             return _data;
         }
     }

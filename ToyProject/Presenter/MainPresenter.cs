@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
@@ -46,8 +47,9 @@ namespace ToyProject.Presenter
                                 _patients = await GetPatients();
                                 _view.SetPatientList(_patients);
                             }
-                            catch (System.Exception)
+                            catch (Exception e)
                             {
+                                Console.WriteLine(e.ToString());
                             }
                         }
                     );
@@ -83,6 +85,15 @@ namespace ToyProject.Presenter
         private async Task<IEnumerable<Patient>> GetPatients()
         {
             return await _patientService.FindPatientsForGnbAsync(_searchText);
+        }
+
+        public override void Dispose()
+        {
+            _view.PatientSelected -= OnPatientSelected;
+            _view.ReceptionRequested -= OnReceptionRequested;
+            _view.SearchTextChanged -= OnSearchTextChanged;
+            _searchInvoker?.Dispose();
+            base.Dispose();
         }
     }
 }

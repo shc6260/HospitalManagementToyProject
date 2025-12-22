@@ -9,7 +9,7 @@ namespace ToyProject.Model
 {
     public class ReceptionWithPatientSimpleResponse
     {
-        public ReceptionWithPatientSimpleResponse(long id, string reception_dt, string patientName, string chartnumber)
+        public ReceptionWithPatientSimpleResponse(long id, DateTime reception_dt, string patientName, string chartnumber)
         {
             Id = id;
             Reception_dt = reception_dt;
@@ -20,7 +20,7 @@ namespace ToyProject.Model
 
         public long Id { get; }
 
-        public string Reception_dt { get; }
+        public DateTime Reception_dt { get; }
 
         public string PatientName { get; }
 

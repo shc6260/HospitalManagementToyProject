@@ -42,7 +42,7 @@ namespace ToyProject.Model.Dto
     {
         public long Id { get; set; }
 
-        public string Reception_dt { get; set; }
+        public DateTime Reception_dt { get; set; }
 
         public string PatientName { get; set; }
 

@@ -123,6 +123,22 @@ namespace ToyProject.Model
             };
         }
 
+        public ReceptionModifyRequestDto ToModifyRequestDto(long id)
+        {
+            return new ReceptionModifyRequestDto()
+            {
+                Id = id,
+                Checkup_target_info = CheckupTargetInfo,
+                Emergency = IsEmergency,
+                Night = IsNight,
+                Insurance_info = InsuranceInfo,
+                Insured_info = InsuredInfo,
+                Memo = Memo,
+                Reception_dt = ReceptionDate,
+                Specifical_code = SpecificalCode
+            };
+        }
+
         public IEnumerable<TestAddRequestDto> GetTestAddRequestDtos()
         {
             return Tests?.Select(i => i.ToAddDtoForReception()).ToArray();

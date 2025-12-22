@@ -48,11 +48,13 @@ namespace ToyProject.View
 
             GridView view = sender as GridView;
             GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+            var item = view.GetRow(hitInfo.RowHandle) as Equipment;
 
             if (hitInfo.InRow || hitInfo.InRowCell)
             {
                 view.FocusedRowHandle = hitInfo.RowHandle;
                 equipRowContextMenu.Show(Control.MousePosition);
+                activateContextMenu.Text = item?.IsEnabled == false ? "활성화" : "비활성화";
             }
         }
 
