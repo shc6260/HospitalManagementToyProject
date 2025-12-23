@@ -84,6 +84,22 @@ namespace ToyProject.View
             this.ShowReceptionDialog(row);
         }
 
+        private void NextButtonClick(object sender, EventArgs e)
+        {
+            if (toDateEdit.DateTime >= DateTime.Today)
+                return;
+
+
+            fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(1);
+            toDateEdit.DateTime = toDateEdit.DateTime.AddDays(1);
+        }
+
+        private void PrevButtonClick(object sender, EventArgs e)
+        {
+            fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(-1);
+            toDateEdit.DateTime = toDateEdit.DateTime.AddDays(-1);
+        }
+
         #endregion
 
 

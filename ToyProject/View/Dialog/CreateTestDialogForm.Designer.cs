@@ -245,6 +245,7 @@ namespace ToyProject.View.Dialog
             this.ClientSize = new System.Drawing.Size(958, 424);
             this.Controls.Add(this.layoutControl1);
             this.Name = "CreateTestDialogForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "검사등록";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

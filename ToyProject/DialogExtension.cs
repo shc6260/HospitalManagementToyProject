@@ -112,7 +112,7 @@ namespace ToyProject
             var owner = (parent as Form) ?? (parent as Control)?.FindForm();
             form.Owner = owner;
             form.TopMost = false;
-
+            
             if (owner != null)
             {
                 form.StartPosition = FormStartPosition.Manual;

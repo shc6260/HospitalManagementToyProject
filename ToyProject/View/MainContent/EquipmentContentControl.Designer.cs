@@ -200,10 +200,11 @@ namespace ToyProject.View
             this.activateContextMenu,
             this.editContextMenu});
             this.equipRowContextMenu.Name = "contextMenuStrip1";
-            this.equipRowContextMenu.Size = new System.Drawing.Size(181, 76);
+            this.equipRowContextMenu.Size = new System.Drawing.Size(161, 54);
             // 
             // activateContextMenu
             // 
+            this.activateContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.activateContextMenu.Name = "activateContextMenu";
             this.activateContextMenu.ReadOnly = true;
             this.activateContextMenu.Size = new System.Drawing.Size(100, 23);
@@ -212,6 +213,7 @@ namespace ToyProject.View
             // 
             // editContextMenu
             // 
+            this.editContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.editContextMenu.Name = "editContextMenu";
             this.editContextMenu.ReadOnly = true;
             this.editContextMenu.Size = new System.Drawing.Size(100, 23);

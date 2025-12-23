@@ -201,7 +201,7 @@ namespace ToyProject
             OnSearchTextChanged();
         }
 
-        private void gnbGridView_RowClick(object sender, RowClickEventArgs e)
+        private void GnbGridView_RowClick(object sender, RowClickEventArgs e)
         {
             var view = sender as GridView;
             if (view == null || e.RowHandle < 0)
@@ -225,16 +225,47 @@ namespace ToyProject
 
         private void GnbPatientSearchEdit_KeyDown(object sender, KeyEventArgs e)
         {
+            var view = gnbGridView;
+            if (view == null)
+                return;
+
             if (e.KeyCode == Keys.Enter)
             {
-                var view = gnbGridView;
                 var patient = view?.GetFocusedRow() as Patient;
                 if (patient != null)
                 {
                     OnPatientSelected(patient);
                     e.Handled = true;
                 }
+
+                return;
             }
+
+            if (e.KeyCode != Keys.Up && e.KeyCode != Keys.Down)
+                return;
+
+            if (view.RowCount == 0)
+                return;
+
+            if (gnbSearchEdit.IsPopupOpen == false)
+                gnbSearchEdit.ShowPopup();
+
+            var currentHandle = view.FocusedRowHandle;
+            if (currentHandle < 0)
+                currentHandle = 0;
+
+            var targetHandle = e.KeyCode == Keys.Up
+                ? Math.Max(0, currentHandle - 1)
+                : Math.Min(view.RowCount - 1, currentHandle + 1);
+
+            if (targetHandle != view.FocusedRowHandle)
+            {
+                view.FocusedRowHandle = targetHandle;
+                view.MakeRowVisible(targetHandle);
+                gnbSearchEdit.Focus();
+            }
+
+            e.Handled = true;
         }
 
         private void NewPatientButtonClick(object sender, EventArgs e)

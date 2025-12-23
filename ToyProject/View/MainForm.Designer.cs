@@ -62,10 +62,7 @@ namespace ToyProject
             this.equipmentTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.testItemTab = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
-            this.mainFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -85,7 +82,6 @@ namespace ToyProject
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -176,7 +172,7 @@ namespace ToyProject
             this.gnbGridView.Name = "gnbGridView";
             this.gnbGridView.OptionsBehavior.Editable = false;
             this.gnbGridView.OptionsView.ShowGroupPanel = false;
-            this.gnbGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gnbGridView_RowClick);
+            this.gnbGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GnbGridView_RowClick);
             // 
             // nameColumn
             // 
@@ -409,16 +405,6 @@ namespace ToyProject
             this.textBox1.Size = new System.Drawing.Size(696, 21);
             this.textBox1.TabIndex = 1;
             // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            // 
-            // mainFormBindingSource
-            // 
-            this.mainFormBindingSource.DataSource = typeof(ToyProject.MainForm);
-            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -431,6 +417,7 @@ namespace ToyProject
             this.Controls.Add(this.mainMenuControl);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.IconOptions.Image = global::ToyProject.Properties.Resources.u2toyy;
             this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "MainForm";
             this.NavigationControl = this.mainMenuControl;
@@ -457,7 +444,6 @@ namespace ToyProject
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -474,10 +460,7 @@ namespace ToyProject
         private DevExpress.XtraBars.Navigation.AccordionControlElement equipmentTab;
         private DevExpress.XtraBars.Navigation.AccordionControlElement testItemTab;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
-        private System.Windows.Forms.BindingSource mainFormBindingSource;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.PopupContainerEdit gnbSearchEdit;

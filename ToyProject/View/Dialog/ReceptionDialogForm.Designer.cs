@@ -207,6 +207,7 @@ namespace ToyProject.View.Dialog
             this.Controls.Add(this.layoutControl1);
             this.MinimumSize = new System.Drawing.Size(591, 569);
             this.Name = "ReceptionDialogForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "구환접수";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

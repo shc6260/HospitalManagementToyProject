@@ -32,14 +32,14 @@ namespace ToyProject.View.Dialog
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.saveButton = new DevExpress.XtraEditors.SimpleButton();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
+            this.receptionControl1 = new ToyProject.View.Dialog.ReceptionControl();
+            this.patientEditControl1 = new ToyProject.View.PatientEditControl();
             this.closeButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.receptionControl1 = new ToyProject.View.Dialog.ReceptionControl();
-            this.patientEditControl1 = new ToyProject.View.PatientEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
@@ -87,6 +87,24 @@ namespace ToyProject.View.Dialog
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
             this.tablePanel1.Size = new System.Drawing.Size(1101, 516);
             this.tablePanel1.TabIndex = 4;
+            // 
+            // receptionControl1
+            // 
+            this.tablePanel1.SetColumn(this.receptionControl1, 1);
+            this.receptionControl1.Location = new System.Drawing.Point(554, 3);
+            this.receptionControl1.Name = "receptionControl1";
+            this.tablePanel1.SetRow(this.receptionControl1, 0);
+            this.receptionControl1.Size = new System.Drawing.Size(545, 510);
+            this.receptionControl1.TabIndex = 1;
+            // 
+            // patientEditControl1
+            // 
+            this.tablePanel1.SetColumn(this.patientEditControl1, 0);
+            this.patientEditControl1.Location = new System.Drawing.Point(3, 3);
+            this.patientEditControl1.Name = "patientEditControl1";
+            this.tablePanel1.SetRow(this.patientEditControl1, 0);
+            this.patientEditControl1.Size = new System.Drawing.Size(545, 510);
+            this.patientEditControl1.TabIndex = 0;
             // 
             // closeButton
             // 
@@ -147,24 +165,6 @@ namespace ToyProject.View.Dialog
             this.emptySpaceItem1.Text = " ";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // receptionControl1
-            // 
-            this.tablePanel1.SetColumn(this.receptionControl1, 1);
-            this.receptionControl1.Location = new System.Drawing.Point(554, 3);
-            this.receptionControl1.Name = "receptionControl1";
-            this.tablePanel1.SetRow(this.receptionControl1, 0);
-            this.receptionControl1.Size = new System.Drawing.Size(545, 510);
-            this.receptionControl1.TabIndex = 1;
-            // 
-            // patientEditControl1
-            // 
-            this.tablePanel1.SetColumn(this.patientEditControl1, 0);
-            this.patientEditControl1.Location = new System.Drawing.Point(3, 3);
-            this.patientEditControl1.Name = "patientEditControl1";
-            this.tablePanel1.SetRow(this.patientEditControl1, 0);
-            this.patientEditControl1.Size = new System.Drawing.Size(545, 510);
-            this.patientEditControl1.TabIndex = 0;
-            // 
             // NewPatientReceptionDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -173,6 +173,7 @@ namespace ToyProject.View.Dialog
             this.Controls.Add(this.layoutControl1);
             this.MinimumSize = new System.Drawing.Size(1141, 605);
             this.Name = "NewPatientReceptionDialogForm";
+            this.ShowIcon = false;
             this.Text = "신환접수";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

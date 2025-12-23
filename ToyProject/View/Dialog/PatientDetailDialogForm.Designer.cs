@@ -270,6 +270,7 @@ namespace ToyProject.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1198, 608);
             this.Controls.Add(this.FooterPanel);
+            this.IconOptions.ShowIcon = false;
             this.MinimumSize = new System.Drawing.Size(1200, 640);
             this.Name = "PatientDetailDialogForm";
             this.Padding = new System.Windows.Forms.Padding(10);
