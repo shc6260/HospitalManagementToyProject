@@ -8,7 +8,7 @@ using ToyProject.Model.Dto;
 
 namespace ToyProject.Core.Repositories
 {
-    public class EquipmentRepository
+    public class EquipmentRepository : IEquipmentRepository
     {
         public async Task<IEnumerable<EquipmentResponseDto>> FindAll()
         {

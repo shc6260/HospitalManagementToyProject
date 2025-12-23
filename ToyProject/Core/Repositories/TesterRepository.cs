@@ -8,7 +8,7 @@ using ToyProject.Model;
 
 namespace ToyProject.Core.Repositories
 {
-    public class TesterRepository
+    public class TesterRepository : ITesterRepository
     {
         public async Task<IEnumerable<TesterResponseDto>> FindAll()
         {

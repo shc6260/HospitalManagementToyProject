@@ -8,12 +8,12 @@ namespace ToyProject.Core.Service
 {
     public class PatientService
     {
-        public PatientService(PatientRepository patientRepository)
+        public PatientService(IPatientRepository patientRepository)
         {
             _patientRepository = patientRepository;
         }
 
-        private PatientRepository _patientRepository;
+        private IPatientRepository _patientRepository;
 
         public async Task<IEnumerable<Patient>> FindPatientsForGnbAsync(string searchText)
         {

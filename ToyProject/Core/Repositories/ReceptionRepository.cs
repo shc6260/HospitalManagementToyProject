@@ -10,7 +10,7 @@ using ToyProject.Model.Dto;
 
 namespace ToyProject.Core.Repositories
 {
-    public class ReceptionRepository
+    public class ReceptionRepository : IReceptionRepository
     {
         public async Task<IEnumerable<ReceptionWithPatientSimpleResponseDto>> FindReceptionWithPatientInfo(DateTime from, DateTime to)
         {

@@ -10,7 +10,7 @@ using ToyProject.Model.Type;
 
 namespace ToyProject.Core.Repositories
 {
-    public class TestRepository
+    public class TestRepository : ITestRepository
     {
         public async Task<IEnumerable<TestDetailDto>> GetTestsAsync(StatusType? status = null, long? patientId = null)
         {

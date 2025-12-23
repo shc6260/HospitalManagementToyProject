@@ -11,13 +11,13 @@ namespace ToyProject.Core.Service
     public class TesterService
     {
 
-        public TesterService(TesterRepository testerRepository)
+        public TesterService(ITesterRepository testerRepository)
         {
             _testerRepository = testerRepository;
             _testerListCache = new SimpleCache<IEnumerable<Tester>>(args => _testerRepository.HasChanged(args), GetChacheListAsync);
         }
 
-        private TesterRepository _testerRepository;
+        private ITesterRepository _testerRepository;
         private SimpleCache<IEnumerable<Tester>> _testerListCache;
 
         public async Task<IEnumerable<Tester>> GetAllTesterAsync(bool? isEnabled = null)

@@ -39,7 +39,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MemoryDebug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\MemoryDebug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MemoryDebug</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
@@ -103,6 +103,9 @@
     <Compile Include="Core\Helper\EventBus.cs" />
     <Compile Include="Core\Helper\IEnumerableExtension.cs" />
     <Compile Include="Core\Repositories\EquipmentRepository.cs" />
+    <Compile Include="Core\Repositories\IRepositories.cs" />
+    <Compile Include="Core\Repositories\InMemory\InMemoryRepositories.cs" />
+    <Compile Include="Core\Repositories\InMemory\InMemoryRepositoryContext.cs" />
     <Compile Include="Core\Repositories\PatientRepository.cs" />
     <Compile Include="Core\Repositories\ReceptionRepository.cs" />
     <Compile Include="Core\Repositories\TesterRepository.cs" />

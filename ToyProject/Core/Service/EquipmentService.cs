@@ -10,14 +10,14 @@ namespace ToyProject.Core.Service
 {
     public class EquipmentService
     {
-        public EquipmentService(EquipmentRepository equipmentRepository)
+        public EquipmentService(IEquipmentRepository equipmentRepository)
         {
             _equipmentRepository = equipmentRepository;
             _equipmentListCache = new SimpleCache<IEnumerable<Equipment>>(args => _equipmentRepository.HasChanged(args), GetChacheListAsync);
         }
 
 
-        private EquipmentRepository _equipmentRepository;
+        private IEquipmentRepository _equipmentRepository;
         private SimpleCache<IEnumerable<Equipment>> _equipmentListCache;
 
 

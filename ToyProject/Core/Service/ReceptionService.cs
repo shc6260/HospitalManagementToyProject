@@ -12,16 +12,16 @@ namespace ToyProject.Core.Service
 {
     public class ReceptionService
     {
-        public ReceptionService(ReceptionRepository receptionRepository, TestRepository testRepository, PatientRepository patientRepository)
+        public ReceptionService(IReceptionRepository receptionRepository, ITestRepository testRepository, IPatientRepository patientRepository)
         {
             _receptionRepository = receptionRepository;
             _testRepository = testRepository;
             _patientRepository = patientRepository;
         }
 
-        private ReceptionRepository _receptionRepository;
-        private TestRepository _testRepository;
-        private PatientRepository _patientRepository;
+        private IReceptionRepository _receptionRepository;
+        private ITestRepository _testRepository;
+        private IPatientRepository _patientRepository;
 
 
         public async Task<IEnumerable<ReceptionWithPatientSimpleResponse>> GetRecepionWithPatientInfo(DateRange dateRange)

@@ -9,7 +9,7 @@ using ToyProject.Model.Dto;
 
 namespace ToyProject.Core.Repositories
 {
-    public class TestResultRepository
+    public class TestResultRepository : ITestResultRepository
     {
         public async Task AddTestResultsAsync(IEnumerable<TestResultRequestDto> results)
         {

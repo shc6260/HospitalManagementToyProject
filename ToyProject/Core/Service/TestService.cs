@@ -13,14 +13,14 @@ namespace ToyProject.Core.Service
 {
     public class TestService
     {
-        public TestService(TestRepository testRepository, TestResultRepository testResultRepository)
+        public TestService(ITestRepository testRepository, ITestResultRepository testResultRepository)
         {
             _testRepository = testRepository;
             _testResultRepository = testResultRepository;
         }
 
-        private readonly TestRepository _testRepository;
-        private readonly TestResultRepository _testResultRepository;
+        private readonly ITestRepository _testRepository;
+        private readonly ITestResultRepository _testResultRepository;
 
         public async Task<IEnumerable<TestDetail>> GetTestsAsync(StatusType? status = null, long? patientId = null)
         {

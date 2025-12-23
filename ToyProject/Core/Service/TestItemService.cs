@@ -10,9 +10,9 @@ namespace ToyProject.Core.Service
 {
     public class TestItemService
     {
-        private TestItemRepository _testItemRepository;
+        private ITestItemRepository _testItemRepository;
 
-        public TestItemService(TestItemRepository testItemRepository)
+        public TestItemService(ITestItemRepository testItemRepository)
         {
             _testItemRepository = testItemRepository;
             _testItemListCache = new SimpleCache<IEnumerable<TestItem>>(args => _testItemRepository.HasChanged(args), () => GetCacheAllTestItemAsync());

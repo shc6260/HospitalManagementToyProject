@@ -7,7 +7,7 @@ using ToyProject.Model;
 
 namespace ToyProject.Core.Repositories
 {
-    public class PatientRepository
+    public class PatientRepository : IPatientRepository
     {
         public async Task<IEnumerable<PatientResponseDto>> FindPatientsForGnbAsync(string searchText)
         {
