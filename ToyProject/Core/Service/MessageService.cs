@@ -41,7 +41,7 @@ namespace ToyProject.Core.Service
         {
             var owner = _owner as Form;
             if (owner == null)
-                return;
+                await task();
 
             IOverlaySplashScreenHandle handle = null;
 
@@ -75,7 +75,7 @@ namespace ToyProject.Core.Service
         {
             var owner = _owner as Form;
             if (owner == null)
-                return;
+                await task();
 
             try
             {

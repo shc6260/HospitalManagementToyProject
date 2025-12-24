@@ -172,7 +172,7 @@ namespace ToyProject.View
             this.receptionSearchButton.StyleController = this.layoutControl1;
             this.receptionSearchButton.TabIndex = 7;
             this.receptionSearchButton.Text = "조회";
-            this.receptionSearchButton.Click += new System.EventHandler(this.receptionSearchButton_Click);
+            this.receptionSearchButton.Click += new System.EventHandler(this.ReceptionSearchButtonClick);
             // 
             // todayButton
             // 

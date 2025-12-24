@@ -41,16 +41,24 @@ namespace ToyProject.Presenter.MainContent
 
         private async void OnRefreshRequested(object sender, EventArgs e)
         {
-            await _messageService.RunInProgressPopupAsync(Refresh);
+            await RunWithProgressAsync(Refresh);
         }
 
         private async void OnSaveRequested(object sender, (IEnumerable<DataTableChange<TestResult>> resultChanges, IEnumerable<(string Code, StatusType Status)> testChanges) change)
         {
-            await _messageService.RunInProgressPopupAsync(async () =>
+            await RunWithProgressAsync(async () =>
             {
                 await _testService.SaveChangesAsync(change.resultChanges, change.testChanges);
                 await Refresh();
             });
+        }
+
+        private Task RunWithProgressAsync(Func<Task> action)
+        {
+            if (_messageService == null)
+                return action();
+
+            return _messageService.RunInProgressPopupAsync(action);
         }
 
         public override void Dispose()

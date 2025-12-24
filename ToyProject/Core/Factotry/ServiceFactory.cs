@@ -6,7 +6,9 @@ namespace ToyProject.Core.Factotry
 {
     public static class ServiceFactory
     {
+#if MemoryDebug
         private static readonly InMemoryRepositoryContext MemoryContext = new InMemoryRepositoryContext();
+#endif
 
         public static ReceptionService GetReceptionService()
         {

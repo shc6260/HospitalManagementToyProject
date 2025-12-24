@@ -31,20 +31,20 @@ namespace ToyProject.View.Dialog
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.SaveBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.patientEditControl = new ToyProject.View.PatientEditControl();
             this.CloseBtn = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.patientEditControl = new ToyProject.View.PatientEditControl();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -71,13 +71,6 @@ namespace ToyProject.View.Dialog
             this.SaveBtn.Text = "저장";
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // patientEditControl
-            // 
-            this.patientEditControl.Location = new System.Drawing.Point(12, 12);
-            this.patientEditControl.Name = "patientEditControl";
-            this.patientEditControl.Size = new System.Drawing.Size(551, 480);
-            this.patientEditControl.TabIndex = 4;
-            // 
             // CloseBtn
             // 
             this.CloseBtn.Location = new System.Drawing.Point(501, 496);
@@ -100,15 +93,6 @@ namespace ToyProject.View.Dialog
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(575, 530);
             this.Root.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.patientEditControl;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(555, 484);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
@@ -136,6 +120,22 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // patientEditControl
+            // 
+            this.patientEditControl.Location = new System.Drawing.Point(12, 12);
+            this.patientEditControl.Name = "patientEditControl";
+            this.patientEditControl.Size = new System.Drawing.Size(551, 480);
+            this.patientEditControl.TabIndex = 4;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.patientEditControl;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(555, 484);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
             // NewPatientDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -149,10 +149,10 @@ namespace ToyProject.View.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }

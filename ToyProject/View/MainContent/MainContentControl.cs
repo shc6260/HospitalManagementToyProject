@@ -65,7 +65,7 @@ namespace ToyProject.View
             OnSearchReceptionRequest();
         }
 
-        private void receptionSearchButton_Click(object sender, EventArgs e)
+        private void ReceptionSearchButtonClick(object sender, EventArgs e)
         {
             OnSearchReceptionRequest();
         }
