@@ -13,5 +13,7 @@ namespace ToyProject.View.IView
         event EventHandler SavePatient;
 
         event EventHandler<Patient> LoadRequest;
+
+        void Close();
     }
 }

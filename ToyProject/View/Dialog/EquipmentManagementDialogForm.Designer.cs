@@ -81,7 +81,7 @@ namespace ToyProject.View
             this.closeButton.StyleController = this.layoutControl2;
             this.closeButton.TabIndex = 11;
             this.closeButton.Text = "닫기";
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
             // 
             // saveButton
             // 
@@ -91,7 +91,7 @@ namespace ToyProject.View
             this.saveButton.StyleController = this.layoutControl2;
             this.saveButton.TabIndex = 12;
             this.saveButton.Text = "저장";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
             // 
             // labelControl1
             // 

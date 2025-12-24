@@ -24,12 +24,19 @@ namespace ToyProject.Presenter
         private async void ViewSavePatient(object sender, System.EventArgs e)
         {
             var patient = _view.PatientEditControl.GetPatient();
+            if (string.IsNullOrWhiteSpace(patient.Name) || string.IsNullOrWhiteSpace(patient.SocialSecurityNumber))
+            {
+                _messageService.ShowError(ToyProject.Properties.Resources.Strings_noValueMessage);
+                return;
+            }
+
             var reception = _view.IReceptionControlView.GetReception();
 
             await _messageService.RunInProgressPopupAsync(async () =>
             {
                 await _receptionService.AddNewPatientReception(patient, reception);
                 EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+                _view.Close();
             });
         }
 

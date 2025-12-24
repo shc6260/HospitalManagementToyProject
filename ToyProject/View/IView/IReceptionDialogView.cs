@@ -14,5 +14,7 @@ namespace ToyProject.View.IView
         event EventHandler CancelReceptionRequest;
 
         event EventHandler SaveReceptionRequest;
+
+        void Close();
     }
 }

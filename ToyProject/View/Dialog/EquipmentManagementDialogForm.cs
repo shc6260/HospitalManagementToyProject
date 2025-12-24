@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ToyProject.Core.Service;
 using ToyProject.Model;
 
 namespace ToyProject.View
@@ -26,7 +27,7 @@ namespace ToyProject.View
             nameTextEdit.Text = _selectedEquip.Name;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void SaveButtonClick(object sender, EventArgs e)
         {
             _result = new Equipment
             (
@@ -36,11 +37,17 @@ namespace ToyProject.View
               _selectedEquip?.IsEnabled ?? true
             );
 
+            if (string.IsNullOrWhiteSpace(codeTextEdit.Text) || string.IsNullOrWhiteSpace(nameTextEdit.Text))
+            {
+                this.CreateMessageService().ShowError(ToyProject.Properties.Resources.Strings_noValueMessage);
+                return;
+            }
+
             Close();
         }
 
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void CloseButtonClick(object sender, EventArgs e)
         {
             _result = null;
 

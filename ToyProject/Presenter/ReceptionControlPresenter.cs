@@ -35,7 +35,8 @@ namespace ToyProject.Presenter
 
         public async Task SaveReception()
         {
-            var reception = _view.GetReception().WithPatientId(_selectedPatientId);
+            var reception = _view.GetReception().WithPatientId(_selectedPatientId);            
+
             await _receptionService.SaveReception(reception, _origin);
         }
 

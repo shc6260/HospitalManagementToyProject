@@ -37,7 +37,6 @@ namespace ToyProject.View.Dialog
         private void SaveButtonClick(object sender, EventArgs e)
         {
             OnSaveReceptionRequest();
-            Close();
         }
 
         private void CancelReceptionButtonClick(object sender, EventArgs e)

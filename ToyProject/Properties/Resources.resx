@@ -121,4 +121,7 @@
   <data name="u2toyy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\u2toyy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Strings_noValueMessage" xml:space="preserve">
+    <value>값을 입력해주세요.</value>
+  </data>
 </root>

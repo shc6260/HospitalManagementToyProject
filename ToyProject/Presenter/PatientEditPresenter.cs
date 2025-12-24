@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
+using ToyProject.Properties;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
@@ -24,6 +26,10 @@ namespace ToyProject.Presenter
         public async Task<long> SavePatient()
         {
             var patient = LoadedPatientId == null ? _view.GetPatient() : _view.GetPatient().WithId(LoadedPatientId.Value);
+
+            if (string.IsNullOrWhiteSpace(patient.Name) || string.IsNullOrWhiteSpace(patient.SocialSecurityNumber))
+                throw new Exception(Resources.Strings_noValueMessage);
+
             return await _patientService.SavePatientAcync(patient);
         }
     }

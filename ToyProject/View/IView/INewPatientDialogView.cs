@@ -6,6 +6,8 @@ namespace ToyProject.View.IView
     {
         IPatientEditControl PatientEditControl { get; }
 
+        void Close();
+
         event EventHandler SavePatient;
     }
 }

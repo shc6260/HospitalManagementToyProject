@@ -8,6 +8,7 @@ namespace ToyProject.View.IView
 
         IReceptionControlView IReceptionControlView { get; }
 
+        void Close();
 
         event EventHandler SavePatient;
     }

@@ -17,7 +17,6 @@ namespace ToyProject.View.Dialog
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             OnSavePatient();
-            Close();
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)

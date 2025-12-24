@@ -48,11 +48,12 @@ namespace ToyProject.Presenter
 
         private async void ViewSaveReceptionRequest(object sender, EventArgs e)
         {
-             await _messageService.RunInProgressPopupAsync(async () =>
-            {
-                await _receptionControlPresenter.SaveReception();
-                EventBus.Instance.Publish(new ReceptionChangedEventArgs());
-            });
+            await _messageService.RunInProgressPopupAsync(async () =>
+           {
+               await _receptionControlPresenter.SaveReception();
+               EventBus.Instance.Publish(new ReceptionChangedEventArgs());
+               _view.Close();
+           });
         }
 
         public override void Dispose()

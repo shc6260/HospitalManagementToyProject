@@ -1,5 +1,7 @@
 ﻿using System;
+using ToyProject.Core.Service;
 using ToyProject.Model;
+using ToyProject.Properties;
 
 namespace ToyProject.View
 {
@@ -29,6 +31,12 @@ namespace ToyProject.View
 
         private void SaveButtonClick(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(licenseNumberTextEdit.Text) || string.IsNullOrWhiteSpace(nameTextEdit.Text) || string.IsNullOrWhiteSpace(officeInfoTextEdit.Text))
+            {
+                this.CreateMessageService().ShowError(Resources.Strings_noValueMessage);
+                return;
+            }
+
             _result = new Tester
             (
                 _selectTester?.Id,

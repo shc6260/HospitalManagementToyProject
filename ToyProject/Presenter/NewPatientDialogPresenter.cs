@@ -24,7 +24,8 @@ namespace ToyProject.Presenter
         {
             await _messageService.RunInProgressPopupAsync(async () =>
             {
-                await _patientEditPresenter.SavePatient();
+                var result = await _patientEditPresenter.SavePatient();
+                _view.Close();
             });
         }
 

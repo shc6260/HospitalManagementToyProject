@@ -123,7 +123,6 @@ namespace ToyProject.View
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             OnSavePatient();
-            Close();
         } 
 
         #endregion

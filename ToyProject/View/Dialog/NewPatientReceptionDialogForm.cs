@@ -22,7 +22,6 @@ namespace ToyProject.View.Dialog
         private void SaveButtonClick(object sender, EventArgs e)
         {
             OnSavePatient();
-            Close();
         } 
 
         #endregion

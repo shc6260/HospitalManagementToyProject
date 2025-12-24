@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using ToyProject.Core.Service;
 using ToyProject.Model;
+using ToyProject.Properties;
 using ToyProject.View.IView;
 
 namespace ToyProject.View.Dialog
@@ -96,6 +98,12 @@ namespace ToyProject.View.Dialog
 
         private void SaveButtonClick(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(nameTextEdit.Text) || GetSelectedtestItems().Any() == false)
+            {
+                this.CreateMessageService().ShowError(Resources.Strings_noValueMessage);
+                return;
+            }
+
             IsOk = true;
             Close();
         }

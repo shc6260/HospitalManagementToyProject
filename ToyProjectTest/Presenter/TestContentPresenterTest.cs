@@ -15,7 +15,7 @@ namespace ToyProjectTest.Presenter
     public class TestContentPresenterTest
     {
         [Test]
-        public async Task Refresh_ShouldPopulateViewWithSeedData()
+        public async Task 조회테스트()
         {
             var context = new InMemoryRepositoryContext();
             var view = new FakeTestContentView();
@@ -36,7 +36,7 @@ namespace ToyProjectTest.Presenter
         }
 
         [Test]
-        public async Task SaveRequested_ShouldPersistResultAndRefreshStatus()
+        public async Task 추가테스트()
         {
             var view = new FakeTestContentView();
 
