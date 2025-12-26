@@ -40,6 +40,11 @@ namespace ToyProject.View
             this.fromDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.receptionSearchButton = new DevExpress.XtraEditors.SimpleButton();
             this.todayButton = new DevExpress.XtraEditors.SimpleButton();
+            this.prevButton = new DevExpress.XtraEditors.SimpleButton();
+            this.nextButton = new DevExpress.XtraEditors.SimpleButton();
+            this.weekdateButton = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
+            this.monthdateButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -47,12 +52,13 @@ namespace ToyProject.View
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.equipRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editReceptionMenu = new System.Windows.Forms.ToolStripTextBox();
-            this.prevButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.nextButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.receptionGridControl)).BeginInit();
@@ -68,9 +74,12 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            this.equipRowContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            this.equipRowContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -82,6 +91,9 @@ namespace ToyProject.View
             this.layoutControl1.Controls.Add(this.todayButton);
             this.layoutControl1.Controls.Add(this.prevButton);
             this.layoutControl1.Controls.Add(this.nextButton);
+            this.layoutControl1.Controls.Add(this.weekdateButton);
+            this.layoutControl1.Controls.Add(this.simpleButton11);
+            this.layoutControl1.Controls.Add(this.monthdateButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -96,7 +108,7 @@ namespace ToyProject.View
             this.receptionGridControl.Location = new System.Drawing.Point(12, 38);
             this.receptionGridControl.MainView = this.receptionGridView;
             this.receptionGridControl.Name = "receptionGridControl";
-            this.receptionGridControl.Size = new System.Drawing.Size(1176, 642);
+            this.receptionGridControl.Size = new System.Drawing.Size(1176, 616);
             this.receptionGridControl.TabIndex = 6;
             this.receptionGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.receptionGridView});
@@ -163,12 +175,13 @@ namespace ToyProject.View
             this.fromDateEdit.Size = new System.Drawing.Size(154, 20);
             this.fromDateEdit.StyleController = this.layoutControl1;
             this.fromDateEdit.TabIndex = 4;
+            this.fromDateEdit.DateTimeChanged += new System.EventHandler(this.FromDateEditDateTimeChanged);
             // 
             // receptionSearchButton
             // 
-            this.receptionSearchButton.Location = new System.Drawing.Point(1115, 13);
+            this.receptionSearchButton.Location = new System.Drawing.Point(816, 13);
             this.receptionSearchButton.Name = "receptionSearchButton";
-            this.receptionSearchButton.Size = new System.Drawing.Size(73, 20);
+            this.receptionSearchButton.Size = new System.Drawing.Size(372, 20);
             this.receptionSearchButton.StyleController = this.layoutControl1;
             this.receptionSearchButton.TabIndex = 7;
             this.receptionSearchButton.Text = "조회";
@@ -176,13 +189,62 @@ namespace ToyProject.View
             // 
             // todayButton
             // 
-            this.todayButton.Location = new System.Drawing.Point(466, 13);
+            this.todayButton.Location = new System.Drawing.Point(572, 13);
             this.todayButton.Name = "todayButton";
-            this.todayButton.Size = new System.Drawing.Size(198, 20);
+            this.todayButton.Size = new System.Drawing.Size(56, 20);
             this.todayButton.StyleController = this.layoutControl1;
             this.todayButton.TabIndex = 7;
             this.todayButton.Text = "오늘";
             this.todayButton.Click += new System.EventHandler(this.TodayButtonClick);
+            // 
+            // prevButton
+            // 
+            this.prevButton.Location = new System.Drawing.Point(412, 12);
+            this.prevButton.Name = "prevButton";
+            this.prevButton.Size = new System.Drawing.Size(16, 22);
+            this.prevButton.StyleController = this.layoutControl1;
+            this.prevButton.TabIndex = 8;
+            this.prevButton.Text = "<";
+            this.prevButton.Click += new System.EventHandler(this.PrevButtonClick);
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(432, 12);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(16, 22);
+            this.nextButton.StyleController = this.layoutControl1;
+            this.nextButton.TabIndex = 9;
+            this.nextButton.Text = ">";
+            this.nextButton.Click += new System.EventHandler(this.NextButtonClick);
+            // 
+            // weekdateButton
+            // 
+            this.weekdateButton.Location = new System.Drawing.Point(452, 12);
+            this.weekdateButton.Name = "weekdateButton";
+            this.weekdateButton.Size = new System.Drawing.Size(56, 22);
+            this.weekdateButton.StyleController = this.layoutControl1;
+            this.weekdateButton.TabIndex = 10;
+            this.weekdateButton.Text = "이번주";
+            this.weekdateButton.Click += new System.EventHandler(this.WeekdateButtonClick);
+            // 
+            // simpleButton11
+            // 
+            this.simpleButton11.Location = new System.Drawing.Point(12, 658);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(1176, 22);
+            this.simpleButton11.StyleController = this.layoutControl1;
+            this.simpleButton11.TabIndex = 10;
+            this.simpleButton11.Text = "simpleButton1";
+            // 
+            // monthdateButton
+            // 
+            this.monthdateButton.Location = new System.Drawing.Point(512, 12);
+            this.monthdateButton.Name = "monthdateButton";
+            this.monthdateButton.Size = new System.Drawing.Size(56, 22);
+            this.monthdateButton.StyleController = this.layoutControl1;
+            this.monthdateButton.TabIndex = 11;
+            this.monthdateButton.Text = "이번달";
+            this.monthdateButton.Click += new System.EventHandler(this.MonthdateButtonClick);
             // 
             // Root
             // 
@@ -196,7 +258,10 @@ namespace ToyProject.View
             this.layoutControlItem4,
             this.layoutControlItem1,
             this.layoutControlItem6,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem8,
+            this.layoutControlItem9,
+            this.layoutControlItem10});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1200, 692);
             this.Root.TextVisible = false;
@@ -219,9 +284,9 @@ namespace ToyProject.View
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(656, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(620, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(447, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(184, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -229,7 +294,7 @@ namespace ToyProject.View
             this.layoutControlItem3.Control = this.receptionGridControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 646);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 620);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -239,11 +304,11 @@ namespace ToyProject.View
             this.layoutControlItem5.Control = this.todayButton;
             this.layoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem5.Location = new System.Drawing.Point(454, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(560, 0);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(0, 24);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(31, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(202, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(60, 26);
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.Text = "layoutControlItem4";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -253,11 +318,11 @@ namespace ToyProject.View
             // 
             this.layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem4.Control = this.receptionSearchButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1103, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(804, 0);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(0, 24);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(31, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(376, 26);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -276,6 +341,54 @@ namespace ToyProject.View
             this.layoutControlItem1.Text = "날짜";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(20, 14);
             // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.prevButton;
+            this.layoutControlItem6.Location = new System.Drawing.Point(400, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(20, 26);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.nextButton;
+            this.layoutControlItem7.Location = new System.Drawing.Point(420, 0);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(20, 26);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.weekdateButton;
+            this.layoutControlItem8.Location = new System.Drawing.Point(440, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(60, 26);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.simpleButton11;
+            this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem9.CustomizationFormText = "layoutControlItem8";
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 646);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(1180, 26);
+            this.layoutControlItem9.Text = "layoutControlItem8";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.monthdateButton;
+            this.layoutControlItem10.Location = new System.Drawing.Point(500, 0);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(60, 26);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem10.TextVisible = false;
+            // 
             // equipRowContextMenu
             // 
             this.equipRowContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -291,44 +404,6 @@ namespace ToyProject.View
             this.editReceptionMenu.Size = new System.Drawing.Size(100, 23);
             this.editReceptionMenu.Text = "수정";
             this.editReceptionMenu.Click += new System.EventHandler(this.EditReceptionMenuClick);
-            // 
-            // prevButton
-            // 
-            this.prevButton.Location = new System.Drawing.Point(412, 12);
-            this.prevButton.Name = "prevButton";
-            this.prevButton.Size = new System.Drawing.Size(23, 22);
-            this.prevButton.StyleController = this.layoutControl1;
-            this.prevButton.TabIndex = 8;
-            this.prevButton.Text = "<";
-            this.prevButton.Click += new System.EventHandler(this.PrevButtonClick);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.prevButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(400, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(27, 26);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
-            // nextButton
-            // 
-            this.nextButton.Location = new System.Drawing.Point(439, 12);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(23, 22);
-            this.nextButton.StyleController = this.layoutControl1;
-            this.nextButton.TabIndex = 9;
-            this.nextButton.Text = ">";
-            this.nextButton.Click += new System.EventHandler(this.NextButtonClick);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.nextButton;
-            this.layoutControlItem7.Location = new System.Drawing.Point(427, 0);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(27, 26);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
             // 
             // MainContentControl
             // 
@@ -352,10 +427,13 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            this.equipRowContextMenu.ResumeLayout(false);
-            this.equipRowContextMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            this.equipRowContextMenu.ResumeLayout(false);
+            this.equipRowContextMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -385,5 +463,11 @@ namespace ToyProject.View
         private DevExpress.XtraEditors.SimpleButton nextButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.SimpleButton weekdateButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.XtraEditors.SimpleButton monthdateButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }

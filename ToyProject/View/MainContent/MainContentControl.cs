@@ -42,6 +42,8 @@ namespace ToyProject.View
 
         #region Helpers
 
+        private DateRangeType _dateRangeType = DateRangeType.Day;
+
         private void ReceptionGridViewMouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Right)
@@ -62,7 +64,71 @@ namespace ToyProject.View
             fromDateEdit.DateTime = DateTime.Now;
             toDateEdit.DateTime = DateTime.Now;
 
-            OnSearchReceptionRequest();
+            _dateRangeType = DateRangeType.Day;
+        }
+
+        private void WeekdateButtonClick(object sender, EventArgs e)
+        {
+            fromDateEdit.DateTime = DateTime.Today.AddDays(-7);
+            toDateEdit.DateTime = DateTime.Today;
+
+            _dateRangeType = DateRangeType.Week;
+        }
+
+        private void MonthdateButtonClick(object sender, EventArgs e)
+        {
+            fromDateEdit.DateTime = DateTime.Today.AddMonths(-1);
+            toDateEdit.DateTime = DateTime.Today;
+
+            _dateRangeType = DateRangeType.Month;
+        }
+
+        private void FromDateEditDateTimeChanged(object sender, EventArgs e)
+        {
+            _dateRangeType = DateRangeType.Day;
+
+        }
+
+        private void NextButtonClick(object sender, EventArgs e)
+        {
+            switch (_dateRangeType)
+            {
+                case DateRangeType.Month:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddMonths(1);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddMonths(1);
+                    break;
+
+                case DateRangeType.Week:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(7);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddDays(7);
+                    break;
+
+                default:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(1);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddDays(1);
+                    break;
+            }
+        }
+
+        private void PrevButtonClick(object sender, EventArgs e)
+        {
+            switch (_dateRangeType)
+            {
+                case DateRangeType.Month:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddMonths(-1);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddMonths(-1);
+                    break;
+
+                case DateRangeType.Week:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(-7);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddDays(-7);
+                    break;
+
+                default:
+                    fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(-1);
+                    toDateEdit.DateTime = toDateEdit.DateTime.AddDays(-1);
+                    break;
+            }
         }
 
         private void ReceptionSearchButtonClick(object sender, EventArgs e)
@@ -84,22 +150,6 @@ namespace ToyProject.View
             this.ShowReceptionDialog(row);
         }
 
-        private void NextButtonClick(object sender, EventArgs e)
-        {
-            if (toDateEdit.DateTime >= DateTime.Today)
-                return;
-
-
-            fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(1);
-            toDateEdit.DateTime = toDateEdit.DateTime.AddDays(1);
-        }
-
-        private void PrevButtonClick(object sender, EventArgs e)
-        {
-            fromDateEdit.DateTime = fromDateEdit.DateTime.AddDays(-1);
-            toDateEdit.DateTime = toDateEdit.DateTime.AddDays(-1);
-        }
-
         #endregion
 
 
@@ -118,5 +168,12 @@ namespace ToyProject.View
         }
 
         #endregion
+    }
+
+    public enum DateRangeType
+    {
+        Day,
+        Week,
+        Month
     }
 }
