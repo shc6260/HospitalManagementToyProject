@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using ToyProject.Core.Service;
+using ToyProject.Core.Validation;
 using ToyProject.Model;
-using ToyProject.Properties;
+using ToyProject.Presenter.Validation;
+using ToyProject.View.Helper;
 using ToyProject.View.IView;
 
 namespace ToyProject.View.Dialog
@@ -15,9 +17,13 @@ namespace ToyProject.View.Dialog
         public CreateTestDialogForm()
         {
             InitializeComponent();
+            BuildFieldMap();
+            ErrorProviderHelper.HookClearOnChange(new Control[] { nameTextEdit }, errorProvider1);
+            testItemGridView.SelectionChanged += (s, e) => errorProvider1.SetError(testItemGridControl, string.Empty);
         }
 
         public bool IsOk { get; private set; }
+        private Dictionary<string, Control> _fieldMap;
 
         #region Init Control
 
@@ -98,9 +104,13 @@ namespace ToyProject.View.Dialog
 
         private void SaveButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(nameTextEdit.Text) || GetSelectedtestItems().Any() == false)
+            var selectedItems = GetSelectedtestItems().ToArray();
+            var validationResult = TestValidator.Validate(nameTextEdit.Text, selectedItems);
+            ErrorProviderHelper.ShowErrors(errorProvider1, _fieldMap, validationResult);
+
+            if (validationResult.IsValid == false)
             {
-                this.CreateMessageService().ShowError(Resources.Strings_noValueMessage);
+                this.CreateMessageService().ShowError(validationResult.ErrorMessage);
                 return;
             }
 
@@ -132,6 +142,15 @@ namespace ToyProject.View.Dialog
         {
             testItemGridControl.DataSource = new BindingList<TestItem>(testItems.ToArray());
             ApplySelection(selectedItems);
+        }
+
+        private void BuildFieldMap()
+        {
+            _fieldMap = new Dictionary<string, Control>
+            {
+                { nameof(Test.TestName), nameTextEdit },
+                { nameof(Test.TestItems), testItemGridControl }
+            };
         }
 
         #endregion

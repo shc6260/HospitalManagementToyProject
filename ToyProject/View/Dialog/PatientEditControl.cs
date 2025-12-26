@@ -1,13 +1,22 @@
-﻿using ToyProject.Model;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using ToyProject.Core.Validation;
+using ToyProject.Model;
+using ToyProject.View.Helper;
 using ToyProject.View.IView;
 
 namespace ToyProject.View
 {
     public partial class PatientEditControl : DevExpress.XtraEditors.XtraUserControl, IPatientEditControl
     {
+        private Dictionary<string, Control> _fieldMap;
+
         public PatientEditControl()
         {
             InitializeComponent();
+            BuildFieldMap();
+            ErrorProviderHelper.HookClearOnChange(_fieldMap.Values, errorProvider1);
         }
 
 
@@ -42,6 +51,15 @@ namespace ToyProject.View
             }
         } 
 
+        private void BuildFieldMap()
+        {
+            _fieldMap = new Dictionary<string, Control>
+            {
+                { nameof(Patient.Name), NameTxt },
+                { nameof(Patient.SocialSecurityNumber), SocialSecurityNumberTxt }
+            };
+        }
+
         #endregion
 
 
@@ -65,6 +83,8 @@ namespace ToyProject.View
 
         public void SetPatient(Patient patient)
         {
+            errorProvider1.Clear();
+
             if (patient == null)
                 return;
 
@@ -74,7 +94,12 @@ namespace ToyProject.View
             AddressTxt.Text = patient.Address;
             QualificationTxt.Text = patient.QualificationInfo;
             PatientMemoTxt.Text = patient.Memo;
-        } 
+        }
+
+        public void ShowErrors(ValidationResult validationResult)
+        {
+            ErrorProviderHelper.ShowErrors(errorProvider1, _fieldMap, validationResult);
+        }
 
         #endregion
     }

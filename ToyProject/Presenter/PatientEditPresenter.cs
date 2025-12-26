@@ -1,16 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
-using ToyProject.Properties;
+using ToyProject.Presenter.Validation;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
 {
-    public class PatientEditPresenter
+    public class PatientEditPresenter : PresenterBase
     {
-        public PatientEditPresenter(IPatientEditControl view, Patient patient = null)
+        public PatientEditPresenter(IPatientEditControl view, Patient patient = null, MessageService messageService = null) : base(messageService)
         {
             _patientService = ServiceFactory.GetPatientService();
 
@@ -23,12 +22,20 @@ namespace ToyProject.Presenter
         private readonly PatientService _patientService;
         public long? LoadedPatientId { get; private set; }
 
-        public async Task<long> SavePatient()
+        public async Task<long?> SavePatient()
         {
-            var patient = LoadedPatientId == null ? _view.GetPatient() : _view.GetPatient().WithId(LoadedPatientId.Value);
+            var patient = _view.GetPatient();
+            var validationResult = PatientValidator.Validate(patient);
+            _view.ShowErrors(validationResult);
 
-            if (string.IsNullOrWhiteSpace(patient.Name) || string.IsNullOrWhiteSpace(patient.SocialSecurityNumber))
-                throw new Exception(Resources.Strings_noValueMessage);
+            if (validationResult.IsValid == false)
+            {
+                _messageService.ShowError(validationResult.ErrorMessage);
+                return null;
+            }
+
+            if (LoadedPatientId != null)
+                patient = patient.WithId(LoadedPatientId.Value);
 
             return await _patientService.SavePatientAcync(patient);
         }

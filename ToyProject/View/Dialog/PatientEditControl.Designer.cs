@@ -29,6 +29,7 @@ namespace ToyProject.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.PatientMemoTxt = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@ namespace ToyProject.View
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatientMemoTxt.Properties)).BeginInit();
@@ -65,6 +67,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -250,6 +253,13 @@ namespace ToyProject.View
             this.layoutControlItem2.Text = "전화번호";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 14);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkRate = 0;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
+            // 
             // PatientEditControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -275,6 +285,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,5 +310,6 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.TextEdit GenderTxt;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

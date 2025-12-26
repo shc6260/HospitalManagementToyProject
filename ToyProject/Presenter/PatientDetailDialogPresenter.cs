@@ -26,7 +26,7 @@ namespace ToyProject.Presenter
 
         public async Task LoadAsync(Patient patient)
         {
-            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, patient);
+            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, patient, _messageService);
             var testDetail = await _testService.GetTestsAsync(StatusType.Complete, _patientEditPresenter.LoadedPatientId);
             _view.SetTestItems(testDetail);
         }
@@ -35,7 +35,10 @@ namespace ToyProject.Presenter
         {
             await _messageService.RunInProgressPopupAsync(async () =>
             {
-                await _patientEditPresenter.SavePatient();
+                var result = await _patientEditPresenter.SavePatient();
+                if (result == null)
+                    return;
+
                 _view.Close();
             });
         }

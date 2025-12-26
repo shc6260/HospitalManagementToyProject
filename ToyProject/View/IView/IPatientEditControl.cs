@@ -1,4 +1,5 @@
 ﻿using ToyProject.Model;
+using ToyProject.Core.Validation;
 
 namespace ToyProject.View.IView
 {
@@ -7,5 +8,7 @@ namespace ToyProject.View.IView
         Patient GetPatient();
 
         void SetPatient(Patient patient);
+
+        void ShowErrors(ValidationResult validationResult);
     }
 }

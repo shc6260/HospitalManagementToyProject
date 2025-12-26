@@ -29,6 +29,7 @@ namespace ToyProject.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.closeButton = new DevExpress.XtraEditors.SimpleButton();
             this.saveButton = new DevExpress.XtraEditors.SimpleButton();
@@ -43,6 +44,7 @@ namespace ToyProject.View
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeTextEdit.Properties)).BeginInit();
@@ -55,6 +57,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl2
@@ -209,6 +212,13 @@ namespace ToyProject.View
             this.layoutControlItem3.Text = "코드";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(20, 14);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkRate = 0;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
+            // 
             // EquipmentManagementDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -231,6 +241,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +262,6 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

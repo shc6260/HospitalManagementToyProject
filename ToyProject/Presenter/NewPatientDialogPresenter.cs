@@ -12,7 +12,7 @@ namespace ToyProject.Presenter
 
             _view.SavePatient += View_SavePatient;
 
-            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl);
+            _patientEditPresenter = new PatientEditPresenter(_view.PatientEditControl, messageService: _messageService);
         }
 
         private readonly INewPatientDialogView _view;
@@ -25,6 +25,9 @@ namespace ToyProject.Presenter
             await _messageService.RunInProgressPopupAsync(async () =>
             {
                 var result = await _patientEditPresenter.SavePatient();
+                if (result == null)
+                    return;
+
                 _view.Close();
             });
         }

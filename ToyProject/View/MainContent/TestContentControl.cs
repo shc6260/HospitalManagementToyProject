@@ -211,7 +211,7 @@ namespace ToyProject.View
             if (view == null)
                 return;
 
-            if (!e.HitInfo.InGroupRow)
+            if (e.HitInfo.InGroupRow == false)
                 return;
 
             int groupLevel = view.GetRowLevel(e.HitInfo.RowHandle);

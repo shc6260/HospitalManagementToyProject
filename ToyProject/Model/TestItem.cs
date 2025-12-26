@@ -4,7 +4,7 @@ namespace ToyProject.Model
 {
     public class TestItem
     {
-        public TestItem(long? id, string testItemCode, string name, int referenceMinValue, int referenceMaxValue, bool isEnabled)
+        public TestItem(long? id, string testItemCode, string name, int? referenceMinValue, int? referenceMaxValue, bool isEnabled)
         {
             Id = id;
             TestItemCode = testItemCode;
@@ -20,9 +20,9 @@ namespace ToyProject.Model
 
         public string Name { get; }
 
-        public int ReferenceMinValue { get; }
+        public int? ReferenceMinValue { get; }
 
-        public int ReferenceMaxValue { get; }
+        public int? ReferenceMaxValue { get; }
 
         public bool IsEnabled { get; }
 
@@ -36,8 +36,8 @@ namespace ToyProject.Model
                 id,
                 testItemCode,
                 name,
-                int.TryParse(referenceMinValue, out var minValue) ? minValue : 0,
-                int.TryParse(referenceMaxValue, out var maxValue) ? maxValue : 0,
+                int.TryParse(referenceMinValue, out var minValue) ? (int?)minValue : null,
+                int.TryParse(referenceMaxValue, out var maxValue) ? (int?)maxValue : null,
                 enabled
             );
         }

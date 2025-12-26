@@ -69,6 +69,7 @@ namespace ToyProject.View
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.testerRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.activateContextMenu = new System.Windows.Forms.ToolStripTextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -99,6 +100,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.testItemGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.testerRowContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -462,12 +464,17 @@ namespace ToyProject.View
             // 
             // activateContextMenu
             // 
-            this.activateContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.activateContextMenu.Name = "activateContextMenu";
             this.activateContextMenu.ReadOnly = true;
             this.activateContextMenu.Size = new System.Drawing.Size(100, 23);
             this.activateContextMenu.Text = "비활성화";
             this.activateContextMenu.Click += new System.EventHandler(this.ActivateContextMenuClick);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // TestItemContentControl
             // 
@@ -506,6 +513,7 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.testerRowContextMenu.ResumeLayout(false);
             this.testerRowContextMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -552,5 +560,6 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

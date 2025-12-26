@@ -118,6 +118,7 @@
     <Compile Include="Core\Service\ReceptionService.cs" />
     <Compile Include="Core\Service\TestService.cs" />
     <Compile Include="Core\Service\TesterService.cs" />
+    <Compile Include="Core\Validation\ValidationResult.cs" />
     <Compile Include="Core\Service\TestItemService.cs" />
     <Compile Include="DialogExtension.cs" />
     <Compile Include="Model\Dto\EquipmentRequestDto.cs" />
@@ -157,6 +158,9 @@
     <Compile Include="Presenter\MainContent\TestContentPresenter.cs" />
     <Compile Include="Presenter\ReceptionControlPresenter.cs" />
     <Compile Include="Presenter\ReceptionDialogPresenter.cs" />
+    <Compile Include="Presenter\Validation\PatientValidator.cs" />
+    <Compile Include="Presenter\Validation\TestValidator.cs" />
+    <Compile Include="View\Helper\ErrorProviderHelper.cs" />
     <Compile Include="View\Dialog\CreateTestDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>

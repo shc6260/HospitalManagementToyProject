@@ -78,5 +78,23 @@ namespace ToyProject.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   검사 항목을 선택해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string validate_selectedTestItemsError {
+            get {
+                return ResourceManager.GetString("validate_selectedTestItemsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   주민등록번호는 숫자 13자리로 입력해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string validate_socialNumberError {
+            get {
+                return ResourceManager.GetString("validate_socialNumberError", resourceCulture);
+            }
+        }
     }
 }

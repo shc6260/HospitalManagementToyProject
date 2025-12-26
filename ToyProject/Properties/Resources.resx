@@ -124,4 +124,10 @@
   <data name="Strings_noValueMessage" xml:space="preserve">
     <value>값을 입력해주세요.</value>
   </data>
+  <data name="validate_socialNumberError" xml:space="preserve">
+    <value>주민등록번호는 숫자 13자리로 입력해주세요.</value> 
+  </data>
+  <data name="validate_selectedTestItemsError" xml:space="preserve">
+    <value>검사 항목을 선택해주세요.</value> 
+  </data>
 </root>

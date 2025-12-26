@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ToyProject.Core.Validation;
 using ToyProject.Model;
 
 namespace ToyProject.View.IView.MainContent
@@ -11,5 +12,7 @@ namespace ToyProject.View.IView.MainContent
         event EventHandler<TestItem> UpdateTestItemRequested;
         event EventHandler<TestItem> DeleteTestItemRequested;
         event EventHandler<TestItem> ToggleActiveRequested;
+
+        void ShowErrors(ValidationResult validationResult);
     }
 }

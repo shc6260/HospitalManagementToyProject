@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using ToyProject.Core.Validation;
 using ToyProject.Model;
+using ToyProject.View.Helper;
 using ToyProject.View.IView.MainContent;
 
 namespace ToyProject.View
@@ -15,11 +17,15 @@ namespace ToyProject.View
         public TestItemContentControl()
         {
             InitializeComponent();
-            testItemGridView.MouseUp += OnTestItemGridViewMouseUp;
+            BuildFieldMap();
+            ErrorProviderHelper.HookClearOnChange(new Control[] { nameTextEdit }, errorProvider1);
 
+            testItemGridView.MouseUp += OnTestItemGridViewMouseUp;
         }
 
         private TestItem _selectedTestItem;
+        private Dictionary<string, Control> _fieldMap;
+
 
         #region Init Control
 
@@ -93,15 +99,6 @@ namespace ToyProject.View
 
         private void SaveButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(codeTextEdit.Text)
-                || string.IsNullOrWhiteSpace(nameTextEdit.Text)
-                || string.IsNullOrWhiteSpace(referenceMinTextEdit.Text)
-                || string.IsNullOrWhiteSpace(referenceMaxTextEdit.Text))
-            {
-                XtraMessageBox.Show(this, "빈 값이 있습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             var saveItem = TestItem.From
             (
                 _selectedTestItem?.Id,
@@ -127,6 +124,17 @@ namespace ToyProject.View
             nameTextEdit.Text = _selectedTestItem?.Name;
             referenceMinTextEdit.Text = _selectedTestItem?.ReferenceMinValue.ToString();
             referenceMaxTextEdit.Text = _selectedTestItem?.ReferenceMaxValue.ToString();
+        }
+
+        private void BuildFieldMap()
+        {
+            _fieldMap = new Dictionary<string, Control>
+            {
+                { nameof(TestItem.Name), nameTextEdit },
+                { nameof(TestItem.TestItemCode), codeTextEdit },
+                { nameof(TestItem.ReferenceMinValue), referenceMinTextEdit },
+                { nameof(TestItem.ReferenceMaxValue), referenceMaxTextEdit }
+            };
         }
 
         #endregion
@@ -159,8 +167,13 @@ namespace ToyProject.View
 
         public void SetTestItemList(IEnumerable<TestItem> items)
         {
-            
+
             testItemGridControl.DataSource = new BindingList<TestItem>(items.ToArray());
+        }
+
+        public void ShowErrors(ValidationResult validationResult)
+        {
+            ErrorProviderHelper.ShowErrors(errorProvider1, _fieldMap, validationResult);
         }
 
         #endregion

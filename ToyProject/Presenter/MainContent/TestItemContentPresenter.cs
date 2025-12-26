@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
+using ToyProject.Core.Validation;
 using ToyProject.Model;
 using ToyProject.View.IView.MainContent;
 
@@ -16,7 +18,7 @@ namespace ToyProject.Presenter.MainContent
 
             _view = view;
 
-            _view.UpdateTestItemRequested += OnUpdateEquipRequested;
+            _view.UpdateTestItemRequested += OnUpdateTestItemRequested;
             _view.ToggleActiveRequested += OnToggleActiveRequested;
             _view.DeleteTestItemRequested += OnDeleteEquipRequested;
         }
@@ -68,13 +70,34 @@ namespace ToyProject.Presenter.MainContent
             });
         }
 
-        private async void OnUpdateEquipRequested(object sender, TestItem e)
+        private async void OnUpdateTestItemRequested(object sender, TestItem e)
         {
+            var validationResult = GetValidationResult(e);
+            _view.ShowErrors(validationResult);
+
+            if (validationResult.IsValid == false)
+            {
+                _messageService.ShowError(validationResult.ErrorMessage);
+                return;
+            }
+
+
             await _messageService.RunInProgressPopupAsync(async () =>
             {
                 await _testItemService.SaveTestItemAsync(e);
                 await Refresh();
             });
+        }
+
+        private static ValidationResult GetValidationResult(TestItem testItem)
+        {
+            var result = new ValidationResult();
+            result.AddRequired(nameof(testItem.Name), testItem.Name);
+            result.AddRequired(nameof(testItem.TestItemCode), testItem.TestItemCode);
+            result.AddRequired(nameof(testItem.ReferenceMinValue), testItem.ReferenceMinValue?.ToString());
+            result.AddRequired(nameof(testItem.ReferenceMaxValue), testItem.ReferenceMaxValue?.ToString());
+
+            return result;
         }
 
         private async Task<IEnumerable<TestItem>> GetTestItems()
@@ -84,7 +107,7 @@ namespace ToyProject.Presenter.MainContent
 
         public override void Dispose()
         {
-            _view.UpdateTestItemRequested -= OnUpdateEquipRequested;
+            _view.UpdateTestItemRequested -= OnUpdateTestItemRequested;
             _view.ToggleActiveRequested -= OnToggleActiveRequested;
             _view.DeleteTestItemRequested -= OnDeleteEquipRequested;
             base.Dispose();

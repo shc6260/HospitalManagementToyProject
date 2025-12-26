@@ -477,7 +477,7 @@ namespace ToyProject.Core.Repositories.InMemory
         {
             foreach (var test in tests)
             {
-                if (!Guid.TryParse(test.Test_Code, out var code))
+                if (Guid.TryParse(test.Test_Code, out var code) == false)
                     continue;
 
                 var target = _context.Tests.FirstOrDefault(t => t.TestCode == code);

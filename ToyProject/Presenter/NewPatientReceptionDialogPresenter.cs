@@ -2,7 +2,7 @@
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Helper;
 using ToyProject.Core.Service;
-using ToyProject.Properties;
+using ToyProject.Presenter.Validation;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
@@ -25,9 +25,12 @@ namespace ToyProject.Presenter
         private async void ViewSavePatient(object sender, System.EventArgs e)
         {
             var patient = _view.PatientEditControl.GetPatient();
-            if (string.IsNullOrWhiteSpace(patient.Name) || string.IsNullOrWhiteSpace(patient.SocialSecurityNumber))
+            var validationResult = PatientValidator.Validate(patient);
+            _view.PatientEditControl.ShowErrors(validationResult);
+
+            if (validationResult.IsValid == false)
             {
-                _messageService.ShowError(Resources.Strings_noValueMessage);
+                _messageService.ShowError(validationResult.ErrorMessage);
                 return;
             }
 

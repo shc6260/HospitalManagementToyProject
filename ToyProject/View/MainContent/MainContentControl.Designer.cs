@@ -43,7 +43,6 @@ namespace ToyProject.View
             this.prevButton = new DevExpress.XtraEditors.SimpleButton();
             this.nextButton = new DevExpress.XtraEditors.SimpleButton();
             this.weekdateButton = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.monthdateButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -55,7 +54,6 @@ namespace ToyProject.View
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.equipRowContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editReceptionMenu = new System.Windows.Forms.ToolStripTextBox();
@@ -77,7 +75,6 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.equipRowContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +89,6 @@ namespace ToyProject.View
             this.layoutControl1.Controls.Add(this.prevButton);
             this.layoutControl1.Controls.Add(this.nextButton);
             this.layoutControl1.Controls.Add(this.weekdateButton);
-            this.layoutControl1.Controls.Add(this.simpleButton11);
             this.layoutControl1.Controls.Add(this.monthdateButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -108,7 +104,7 @@ namespace ToyProject.View
             this.receptionGridControl.Location = new System.Drawing.Point(12, 38);
             this.receptionGridControl.MainView = this.receptionGridView;
             this.receptionGridControl.Name = "receptionGridControl";
-            this.receptionGridControl.Size = new System.Drawing.Size(1176, 616);
+            this.receptionGridControl.Size = new System.Drawing.Size(1176, 642);
             this.receptionGridControl.TabIndex = 6;
             this.receptionGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.receptionGridView});
@@ -227,15 +223,6 @@ namespace ToyProject.View
             this.weekdateButton.Text = "이번주";
             this.weekdateButton.Click += new System.EventHandler(this.WeekdateButtonClick);
             // 
-            // simpleButton11
-            // 
-            this.simpleButton11.Location = new System.Drawing.Point(12, 658);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(1176, 22);
-            this.simpleButton11.StyleController = this.layoutControl1;
-            this.simpleButton11.TabIndex = 10;
-            this.simpleButton11.Text = "simpleButton1";
-            // 
             // monthdateButton
             // 
             this.monthdateButton.Location = new System.Drawing.Point(512, 12);
@@ -260,7 +247,6 @@ namespace ToyProject.View
             this.layoutControlItem6,
             this.layoutControlItem7,
             this.layoutControlItem8,
-            this.layoutControlItem9,
             this.layoutControlItem10});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1200, 692);
@@ -294,7 +280,7 @@ namespace ToyProject.View
             this.layoutControlItem3.Control = this.receptionGridControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 620);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1180, 646);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -368,18 +354,6 @@ namespace ToyProject.View
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.simpleButton11;
-            this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem9.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 646);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1180, 26);
-            this.layoutControlItem9.Text = "layoutControlItem8";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
-            // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.monthdateButton;
@@ -398,7 +372,6 @@ namespace ToyProject.View
             // 
             // editReceptionMenu
             // 
-            this.editReceptionMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.editReceptionMenu.Name = "editReceptionMenu";
             this.editReceptionMenu.ReadOnly = true;
             this.editReceptionMenu.Size = new System.Drawing.Size(100, 23);
@@ -430,7 +403,6 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.equipRowContextMenu.ResumeLayout(false);
             this.equipRowContextMenu.PerformLayout();
@@ -465,9 +437,7 @@ namespace ToyProject.View
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraEditors.SimpleButton weekdateButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.SimpleButton monthdateButton;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }
