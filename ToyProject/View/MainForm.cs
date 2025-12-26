@@ -21,7 +21,6 @@ namespace ToyProject
         public MainForm()
         {
             InitializeComponent();
-            Load += MainForm_Load;
             _messageService = new MessageService(this);
         }
 
@@ -60,7 +59,20 @@ namespace ToyProject
 
         #region Init Control
 
-        private void MainForm_Load(object sender, EventArgs e)
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.Invalidate(true);
+            this.Update();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            MainForm_Load();
+        }
+
+        private void MainForm_Load()
         {
             SetMainPanel(nameof(mainTab));
             InitPatientSearchEdit();

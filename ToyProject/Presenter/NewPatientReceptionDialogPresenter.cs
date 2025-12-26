@@ -2,6 +2,7 @@
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Helper;
 using ToyProject.Core.Service;
+using ToyProject.Properties;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
@@ -26,7 +27,7 @@ namespace ToyProject.Presenter
             var patient = _view.PatientEditControl.GetPatient();
             if (string.IsNullOrWhiteSpace(patient.Name) || string.IsNullOrWhiteSpace(patient.SocialSecurityNumber))
             {
-                _messageService.ShowError(ToyProject.Properties.Resources.Strings_noValueMessage);
+                _messageService.ShowError(Resources.Strings_noValueMessage);
                 return;
             }
 
