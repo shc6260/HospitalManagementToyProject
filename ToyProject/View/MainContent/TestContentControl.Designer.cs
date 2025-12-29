@@ -63,11 +63,11 @@ namespace ToyProject.View
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.testContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.progressMenu = new System.Windows.Forms.ToolStripTextBox();
             this.completeMenu = new System.Windows.Forms.ToolStripTextBox();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.testResultView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentComboboxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testerComboboxEdit)).BeginInit();
@@ -82,9 +82,9 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            this.testContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            this.testContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // testResultView
@@ -216,42 +216,46 @@ namespace ToyProject.View
             // 
             this.patientNameColumn.Caption = "환자이름";
             this.patientNameColumn.Name = "patientNameColumn";
-            this.patientNameColumn.Visible = true;
-            this.patientNameColumn.VisibleIndex = 0;
             // 
             // testNameColumn
             // 
             this.testNameColumn.Caption = "검사명";
             this.testNameColumn.Name = "testNameColumn";
-            this.testNameColumn.Visible = true;
-            this.testNameColumn.VisibleIndex = 1;
             // 
             // testItemName
             // 
             this.testItemName.Caption = "검사항목이름";
             this.testItemName.Name = "testItemName";
             this.testItemName.Visible = true;
-            this.testItemName.VisibleIndex = 2;
+            this.testItemName.VisibleIndex = 0;
+            this.testItemName.Width = 368;
             // 
             // referenceValueColumn
             // 
             this.referenceValueColumn.Caption = "참고치";
             this.referenceValueColumn.Name = "referenceValueColumn";
             this.referenceValueColumn.Visible = true;
-            this.referenceValueColumn.VisibleIndex = 3;
+            this.referenceValueColumn.VisibleIndex = 1;
+            this.referenceValueColumn.Width = 368;
             // 
             // addResultcolumn
             // 
             this.addResultcolumn.ColumnEdit = this.addResultButton;
+            this.addResultcolumn.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.addResultcolumn.Name = "addResultcolumn";
             this.addResultcolumn.Visible = true;
-            this.addResultcolumn.VisibleIndex = 4;
+            this.addResultcolumn.VisibleIndex = 2;
+            this.addResultcolumn.Width = 100;
             // 
             // addResultButton
             // 
             this.addResultButton.AutoHeight = false;
+            serializableAppearanceObject1.BackColor = System.Drawing.Color.Gainsboro;
+            serializableAppearanceObject1.BackColor2 = System.Drawing.Color.Gainsboro;
+            serializableAppearanceObject1.Options.UseBackColor = true;
             this.addResultButton.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "결과추가", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.addResultButton.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.addResultButton.Name = "addResultButton";
             this.addResultButton.NullText = "결과추가";
             this.addResultButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -357,6 +361,22 @@ namespace ToyProject.View
             this.layoutControlItem4.Text = "검사 상태";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(44, 14);
             // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(299, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(729, 26);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 675);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(1028, 26);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // testContextMenu
             // 
             this.testContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -381,22 +401,6 @@ namespace ToyProject.View
             this.completeMenu.Text = "검사 완료";
             this.completeMenu.Click += new System.EventHandler(this.CompleteMenuClick);
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(299, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(729, 26);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 675);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(1028, 26);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // TestContentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -418,10 +422,10 @@ namespace ToyProject.View
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            this.testContextMenu.ResumeLayout(false);
-            this.testContextMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            this.testContextMenu.ResumeLayout(false);
+            this.testContextMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
