@@ -64,12 +64,12 @@ namespace ToyProject.Core.Repositories.InMemory
             var reception1 = AddReception(patient1.Id, DateTime.Now.AddHours(-3), false, false, "메모1", "보험1", "특별1", "건강보험", "검진대상1");
             var reception2 = AddReception(patient2.Id, DateTime.Now.AddDays(-1), false, false, "메모2", "보험2", "특별2", "건강보험", "검진대상2");
 
-            var testA = AddTest(reception1.Id, "혈액 검사", StatusType.Progress, new[] { cbc.Id, lft.Id });
-            var testB = AddTest(reception1.Id, "PCR 검사", StatusType.Reception, new[] { pcr.Id });
-            var testC = AddTest(reception2.Id, "기본 검사", StatusType.Complete, new[] { cbc.Id });
+            var testA = AddTest(reception1.Id, "혈액 검사", StatusType.Progress, new[] { cbc.Id, lft.Id }).ToArray();
+            //var testB = AddTest(reception1.Id, "PCR 검사", StatusType.Reception, new[] { pcr.Id });
+            //var testC = AddTest(reception2.Id, "기본 검사", StatusType.Complete, new[] { cbc.Id });
 
-            AddTestResult(testA.Id, "정상", DateTime.Now.AddHours(-1), "13.2", eq1.Id, tester1.Id);
-            AddTestResult(testC.Id, "재검 요망", DateTime.Now.AddDays(-1), "0.8", eq2.Id, tester2.Id);
+            AddTestResult(testA.First().Id, "정상", DateTime.Now.AddHours(-1), "13.2", eq1.Id, tester1.Id);
+            //AddTestResult(testC.First().Id, "재검 요망", DateTime.Now.AddDays(-1), "0.8", eq2.Id, tester2.Id);
         }
 
         private PatientResponseDto AddPatient(string chartNumber, string name, string ssn, string gender, string phone, string address, string memo, string qualification)
@@ -156,20 +156,26 @@ namespace ToyProject.Core.Repositories.InMemory
             return reception;
         }
 
-        private TestRecord AddTest(long receptionId, string name, StatusType status, IEnumerable<long> testItemIds)
+        private IEnumerable<TestRecord> AddTest(long receptionId, string name, StatusType status, IEnumerable<long> testItemIds)
         {
-            var test = new TestRecord
-            {
-                Id = NextTestId(),
-                TestCode = Guid.NewGuid(),
-                ReceptionId = receptionId,
-                TestName = name,
-                Status = status,
-                TestItemIds = testItemIds?.ToList() ?? new List<long>()
-            };
+            var code = Guid.NewGuid();
 
-            Tests.Add(test);
-            return test;
+            foreach (var id in testItemIds?.ToArray() ?? Enumerable.Empty<long>())
+            {
+                var test = new TestRecord
+                {
+                    Id = NextTestId(),
+                    TestCode = code,
+                    ReceptionId = receptionId,
+                    TestName = name,
+                    Status = status,
+                    TestItemId = id
+                };
+
+                Tests.Add(test);
+
+                yield return test;
+            }
         }
 
         private TestResultRecord AddTestResult(long testId, string decision, DateTime? testDt, string judgement, long? equipmentId, long? testerId)
@@ -211,7 +217,7 @@ namespace ToyProject.Core.Repositories.InMemory
         public string TestName { get; set; }
         public StatusType Status { get; set; }
         public long ReceptionId { get; set; }
-        public List<long> TestItemIds { get; set; } = new List<long>();
+        public long TestItemId { get; set; }
     }
 
     public class TestResultRecord

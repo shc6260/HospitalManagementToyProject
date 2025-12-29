@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToyProject.Core.Helper;
 using ToyProject.Model;
 using ToyProject.Model.Dto;
 using ToyProject.Model.Type;
@@ -299,31 +300,27 @@ namespace ToyProject.Core.Repositories.InMemory
 
             foreach (var test in tests)
             {
-                var itemIds = test.TestItemIds.Any() ? test.TestItemIds : new List<long> { 0 };
+                var item = _context.TestItems.FirstOrDefault(i => i.Id == test.TestItemId);
 
-                foreach (var testItemId in itemIds)
+                list.Add(new ReceptionResponseDto
                 {
-                    var item = _context.TestItems.FirstOrDefault(i => i.Id == testItemId);
-                    list.Add(new ReceptionResponseDto
-                    {
-                        Id = reception.Id,
-                        Patient_Id = reception.PatientId,
-                        Emergency = reception.Emergency,
-                        Night = reception.Night,
-                        Memo = reception.Memo,
-                        Insured_info = reception.InsuredInfo,
-                        Specifical_code = reception.SpecificalCode,
-                        Insurance_info = reception.InsuranceInfo,
-                        Checkup_target_info = reception.CheckupTargetInfo,
-                        Reception_dt = reception.ReceptionDate,
-                        Test_Id = test.Id,
-                        Test_Code = test.TestCode,
-                        Test_Name = test.TestName,
-                        Status = test.Status,
-                        TestItem_id = item?.Id ?? 0,
-                        TestItem_Name = item?.Name
-                    });
-                }
+                    Id = reception.Id,
+                    Patient_Id = reception.PatientId,
+                    Emergency = reception.Emergency,
+                    Night = reception.Night,
+                    Memo = reception.Memo,
+                    Insured_info = reception.InsuredInfo,
+                    Specifical_code = reception.SpecificalCode,
+                    Insurance_info = reception.InsuranceInfo,
+                    Checkup_target_info = reception.CheckupTargetInfo,
+                    Reception_dt = reception.ReceptionDate,
+                    Test_Id = test.Id,
+                    Test_Code = test.TestCode,
+                    Test_Name = test.TestName,
+                    Status = test.Status,
+                    TestItem_id = test.TestItemId,
+                    TestItem_Name = item.Name
+                });
             }
 
             return Task.FromResult<IEnumerable<ReceptionResponseDto>>(list);
@@ -360,15 +357,20 @@ namespace ToyProject.Core.Repositories.InMemory
                         })
                         .ToArray();
 
-                    _context.Tests.Add(new TestRecord
+                    var testcode = Guid.NewGuid();
+
+                    foreach (var itemId in ids)
                     {
-                        Id = _context.NextTestId(),
-                        TestCode = Guid.NewGuid(),
-                        ReceptionId = reception.Id,
-                        TestName = test.TestName,
-                        Status = StatusType.Reception,
-                        TestItemIds = ids.ToList()
-                    });
+                        _context.Tests.Add(new TestRecord
+                        {
+                            Id = _context.NextTestId(),
+                            TestCode = testcode,
+                            ReceptionId = reception.Id,
+                            TestName = test.TestName,
+                            Status = StatusType.Reception,
+                            TestItemId = itemId
+                        });
+                    }
                 }
             }
 
@@ -429,17 +431,13 @@ namespace ToyProject.Core.Repositories.InMemory
 
                 var patient = _context.Patients.FirstOrDefault(p => p.Id == reception?.PatientId);
                 var results = _context.TestResults.Where(tr => tr.TestId == test.Id).ToList();
-                var itemIds = test.TestItemIds.Any() ? test.TestItemIds : new List<long> { 0 };
                 var resultsOrDefault = results.Any() ? results : new List<TestResultRecord> { null };
 
-                foreach (var itemId in itemIds)
-                {
-                    var item = _context.TestItems.FirstOrDefault(i => i.Id == itemId);
+                var item = _context.TestItems.FirstOrDefault(i => i.Id == test.TestItemId);
 
-                    foreach (var res in resultsOrDefault)
-                    {
-                        result.Add(CreateTestDetailDto(test, reception, patient, item, res));
-                    }
+                foreach (var res in resultsOrDefault)
+                {
+                    result.Add(CreateTestDetailDto(test, reception, patient, item, res));
                 }
             }
 
@@ -459,15 +457,20 @@ namespace ToyProject.Core.Repositories.InMemory
                     })
                     .ToArray();
 
-                _context.Tests.Add(new TestRecord
+                var testcode = Guid.NewGuid();
+
+                foreach (var itemId in ids)
                 {
-                    Id = _context.NextTestId(),
-                    TestCode = Guid.NewGuid(),
-                    ReceptionId = receptionId,
-                    TestName = test.TestName,
-                    Status = StatusType.Reception,
-                    TestItemIds = ids.ToList()
-                });
+                    _context.Tests.Add(new TestRecord
+                    {
+                        Id = _context.NextTestId(),
+                        TestCode = testcode,
+                        ReceptionId = receptionId,
+                        TestName = test.TestName,
+                        Status = StatusType.Reception,
+                        TestItemId = itemId
+                    });
+                }
             }
 
             return Task.CompletedTask;
@@ -480,25 +483,34 @@ namespace ToyProject.Core.Repositories.InMemory
                 if (Guid.TryParse(test.Test_Code, out var code) == false)
                     continue;
 
-                var target = _context.Tests.FirstOrDefault(t => t.TestCode == code);
-                if (target == null)
+                var targets = _context.Tests.Where(t => t.TestCode == code).ToList();
+                if (targets.IsNullOrEmpty())
                     continue;
-
-                target.Status = test.Status;
-                target.TestName = string.IsNullOrWhiteSpace(test.Test_Name) ? target.TestName : test.Test_Name;
 
                 var include = ParseIds(test.Included_Test_Item_Ids);
                 var exclude = ParseIds(test.Excluded_Test_Item_Ids);
 
+                var firstTatget = targets.First();
+
                 foreach (var addId in include)
                 {
-                    if (target.TestItemIds.Contains(addId) == false)
-                        target.TestItemIds.Add(addId);
+                    _context.Tests.Add(new TestRecord
+                    {
+                        Id = _context.NextTestId(),
+                        TestCode = firstTatget.TestCode,
+                        ReceptionId = firstTatget.ReceptionId,
+                        TestName = firstTatget.TestName,
+                        Status = test.Status,
+                        TestItemId = addId
+                    });
                 }
 
-                foreach (var removeId in exclude)
+                targets.RemoveAll(i => exclude.Contains(i.Id));
+
+                foreach (var target in targets)
                 {
-                    target.TestItemIds.RemoveAll(id => id == removeId);
+                    target.Status = test.Status;
+                    target.TestName = string.IsNullOrWhiteSpace(test.Test_Name) ? target.TestName : test.Test_Name;
                 }
             }
 
