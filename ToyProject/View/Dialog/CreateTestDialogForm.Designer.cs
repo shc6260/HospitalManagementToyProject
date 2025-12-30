@@ -73,31 +73,35 @@ namespace ToyProject.View.Dialog
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1154, 325, 650, 400);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(792, 592, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(958, 424);
+            this.layoutControl1.Size = new System.Drawing.Size(634, 311);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // label2
             // 
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 8F);
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(923, 20);
+            this.label2.Size = new System.Drawing.Size(610, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "검사항목";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // nameTextEdit
             // 
-            this.nameTextEdit.Location = new System.Drawing.Point(64, 12);
+            this.nameTextEdit.Location = new System.Drawing.Point(67, 12);
             this.nameTextEdit.Name = "nameTextEdit";
-            this.nameTextEdit.Size = new System.Drawing.Size(882, 20);
+            this.nameTextEdit.Size = new System.Drawing.Size(555, 20);
             this.nameTextEdit.StyleController = this.layoutControl1;
             this.nameTextEdit.TabIndex = 21;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(818, 390);
+            this.saveButton.Location = new System.Drawing.Point(494, 277);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(62, 22);
             this.saveButton.StyleController = this.layoutControl1;
@@ -107,7 +111,7 @@ namespace ToyProject.View.Dialog
             // 
             // cancleButton
             // 
-            this.cancleButton.Location = new System.Drawing.Point(884, 390);
+            this.cancleButton.Location = new System.Drawing.Point(560, 277);
             this.cancleButton.Name = "cancleButton";
             this.cancleButton.Size = new System.Drawing.Size(62, 22);
             this.cancleButton.StyleController = this.layoutControl1;
@@ -120,7 +124,7 @@ namespace ToyProject.View.Dialog
             this.testItemGridControl.Location = new System.Drawing.Point(12, 60);
             this.testItemGridControl.MainView = this.testItemGridView;
             this.testItemGridControl.Name = "testItemGridControl";
-            this.testItemGridControl.Size = new System.Drawing.Size(934, 326);
+            this.testItemGridControl.Size = new System.Drawing.Size(610, 213);
             this.testItemGridControl.TabIndex = 17;
             this.testItemGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.testItemGridView});
@@ -175,7 +179,7 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem5,
             this.layoutControlItem6});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(958, 424);
+            this.Root.Size = new System.Drawing.Size(634, 311);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -183,14 +187,14 @@ namespace ToyProject.View.Dialog
             this.layoutControlItem1.Control = this.testItemGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(938, 330);
+            this.layoutControlItem1.Size = new System.Drawing.Size(614, 217);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cancleButton;
-            this.layoutControlItem3.Location = new System.Drawing.Point(872, 378);
+            this.layoutControlItem3.Location = new System.Drawing.Point(548, 265);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -202,7 +206,7 @@ namespace ToyProject.View.Dialog
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.saveButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(806, 378);
+            this.layoutControlItem4.Location = new System.Drawing.Point(482, 265);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -214,29 +218,29 @@ namespace ToyProject.View.Dialog
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 378);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 265);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(806, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(482, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.nameTextEdit;
+            this.layoutControlItem5.CustomizationFormText = "검사이름";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(938, 24);
+            this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 2, 2, 2);
+            this.layoutControlItem5.Size = new System.Drawing.Size(614, 24);
             this.layoutControlItem5.Text = "검사이름";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(40, 14);
             // 
             // layoutControlItem6
             // 
+            this.layoutControlItem6.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem6.Control = this.label2;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(927, 24);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(927, 24);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(938, 24);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem6.Size = new System.Drawing.Size(614, 24);
             this.layoutControlItem6.Text = "검사항목";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
@@ -252,8 +256,9 @@ namespace ToyProject.View.Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 424);
+            this.ClientSize = new System.Drawing.Size(634, 311);
             this.Controls.Add(this.layoutControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CreateTestDialogForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
