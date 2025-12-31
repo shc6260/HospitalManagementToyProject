@@ -130,4 +130,7 @@
   <data name="validate_selectedTestItemsError" xml:space="preserve">
     <value>검사 항목을 선택해주세요.</value> 
   </data>
+  <data name="strings_successMessage" xml:space="preserve">
+    <value>저장되었습니다.</value>
+  </data>
 </root>

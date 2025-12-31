@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
+using ToyProject.Properties;
 using ToyProject.View.IView;
 
 namespace ToyProject.Presenter
@@ -72,7 +73,8 @@ namespace ToyProject.Presenter
             {
                 await _testerService.SaveTesterAsync(e);
                 await Refresh();
-            });
+            },
+            Resources.strings_successMessage);
         }
 
         private async Task<IEnumerable<Tester>> GetTesters()

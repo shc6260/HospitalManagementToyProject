@@ -175,9 +175,9 @@ namespace ToyProject.View
             // 
             // receptionSearchButton
             // 
-            this.receptionSearchButton.Location = new System.Drawing.Point(816, 13);
+            this.receptionSearchButton.Location = new System.Drawing.Point(1116, 13);
             this.receptionSearchButton.Name = "receptionSearchButton";
-            this.receptionSearchButton.Size = new System.Drawing.Size(372, 20);
+            this.receptionSearchButton.Size = new System.Drawing.Size(72, 20);
             this.receptionSearchButton.StyleController = this.layoutControl1;
             this.receptionSearchButton.TabIndex = 7;
             this.receptionSearchButton.Text = "조회";
@@ -272,7 +272,7 @@ namespace ToyProject.View
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(620, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(184, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(484, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -304,11 +304,11 @@ namespace ToyProject.View
             // 
             this.layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem4.Control = this.receptionSearchButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(804, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1104, 0);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(0, 24);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(31, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(376, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(76, 26);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -372,6 +372,7 @@ namespace ToyProject.View
             // 
             // editReceptionMenu
             // 
+            this.editReceptionMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.editReceptionMenu.Name = "editReceptionMenu";
             this.editReceptionMenu.ReadOnly = true;
             this.editReceptionMenu.Size = new System.Drawing.Size(100, 23);

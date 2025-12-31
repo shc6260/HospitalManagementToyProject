@@ -464,6 +464,7 @@ namespace ToyProject.View
             // 
             // activateContextMenu
             // 
+            this.activateContextMenu.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.activateContextMenu.Name = "activateContextMenu";
             this.activateContextMenu.ReadOnly = true;
             this.activateContextMenu.Size = new System.Drawing.Size(100, 23);

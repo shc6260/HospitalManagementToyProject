@@ -6,6 +6,7 @@ using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Core.Validation;
 using ToyProject.Model;
+using ToyProject.Properties;
 using ToyProject.View.IView.MainContent;
 
 namespace ToyProject.Presenter.MainContent
@@ -86,7 +87,8 @@ namespace ToyProject.Presenter.MainContent
             {
                 await _testItemService.SaveTestItemAsync(e);
                 await Refresh();
-            });
+            },
+            Resources.strings_successMessage);
         }
 
         private static ValidationResult GetValidationResult(TestItem testItem)

@@ -5,6 +5,7 @@ using ToyProject.Core.Factotry;
 using ToyProject.Core.Service;
 using ToyProject.Model;
 using ToyProject.Model.Type;
+using ToyProject.Properties;
 using ToyProject.View.IView.MainContent;
 
 namespace ToyProject.Presenter.MainContent
@@ -58,7 +59,7 @@ namespace ToyProject.Presenter.MainContent
             if (_messageService == null)
                 return action();
 
-            return _messageService.RunInProgressPopupAsync(action);
+            return _messageService.RunInProgressPopupAsync(action, Resources.strings_successMessage);
         }
 
         public override void Dispose()

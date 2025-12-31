@@ -71,7 +71,7 @@ namespace ToyProject.Core.Service
         }
 
 
-        public async Task RunInProgressPopupAsync(Func<Task> task)
+        public async Task RunInProgressPopupAsync(Func<Task> task, string successMessage = null)
         {
             var owner = _owner as Form;
             if (owner == null)
@@ -91,6 +91,9 @@ namespace ToyProject.Core.Service
                 }
 
                 await workTask;
+
+                if (string.IsNullOrWhiteSpace(successMessage) == false)
+                    ShowInfo(successMessage);
             }
             catch (Exception e)
             {

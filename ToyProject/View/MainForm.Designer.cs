@@ -88,9 +88,9 @@ namespace ToyProject
             // 
             this.fluentDesignFormContainer1.Controls.Add(this.layoutControl1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(122, 31);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(60, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(876, 668);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(938, 668);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // layoutControl1
@@ -105,13 +105,13 @@ namespace ToyProject
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(-1368, 459, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(876, 668);
+            this.layoutControl1.Size = new System.Drawing.Size(938, 668);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // newReceptionPatientButton
             // 
-            this.newReceptionPatientButton.Location = new System.Drawing.Point(766, 36);
+            this.newReceptionPatientButton.Location = new System.Drawing.Point(828, 36);
             this.newReceptionPatientButton.Name = "newReceptionPatientButton";
             this.newReceptionPatientButton.Size = new System.Drawing.Size(100, 26);
             this.newReceptionPatientButton.StyleController = this.layoutControl1;
@@ -121,7 +121,7 @@ namespace ToyProject
             // 
             // newPatientButton
             // 
-            this.newPatientButton.Location = new System.Drawing.Point(766, 10);
+            this.newPatientButton.Location = new System.Drawing.Point(828, 10);
             this.newPatientButton.Margin = new System.Windows.Forms.Padding(0);
             this.newPatientButton.Name = "newPatientButton";
             this.newPatientButton.Size = new System.Drawing.Size(100, 26);
@@ -135,7 +135,7 @@ namespace ToyProject
             this.mainPanel.Controls.Add(this.popupContainerControl2);
             this.mainPanel.Location = new System.Drawing.Point(10, 72);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(856, 586);
+            this.mainPanel.Size = new System.Drawing.Size(918, 586);
             this.mainPanel.TabIndex = 14;
             // 
             // popupContainerControl2
@@ -230,7 +230,7 @@ namespace ToyProject
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gnbSearchEdit.Properties.PopupControl = this.popupContainerControl2;
             this.gnbSearchEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.gnbSearchEdit.Size = new System.Drawing.Size(752, 20);
+            this.gnbSearchEdit.Size = new System.Drawing.Size(814, 20);
             this.gnbSearchEdit.StyleController = this.layoutControl1;
             this.gnbSearchEdit.TabIndex = 9;
             this.gnbSearchEdit.EditValueChanged += new System.EventHandler(this.GnbSearchEditEditValueChanged);
@@ -248,7 +248,7 @@ namespace ToyProject
             this.emptySpaceItem1,
             this.emptySpaceItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(876, 668);
+            this.Root.Size = new System.Drawing.Size(938, 668);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -257,7 +257,7 @@ namespace ToyProject
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 62);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem2.Size = new System.Drawing.Size(856, 586);
+            this.layoutControlItem2.Size = new System.Drawing.Size(918, 586);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -266,14 +266,14 @@ namespace ToyProject
             this.layoutControlItem3.Control = this.gnbSearchEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(756, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(818, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.newPatientButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(756, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(818, 0);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -286,7 +286,7 @@ namespace ToyProject
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.newReceptionPatientButton;
-            this.layoutControlItem5.Location = new System.Drawing.Point(756, 26);
+            this.layoutControlItem5.Location = new System.Drawing.Point(818, 26);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -301,7 +301,7 @@ namespace ToyProject
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 26);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(756, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(818, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
@@ -309,7 +309,7 @@ namespace ToyProject
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 52);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(856, 10);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(918, 10);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // mainMenuControl
@@ -327,7 +327,7 @@ namespace ToyProject
             this.mainMenuControl.OptionsMinimizing.ElementHeight = 60;
             this.mainMenuControl.Padding = new System.Windows.Forms.Padding(3);
             this.mainMenuControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
-            this.mainMenuControl.Size = new System.Drawing.Size(122, 668);
+            this.mainMenuControl.Size = new System.Drawing.Size(60, 668);
             this.mainMenuControl.TabIndex = 1;
             this.mainMenuControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             this.mainMenuControl.SelectedElementChanged += new DevExpress.XtraBars.Navigation.SelectedElementChangedEventHandler(this.SelectedMainMenu);

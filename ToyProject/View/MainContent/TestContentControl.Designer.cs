@@ -30,12 +30,12 @@ namespace ToyProject.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.testResultView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.desisionColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.judgementColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -152,10 +152,10 @@ namespace ToyProject.View
             // 
             // testGridControl
             // 
-            gridLevelNode1.LevelTemplate = this.testResultView;
-            gridLevelNode1.RelationName = "TestResults";
+            gridLevelNode2.LevelTemplate = this.testResultView;
+            gridLevelNode2.RelationName = "TestResults";
             this.testGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.testGridControl.Location = new System.Drawing.Point(12, 38);
             this.testGridControl.MainView = this.testGridView;
             this.testGridControl.Margin = new System.Windows.Forms.Padding(0);
@@ -250,11 +250,11 @@ namespace ToyProject.View
             // addResultButton
             // 
             this.addResultButton.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.Color.Gainsboro;
-            serializableAppearanceObject1.BackColor2 = System.Drawing.Color.Gainsboro;
-            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject5.BackColor = System.Drawing.Color.Gainsboro;
+            serializableAppearanceObject5.BackColor2 = System.Drawing.Color.Gainsboro;
+            serializableAppearanceObject5.Options.UseBackColor = true;
             this.addResultButton.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "결과추가", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "결과추가", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.addResultButton.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.addResultButton.Name = "addResultButton";
             this.addResultButton.NullText = "결과추가";
